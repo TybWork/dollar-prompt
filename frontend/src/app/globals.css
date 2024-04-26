@@ -4,3 +4,16 @@
   box-sizing: border-box;
   /* border: 1px solid red; */
 }
+body{
+  margin: auto;
+  width:100%;
+  max-width: 1440px;
+  font-family: mainFont;
+}
+:root{
+  --primaryClr:#2A2B44;
+  --secondryClr:#222236;
+  --tertiaryClr:#454566;
+  --textClr:white;
+  --buttonGradien:linear-gradient(122deg, #fee5a5, #fea5a5 62%, #f69393 100%, #fff);
+}
