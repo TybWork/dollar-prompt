@@ -1,0 +1,41 @@
+.sliderContainer {
+    position: relative;
+    height: 350px;
+    overflow: hidden;
+    /* border: 1px solid rgb(0, 255, 76); */
+    background: url("/assets/imageAssets/Home/HomeTopSlider.webp");
+    border-radius: 10px;
+    margin-top: 1em;
+    border: 1px solid black;
+}
+
+.content {
+    position: absolute;
+    z-index: 500;
+    bottom: 12px;
+    left: 12px;
+}
+
+.heading {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.subHeading {
+    font-size: 1.3rem;
+    font-weight: normal;
+}
+
+.highligtedText {
+    font-size: 1.5rem;
+    background: var(--textGradient);
+    font-weight: 600;
+    background-clip: text;
+    color: transparent;
+}
+
+.buttonContainer {
+    display: flex;
+    gap: 1em;
+    margin-top: 16px;
+}

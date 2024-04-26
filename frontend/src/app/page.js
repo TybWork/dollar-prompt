@@ -1,8 +1,11 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import HomeTopSlider from "./Components/HomeTopSlider/HomeTopSlider";
 
 export default function Home() {
   return (
-    <div>the quick brown fox jumps over the  lazy dog</div>
+    <div className={styles.mainContainer}>
+      <HomeTopSlider />
+    </div>
   );
 }

@@ -1,0 +1,9 @@
+.borderBtn {
+    background: transparent;
+    padding: 8px 16px;
+    color: var(--textClr);
+    border: none;
+    border-radius: 5px;
+    border: 1px solid var(--textClr);
+    font-weight: 600;
+}
