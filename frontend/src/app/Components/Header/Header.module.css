@@ -1,0 +1,150 @@
+.headerContainer {
+    display: flex;
+    gap: 1.5em;
+    flex-direction: column;
+    background-color: var(--secondryClr);
+    padding: 1em 3em;
+}
+
+.topHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2em;
+}
+
+.logo {
+    font-size: var(--logo);
+    font-size: 2rem;
+}
+
+.inputContainer {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.inputContainer input {
+    width: 100%;
+    padding: 12px 48px 12px 12px;
+    background-color: var(--tertiaryClr);
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    color: var(--textClr);
+    font-weight: bold;
+}
+
+.inputContainer input::placeholder {
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.342);
+}
+
+.searchIcon {
+    position: absolute;
+    right: 10px;
+    font-size: 24px;
+    font-weight: 800px;
+}
+
+.mainNav ul {
+    display: flex;
+    justify-content: space-between;
+    gap: 2em;
+    align-items: center;
+}
+
+.mainNav ul li {
+    list-style: none;
+    cursor: pointer;
+}
+
+.topNavIcons {
+    font-size: 24px;
+}
+
+.topNavIconsContainer {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+}
+
+.cartContainer {
+    position: relative;
+}
+
+.cartCounter {
+    background-color: red;
+    width: 24px;
+    height: 24px;
+    border-radius: 50px;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(.6);
+    top: -7px;
+    right: -10px
+}
+
+.hamburgerIcon {
+    display: none;
+}
+
+/* -------bottom navbar styling------ */
+
+.bottomNav ul {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bottomNav ul li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* media queries */
+@media screen and (max-width:1296px) {
+    .bottomNav {
+        display: none;
+    }
+}
+
+@media screen and (max-width:1024px) {
+    .mainNav {
+        display: none;
+    }
+
+    .hamburgerIcon {
+        display: block;
+    }
+
+    .bellIcon {
+        display: none;
+    }
+}
+
+@media screen and (max-width:658px) {
+    .headerContainer {
+        padding: 1em;
+    }
+
+    .topHeader {
+        gap: 1em;
+    }
+
+    .topNavIconsContainer {
+        gap: 1em;
+    }
+
+    .topNavIcons {
+        font-size: 20px;
+    }
+
+
+}
