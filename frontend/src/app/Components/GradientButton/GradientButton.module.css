@@ -4,4 +4,5 @@
     color: var(--primaryClr);
     border: none;
     border-radius: 5px;
+    font-size: 18px;
 }
