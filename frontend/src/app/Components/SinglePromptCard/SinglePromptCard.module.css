@@ -1,0 +1,45 @@
+.promptCardContainer {
+    border-radius: 5px;
+    overflow: hidden;
+    width: 250px;
+    height: 140px;
+    position: relative;
+}
+
+.image {
+    border-radius: 5px;
+    z-index: 1;
+}
+
+.label {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: var(--primaryClr);
+    z-index: 100;
+    opacity: .7px;
+    border-bottom-right-radius: 5px;
+    padding: 3px;
+    font-size: 14px;
+}
+
+.bottomText {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 5px 10px;
+    background: rgba(0, 0, 0, 0.767);
+}
+
+.title {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.infoText {
+    font-size: 14px;
+}
