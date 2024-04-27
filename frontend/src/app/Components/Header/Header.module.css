@@ -55,14 +55,42 @@
     align-items: center;
 }
 
+
+
 .mainNav ul li {
     list-style: none;
     cursor: pointer;
+    padding: 8px 16px;
+    transition: var(--transition);
+    cursor: pointer;
+    border-radius: 8px;
+
+}
+
+.mainNav ul li:hover {
+    background-color: var(--tertiaryClr);
+    border-radius: 4px;
 }
 
 .topNavIcons {
     font-size: 24px;
+    width: 42px;
+    height: 42px;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    border-radius: 4px;
 }
+
+.topNavIcons:hover {
+    width: 42px;
+    height: 42px;
+    padding: 4px 8px;
+    background-color: var(--tertiaryClr);
+    border-radius: 4px;
+
+}
+
 
 .topNavIconsContainer {
     display: flex;
@@ -84,8 +112,8 @@
     justify-content: center;
     align-items: center;
     transform: scale(.6);
-    top: -7px;
-    right: -10px
+    top: 0px;
+    right: 0px
 }
 
 .hamburgerIcon {
@@ -106,6 +134,15 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.bottomNav ul li:hover {
+    background-color: var(--tertiaryClr);
+    border-radius: 4px;
+
 }
 
 /* media queries */

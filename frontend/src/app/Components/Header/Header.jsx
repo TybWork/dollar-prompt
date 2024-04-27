@@ -52,7 +52,6 @@ const Header = () => {
                     <li><TbWriting /> <span>Productivity & Writing</span></li>
                     <li><PiBagSimpleLight /> <span>Marketing & Business</span></li>
                     <li><IoCameraOutline /> <span>IoCameraOutline</span></li>
-                    <li><IoGameControllerOutline /> <span>Games & 3D</span></li>
                 </ul>
             </nav>
         </header>

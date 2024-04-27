@@ -9,6 +9,7 @@
   --primaryClr: #222236;
   --secondryClr: #2A2B44;
   --tertiaryClr: #454566;
+  --cardHoverClr: #393954;
   --textClr: white;
   --buttonGradient: linear-gradient(122deg, #fee5a5, #fea5a5 62%, #f69393 100%, #fff);
   --textGradient: linear-gradient(122deg, #f17b85, #f79393 15%, #fee4a5 45%, #9ae8b0 65%, #5ba5d0 90%, #9078d0);
@@ -17,6 +18,9 @@
   --logo: 40px;
   --navLinks: 16px;
   --bottomLinks: 12px;
+
+  /* others */
+  --transition: .3s;
 }
 
 body {
@@ -27,4 +31,14 @@ body {
   font-family: var(--font-finlandica);
   background-color: var(--primaryClr);
   color: var(--textClr);
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  background-color: var(--tertiaryClr);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(122deg, #454566, #fea5a5 62%, #f69393 100%, #fff);
+  border-radius: 5px;
 }
