@@ -1,10 +1,10 @@
-import React from 'react'
+"use clients"
 import Image from 'next/image';
 import styles from '@/app/Components/SinglePromptCard/SinglePromptCard.module.css'
 
 const SinglePromptCard = () => {
     return (
-        <div className={styles.promptCardContainer}>
+        <div className={`${styles.promptCardContainer}`}>
             <Image className={styles.image} src="/assets/imageAssets/featureCard.webp" width={250} height={140} />
             <div className={styles.label}>Midjourney </div>
             <div className={styles.bottomText}>
@@ -14,5 +14,4 @@ const SinglePromptCard = () => {
         </div>
     )
 }
-
 export default SinglePromptCard;

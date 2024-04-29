@@ -1,0 +1,9 @@
+.smallImageSection {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.image {
+    border-radius: 10px;
+}
