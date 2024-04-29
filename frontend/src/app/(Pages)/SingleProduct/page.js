@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { IoMdHeart } from "react-icons/io";
 import { MdRemoveRedEye } from "react-icons/md";
 import Favourites from '@/app/Components/Favourites/Favourites';
+import IconText from '@/app/Components/(liteComponents)/IconText/IconText';
 
 const page = () => {
     return (
@@ -21,6 +22,10 @@ const page = () => {
 
                     {/* views container */}
                     <Favourites icon={<MdRemoveRedEye />} text="Favourites" />
+                </div>
+                {/* other info  */}
+                <div className="">
+                    <IconText text="58" icon="words" />
                 </div>
             </div>
 
