@@ -3,7 +3,7 @@ const IconText = (props) => {
     return (
         <div className={styles.container}>
             <div>{props.text}</div>
-            <div>{props.icon}</div>
+            {props.icon}
         </div>
     )
 }

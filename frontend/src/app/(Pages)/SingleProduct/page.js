@@ -5,6 +5,8 @@ import { IoMdHeart } from "react-icons/io";
 import { MdRemoveRedEye } from "react-icons/md";
 import Favourites from '@/app/Components/Favourites/Favourites';
 import IconText from '@/app/Components/(liteComponents)/IconText/IconText';
+import { RiVerifiedBadgeFill } from "react-icons/ri";
+import { HiMiniPaintBrush } from "react-icons/hi2";
 
 const page = () => {
     return (
@@ -24,8 +26,12 @@ const page = () => {
                     <Favourites icon={<MdRemoveRedEye />} text="Favourites" />
                 </div>
                 {/* other info  */}
-                <div className="">
+                <div className={styles.verifiedInfo}>
                     <IconText text="58" icon="words" />
+                    <IconText text="Tested" icon={<RiVerifiedBadgeFill />} />
+                    <IconText text="Tips" icon={<RiVerifiedBadgeFill />} />
+                    <IconText text="HQ images" icon={<RiVerifiedBadgeFill />} />
+                    <IconText text={<HiMiniPaintBrush />} icon={<RiVerifiedBadgeFill />} />
                 </div>
             </div>
 

@@ -7,3 +7,10 @@
 .image {
     border-radius: 10px;
 }
+
+
+.verifiedInfo {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
