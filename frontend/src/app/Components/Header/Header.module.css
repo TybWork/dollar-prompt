@@ -10,7 +10,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 2em;
+    gap: 1em;
 }
 
 .logo {
@@ -27,6 +27,7 @@
 
 .inputContainer input {
     width: 100%;
+    /* min-width: 400px; */
     padding: 12px 48px 12px 12px;
     background-color: var(--tertiaryClr);
     border-radius: 4px;
@@ -51,11 +52,8 @@
 .mainNav ul {
     display: flex;
     justify-content: space-between;
-    gap: 2em;
     align-items: center;
 }
-
-
 
 .mainNav ul li {
     list-style: none;
@@ -95,7 +93,7 @@
 .topNavIconsContainer {
     display: flex;
     align-items: center;
-    gap: 2em;
+    gap: 1em;
 }
 
 .cartContainer {

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { IoSearchOutline } from "react-icons/io5";
 import { MdOutlineMessage } from "react-icons/md";
 import { GoBell } from "react-icons/go";
@@ -18,7 +19,8 @@ const Header = () => {
         <header className={styles.headerContainer}>
             {/* ------------- top header------------- */}
             <div className={styles.topHeader}>
-                <div className={styles.logo}>logo</div>
+                <div className={styles.logo}></div>
+                <Image src="/assets/imageAssets/logo.png" width={30} height={30} />
                 <div className={styles.inputContainer}>
                     <input className={styles.input} type="text" name="" id="" placeholder="Search Prompts" />
                     <IoSearchOutline className={styles.searchIcon} />
