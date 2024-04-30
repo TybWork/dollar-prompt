@@ -1,0 +1,45 @@
+.select {
+    background-color: var(--tertiaryClr);
+    border-radius: 4px;
+    margin: 4px 0px 16px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    padding: 8px;
+    color: var(--textClr);
+}
+
+.select option {
+    padding: 4px;
+    font-size: 14px;
+}
+
+.textInput {
+    padding: 8px;
+    border-radius: 4px;
+    background: var(--tertiaryClr);
+    width: 600px;
+    border: none;
+    color: white;
+    caret-color: white;
+    outline: none;
+    resize: vertical;
+    margin-bottom: 2.4em;
+}
+
+.textInput::placeholder {
+    color: var(--textClr);
+    opacity: .6;
+}
+
+.pricingContainer {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+@media screen and (max-width:792px) {
+    .textInput {
+        width: 100%;
+    }
+}

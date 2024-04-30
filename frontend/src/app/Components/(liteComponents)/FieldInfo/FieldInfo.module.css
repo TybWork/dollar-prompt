@@ -1,0 +1,14 @@
+.fieldContainer {
+    line-height: 20px;
+    margin: .5em 0em;
+}
+
+.fieldTitle {
+    font-size: 14px;
+}
+
+.fieldDescription {
+    color: var(--textClr);
+    opacity: .8;
+    font-size: 13px;
+}
