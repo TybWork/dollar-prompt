@@ -5,4 +5,10 @@
     border: none;
     border-radius: 5px;
     font-size: 18px;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.gradientBtn:hover {
+    background: var(--buttonGradientHover);
 }

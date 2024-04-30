@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2em;
+}
+
+.stepsPercentage {
+    height: 4px;
+    width: 90%;
+    background: var(--tertiaryClr);
+    border-radius: 50px;
+}
+
+.stepCounter {
+    font-size: 14px;
+    width: 70px;
+}
