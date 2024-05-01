@@ -2,20 +2,14 @@ import styles from "@/app/Components/(liteComponents)/PromptType/PromptType.modu
 import FieldInfo from "../FieldInfo/FieldInfo"
 import GradientButton from "../../GradientButton/GradientButton";
 import TextArea from "../TextAreaComponent/TextArea";
+import DropDownList from "../DropDownList/DropDownList";
 const PromptType = () => {
     return (
         <div>
             <FieldInfo title="Prompt Type" description="Select the type of prompt you want to sell" />
 
             {/* promptType */}
-            <select className={styles.select} name="promptType" id="cars">
-                <option value="dall">Dall-E</option>
-                <option value="gpt">GPT</option>
-                <option value="leonardoai">LeonardoAi</option>
-                <option value="llama">Llama</option>
-                <option value="midjourney">Midjourney</option>
-                <option value="stablediffusion">Stable Diffusion</option>
-            </select>
+            <DropDownList />
 
             {/* name field */}
             <FieldInfo title="Name" description="Suggest a title for this prompt." />
@@ -28,13 +22,7 @@ const PromptType = () => {
             {/* price */}
             <FieldInfo title="Estimated Price" description="What do you think the price of this prompt should be?" />
             <div className={styles.pricingContainer}>
-                <select className={styles.select} name="promptType" id="cars">
-                    <option value="dall">$2.99</option>
-                    <option value="gpt">$3.99</option>
-                    <option value="leonardoai">$4.99</option>
-                    <option value="llama">$5.99</option>
-                    <option value="midjourney">$6.99</option>
-                </select>
+                <DropDownList />
 
                 {/* button */}
                 <GradientButton title="Next" />

@@ -2,6 +2,7 @@ import StepsCounter from "@/app/Components/(liteComponents)/StepsCounter/StepsCo
 import styles from '@/app/(Pages)/Sell/Sell.module.css'
 import SellingProduct from "@/app/Components/SellingProduct/SellingProduct";
 import PromptDetails from "@/app/Components/PromptDetails/PromptDetails";
+import PromptFile from "@/app/Components/PromptFile/PromptFile";
 
 
 const sell = () => {
@@ -13,12 +14,11 @@ const sell = () => {
                 {/* <SellingProduct /> */}
 
                 {/* PromptDetails */}
-                <PromptDetails />
+                {/* <PromptDetails /> */}
+
+                {/* PromptFile */}
+                <PromptFile />
             </div>
-
-
-
-
         </>
     )
 }
