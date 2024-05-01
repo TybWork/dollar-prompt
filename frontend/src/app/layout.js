@@ -1,6 +1,7 @@
 import { Finlandica } from "next/font/google";
 import "./globals.css";
 import Header from "./Components/Header/Header";
+import Footer from "./Components/Footer/Footer";
 
 const finlandica = Finlandica({ subsets: ["latin"] });
 
@@ -13,9 +14,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={finlandica.className}>
-        <Header/>
+        <Header />
         {children}
-        </body>
+        <Footer />
+      </body>
     </html>
   );
 }
