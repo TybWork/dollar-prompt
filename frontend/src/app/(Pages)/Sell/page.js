@@ -17,7 +17,7 @@ const sell = () => {
                 {/* <PromptDetails /> */}
 
                 {/* PromptFile */}
-                <PromptFile />
+                {/* <PromptFile /> */}
             </div>
         </>
     )
