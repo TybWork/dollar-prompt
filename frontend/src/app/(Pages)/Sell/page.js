@@ -11,7 +11,7 @@ const sell = () => {
             <div className={styles.parentContainer}>
                 <StepsCounter />
                 {/* SellingProduct component */}
-                {/* <SellingProduct /> */}
+                <SellingProduct />
 
                 {/* PromptDetails */}
                 {/* <PromptDetails /> */}
