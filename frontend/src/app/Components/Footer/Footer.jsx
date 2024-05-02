@@ -1,8 +1,8 @@
 import styles from '@/app/Components/Footer/Footer.module.css'
-import { PiInstagramLogoThin } from "react-icons/pi";
 import { RiTwitterXLine } from "react-icons/ri";
 import { LiaFacebookF } from "react-icons/lia";
 import { BsInstagram } from "react-icons/bs";
+import { BsReddit } from "react-icons/bs";
 const Footer = () => {
     return (
         <footer className={styles.footerContainer}>
@@ -25,6 +25,7 @@ const Footer = () => {
                 <BsInstagram className={styles.singleSocialIcon} />
                 <LiaFacebookF className={styles.singleSocialIcon} />
                 <RiTwitterXLine className={styles.singleSocialIcon} />
+                <BsReddit className={styles.singleSocialIcon} />
             </nav>
         </footer>
     )

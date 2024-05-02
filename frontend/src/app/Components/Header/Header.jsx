@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { IoSearchOutline } from "react-icons/io5";
 import { MdOutlineMessage } from "react-icons/md";
 import { GoBell } from "react-icons/go";
 import { HiOutlineShoppingCart } from "react-icons/hi";
@@ -12,7 +11,7 @@ import { IoColorPaletteOutline } from "react-icons/io5";
 import { TbWriting } from "react-icons/tb";
 import { PiBagSimpleLight } from "react-icons/pi";
 import { IoCameraOutline } from "react-icons/io5";
-import { IoGameControllerOutline } from "react-icons/io5";
+import Search from "../(liteComponents)/Search/Search";
 
 const Header = () => {
     return (
@@ -21,10 +20,11 @@ const Header = () => {
             <div className={styles.topHeader}>
                 <div className={styles.logo}></div>
                 <Image src="/assets/imageAssets/logo.png" width={30} height={30} />
-                <div className={styles.inputContainer}>
-                    <input className={styles.input} type="text" name="" id="" placeholder="Search Prompts" />
-                    <IoSearchOutline className={styles.searchIcon} />
-                </div>
+
+                {/* search component */}
+                <Search placeholder="Search Prompts" />
+
+                {/* top nav icons */}
                 <nav className={styles.mainNav}>
                     <ul>
                         <li>Marketplace</li>
