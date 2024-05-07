@@ -1,8 +1,11 @@
-import React from 'react'
-
+import Filter from '@/app/Components/Filter/Filter';
+import styles from '@/app/(Pages)/Marketplace/Marketplace.module.css'
 const MarketPlace = () => {
   return (
-    <div>MarketPlace</div>
+    <div className={styles.mainContainer}>
+      <Filter />
+      <div className={styles.leftContainer}>sfdas</div>
+    </div>
   )
 }
 

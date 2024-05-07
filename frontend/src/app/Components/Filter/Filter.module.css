@@ -1,0 +1,12 @@
+.parentContainer {
+    padding: 2em;
+    background: var(--secondryClr);
+    width: 300px;
+    border-radius: 5px;
+    border: 1px solid var(--cardHoverClr);
+}
+
+.heading {
+    font-weight: 600;
+    font-size: 14px;
+}
