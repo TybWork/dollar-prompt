@@ -4,6 +4,9 @@
     width: 300px;
     border-radius: 5px;
     border: 1px solid var(--cardHoverClr);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
 }
 
 .heading {
