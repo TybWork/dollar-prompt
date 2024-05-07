@@ -1,6 +1,5 @@
 .promptBoxContainer {
     width: 400px;
-    height: 200px;
     border-radius: 8px;
     background: var(--secondryClr);
     overflow: hidden;
