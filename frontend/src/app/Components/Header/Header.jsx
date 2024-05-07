@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { MdOutlineMessage } from "react-icons/md";
 import { GoBell } from "react-icons/go";
 import { HiOutlineShoppingCart } from "react-icons/hi";
@@ -27,11 +28,11 @@ const Header = () => {
                 {/* top nav icons */}
                 <nav className={styles.mainNav}>
                     <ul>
-                        <li>Marketplace</li>
-                        <li>Apps</li>
-                        <li>Create</li>
-                        <li>Hire</li>
-                        <li>Sell</li>
+                        <li><Link className={styles.link} href="/Marketplace">Marketplace</Link></li>
+                        <li><Link className={styles.link} href="/our-apps">Apps</Link></li>
+                        <li><Link className={styles.link} href="/create">Create</Link></li>
+                        <li><Link className={styles.link} href="/Hire">Hire</Link></li>
+                        <li><Link className={styles.link} href="/Sell">Sell</Link></li>
                     </ul>
                 </nav>
                 <div className={styles.topNavIconsContainer}>

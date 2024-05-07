@@ -4,6 +4,7 @@
     flex-direction: column;
     background-color: var(--secondryClr);
     padding: 1em 3em;
+    font-size: 14px;
 }
 
 .topHeader {
@@ -31,7 +32,11 @@
     transition: var(--transition);
     cursor: pointer;
     border-radius: 8px;
+}
 
+.link {
+    color: var(--textClr);
+    text-decoration: none;
 }
 
 .mainNav ul li:hover {
