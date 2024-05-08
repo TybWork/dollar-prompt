@@ -1,7 +1,10 @@
 import styles from '@/app/(Pages)/our-apps/our-apps.module.css'
+import Slider from '@/app/Components/Slider/Slider'
 const page = () => {
     return (
-        <div>our Apps</div>
+        <div>
+            <Slider />
+        </div>
     )
 }
 
