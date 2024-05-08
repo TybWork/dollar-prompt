@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
 import styles from '@/app/Components/Slider/Slider.module.css';
+import { FaAngleRight } from "react-icons/fa6";
 
 const Slider = () => {
     const imageListRef = useRef(null);
@@ -40,7 +41,7 @@ const Slider = () => {
         <div className={styles.container}>
             <div className={styles.sliderWrapper}>
                 <button id={styles.prevSlide} className={styles.slideButton}>
-                    L
+                    <FaAngleRight style={{ transform: 'rotate(180deg)' }} />
                 </button>
                 <div ref={imageListRef} className={styles.imageList} style={{ gridTemplateColumns: "repeat(200, 1fr)" }}>
                     {[...Array(200).keys()].map((index) => (
@@ -50,7 +51,7 @@ const Slider = () => {
                     ))}
                 </div>
                 <button id={styles.nextSlide} className={styles.slideButton}>
-                    R
+                    <FaAngleRight />
                 </button>
             </div>
         </div>
