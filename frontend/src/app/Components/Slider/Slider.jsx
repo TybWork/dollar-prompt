@@ -42,13 +42,13 @@ const Slider = () => {
                 <button id={styles.prevSlide} className={styles.slideButton}>
                     L
                 </button>
-                <ul ref={imageListRef} className={styles.imageList} style={{ gridTemplateColumns: "repeat(200, 1fr)" }}>
+                <div ref={imageListRef} className={styles.imageList} style={{ gridTemplateColumns: "repeat(200, 1fr)" }}>
                     {[...Array(200).keys()].map((index) => (
                         <div key={index} className={styles.imageItem}>
                             {index + 1}
                         </div>
                     ))}
-                </ul>
+                </div>
                 <button id={styles.nextSlide} className={styles.slideButton}>
                     R
                 </button>

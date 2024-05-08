@@ -45,7 +45,6 @@
     display: grid;
     grid-template-columns: repeat(14, 1fr);
     gap: 18px;
-    font-size: 0;
     list-style: none;
     margin-bottom: 30px;
     overflow-x: auto;
@@ -57,9 +56,11 @@
 }
 
 .imageItem {
-    background-color: rgb(255, 255, 255);
+    background-color: orange;
     width: 300px;
     height: 200px;
     border-radius: 10px;
-    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
