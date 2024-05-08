@@ -1,17 +1,14 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import styles from '@/app/Components/Slider/Slider.module.css';
 
-// let arr = [
-//     <div className={styles.imageItem}></div>
-// ]
-
 const Slider = () => {
+    const imageListRef = useRef(null);
     const [maxScrollLeft, setMaxScrollLeft] = useState(0);
 
     useEffect(() => {
-        const imageList = document.querySelector(`.${styles.imageList}`);
-        const slideButtons = document.querySelectorAll(`.${styles.slideButton}`);
+        const imageList = imageListRef.current;
+        const slideButtons = imageList.parentNode.querySelectorAll(`.${styles.slideButton}`);
 
         const updateMaxScrollLeft = () => {
             setMaxScrollLeft(imageList.scrollWidth - imageList.clientWidth);
@@ -37,7 +34,7 @@ const Slider = () => {
         };
 
         initSlider();
-    }, [maxScrollLeft, styles.imageList, styles.slideButton]);
+    }, [maxScrollLeft]);
 
     return (
         <div className={styles.container}>
@@ -45,7 +42,7 @@ const Slider = () => {
                 <button id={styles.prevSlide} className={styles.slideButton}>
                     L
                 </button>
-                <ul className={styles.imageList} style={{ gridTemplateColumns: "repeat(200, 1fr)" }}>
+                <ul ref={imageListRef} className={styles.imageList} style={{ gridTemplateColumns: "repeat(200, 1fr)" }}>
                     {[...Array(200).keys()].map((index) => (
                         <div key={index} className={styles.imageItem}>
                             {index + 1}

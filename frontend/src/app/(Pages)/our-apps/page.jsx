@@ -4,6 +4,8 @@ const page = () => {
     return (
         <div>
             <Slider />
+            <Slider />
+            <Slider />
         </div>
     )
 }
