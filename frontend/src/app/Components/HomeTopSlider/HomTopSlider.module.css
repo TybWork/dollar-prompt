@@ -3,10 +3,19 @@
     height: 350px;
     overflow: hidden;
     /* border: 1px solid rgb(0, 255, 76); */
-    background: url("/assets/imageAssets/Home/HomeTopSlider.webp");
     border-radius: 10px;
     margin-top: 1em;
     border: 1px solid black;
+}
+
+.sliderImage {
+    width: 100%;
+    /* height: 150%; */
+    height: 700px;
+    position: absolute;
+    top: -180px;
+    left: 0px;
+
 }
 
 .content {
