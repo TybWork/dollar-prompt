@@ -5,7 +5,7 @@ import styles from '@/app/Components/FeatureCard/FeatureCard.module.css'
 const FeatureCard = () => {
     return (
         <div className={styles.featuredCardContainer}>
-            <Image className={styles.image} src="/assets/imageAssets/featureCard.webp" width={350} height={200} />
+            <Image className={styles.image} alt='demo_image' src="/assets/imageAssets/featureCard.webp" width={350} height={200} />
             <div className={styles.label}>Featured Prompt</div>
             <div className={styles.bottomText}>
                 <h3 className={styles.title}>Vibrant Graphic Design Posters</h3>

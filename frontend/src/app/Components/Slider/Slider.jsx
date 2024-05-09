@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import styles from '@/app/Components/Slider/Slider.module.css';
 import { FaAngleRight } from "react-icons/fa6";
 
-const Slider = () => {
+const Slider = (props) => {
     const imageListRef = useRef(null);
     const [maxScrollLeft, setMaxScrollLeft] = useState(0);
 
@@ -44,10 +44,11 @@ const Slider = () => {
                     <FaAngleRight style={{ transform: 'rotate(180deg)' }} />
                 </button>
                 <div ref={imageListRef} className={styles.imageList} style={{ gridTemplateColumns: "repeat(200, 1fr)" }}>
-                    {[...Array(200).keys()].map((index) => (
-                        <div key={index} className={styles.imageItem}>
-                            {index + 1}
-                        </div>
+                    {[...Array(200).keys()].map(() => (
+                        // <div key={index} className={styles.imageItem}>
+                        //     {index + 1}
+                        // </div>
+                        props.component
                     ))}
                 </div>
                 <button id={styles.nextSlide} className={styles.slideButton}>

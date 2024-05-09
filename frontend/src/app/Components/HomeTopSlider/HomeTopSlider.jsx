@@ -6,7 +6,7 @@ import BorderButton from '../BorderButton/BorderButton'
 const HomeTopSlider = () => {
     return (
         <div className={styles.sliderContainer}>
-            <img src="/assets/imageAssets/Home/HomeTopSlider.webp" alt="" />
+            <img src="/assets/imageAssets/Home/HomeTopSlider.webp" alt="demoHeader" />
             <div className={styles.content}>
                 <h1 className={styles.heading}>Prompt Marketplace</h1>
                 <h2 className={styles.subHeading}>Search 100,000 AI prompts from the world's best AI creators</h2>
