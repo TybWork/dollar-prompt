@@ -5,137 +5,8 @@ import Image from 'next/image'
 import Link from 'next/link';
 import { FaAngleRight } from "react-icons/fa6";
 import { useState } from 'react';
-
-let categoriesArr = [
-    {
-        id: 1,
-        name: "Models",
-        SubCategories: [
-            {
-                subCategoryTitle: "Midjourney",
-                innerCategroies: [
-                    {
-                        name: "All",
-                        link: "#",
-                    },
-                    {
-                        name: "3D",
-                        link: "#",
-                    },
-                    {
-                        name: "Animals",
-                        link: "#",
-                    },
-                    {
-                        name: "Anime",
-                        link: "#",
-                    },
-                    {
-                        name: "Art",
-                        link: "#",
-                    },
-                ]
-            },
-            {
-                subCategoryTitle: "DAAL.E",
-                innerCategroies: [
-                    {
-                        name: "Food",
-                        link: "#",
-                    },
-                    {
-                        name: "Illustrations",
-                        link: "#",
-                    },
-                    {
-                        name: "Icons",
-                        link: "#",
-                    },
-                ]
-            },
-        ]
-    },
-    {
-        id: 2,
-        name: "Models",
-        SubCategories: [
-            {
-                subCategoryTitle: "Midjourney",
-                innerCategroies: [
-                    {
-                        name: "All",
-                        link: "#",
-                    },
-                    {
-                        name: "3D",
-                        link: "#",
-                    },
-                    {
-                        name: "Animals",
-                        link: "#",
-                    },
-                    {
-                        name: "Anime",
-                        link: "#",
-                    },
-                    {
-                        name: "Art",
-                        link: "#",
-                    },
-                ]
-            },
-            {
-                subCategoryTitle: "DAAL.E",
-                innerCategroies: [
-                    {
-                        name: "Food",
-                        link: "#",
-                    },
-                    {
-                        name: "Illustrations",
-                        link: "#",
-                    },
-                    {
-                        name: "Icons",
-                        link: "#",
-                    },
-                ]
-            },
-        ]
-    },
-]
-
-// Page arry
-let pageArr = [
-    {
-        title: "Home",
-        link: "/"
-    },
-    {
-        title: "Marketplace",
-        link: "/Marketplace"
-    },
-    {
-        title: "Apps",
-        link: "/our-apps"
-    },
-    {
-        title: "Create",
-        link: "/create"
-    },
-    {
-        title: "Hire",
-        link: "/Hire"
-    },
-    {
-        title: "Login",
-        link: "/login"
-    },
-    {
-        title: "Sell",
-        link: "/Sell"
-    },
-]
+import categoriesArr from '@/app/jsonFiles/promptsCategories';
+import pageArr from '@/app/jsonFiles/pageLinks';
 
 
 const MobileNavbar = () => {
@@ -164,7 +35,7 @@ const MobileNavbar = () => {
                         <Image src="/assets/imageAssets/logo.png" width={30} height={30} />
                     </div>
                     <div className={styles.crossIcon}>
-                        <RxCross2 />
+                        <RxCross2 onClick={() => dispatch(increment())} />
                     </div>
                 </div>
                 <div className={styles.explore}>Explore</div>
