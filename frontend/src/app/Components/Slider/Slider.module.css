@@ -12,8 +12,7 @@
     top: 50%;
     outline: none;
     border: none;
-    height: 50px;
-    width: 50px;
+    width: 70px;
     z-index: 5;
     color: #fff;
     display: flex;
@@ -46,7 +45,6 @@
     grid-template-columns: repeat(14, 1fr);
     gap: 18px;
     list-style: none;
-    margin-bottom: 30px;
     overflow-x: auto;
     scrollbar-width: none;
 }

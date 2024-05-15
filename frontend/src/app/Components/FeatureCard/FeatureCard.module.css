@@ -16,10 +16,10 @@
     top: 0;
     left: 0;
     background-color: var(--secondryClr);
-    z-index: 100;
     opacity: .7px;
     border-bottom-right-radius: 5px;
     padding: 8px;
+    font-size: 12px;
 }
 
 .bottomText {

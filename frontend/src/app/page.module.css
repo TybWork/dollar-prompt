@@ -5,3 +5,9 @@
     gap: 1em;
     margin: 1em;
 }
+
+.threeCategoriesContainer {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
