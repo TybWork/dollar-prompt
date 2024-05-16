@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image";
 import Link from "next/link";
 import { MdOutlineMessage } from "react-icons/md";
@@ -13,8 +14,11 @@ import { TbWriting } from "react-icons/tb";
 import { PiBagSimpleLight } from "react-icons/pi";
 import { IoCameraOutline } from "react-icons/io5";
 import Search from "../(liteComponents)/Search/Search";
+import { useDispatch } from "react-redux";
+import { showNav } from "@/app/Redux/Features/navbar/navbarSlice";
 
 const Header = () => {
+    const dispatch = useDispatch();
     return (
         <header className={styles.headerContainer}>
             {/* ------------- top header------------- */}
@@ -42,7 +46,7 @@ const Header = () => {
                         <HiOutlineShoppingCart className={styles.topNavIcons} />
                         <div className={styles.cartCounter}>99</div>
                     </div>
-                    <RxHamburgerMenu className={`${styles.topNavIcons} ${styles.hamburgerIcon}`} />
+                    <RxHamburgerMenu className={`${styles.topNavIcons} ${styles.hamburgerIcon}`} onClick={() => dispatch(showNav())} />
                 </div>
             </div>
             {/*------------- bottom navbar --------------- */}

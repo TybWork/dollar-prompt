@@ -5,15 +5,11 @@ import FeatureCard from "./Components/FeatureCard/FeatureCard";
 import SinglePromptCard from "./Components/SinglePromptCard/SinglePromptCard";
 import SimpleSlider from "./Components/SimpleSlider/SimpleSlider";
 import SinglePrompt from "./Components/SinglePrompt/SinglePrompt";
-import { useDispatch, useSelector } from "react-redux";
-import { increment } from "./Redux/Features/counter/CounterSlice";
 import Slider from "./Components/Slider/Slider";
 import AnimatedHeading from "./Components/(liteComponents)/AnimatedHeading/AnimatedHeading";
 import ItemTopList from "./Components/ItemTopList/ItemTopList";
 import TopItemSingleList from "./Components/TopItemSingleList/TopItemSingleList";
 export default function Home() {
-  const dispatch = useDispatch();
-  const count = useSelector((state) => state.counter.value)
   return (
     <div className={styles.mainContainer}>
       {/* top slider */}
@@ -37,11 +33,11 @@ export default function Home() {
 
 
       {/* top item single list */}
-      <div className={styles.threeCategoriesContainer}>
+      {/* <div className={styles.threeCategoriesContainer}>
         <ItemTopList mainComponent={<TopItemSingleList />} />
         <ItemTopList mainComponent={<TopItemSingleList />} />
         <ItemTopList mainComponent={<TopItemSingleList />} />
-      </div>
+      </div> */}
 
       {/* most popular prompt bundles */}
       <AnimatedHeading title="Most Popular Prompts Bundles" />
@@ -84,8 +80,6 @@ export default function Home() {
       {/* Explore the App Store slider */}
       <SimpleSlider />
 
-      {/* <button onClick={() => dispatch(increment())}>increment</button>
-      <div>{count}</div> */}
     </div>
   );
 }

@@ -7,15 +7,18 @@ import { FaAngleRight } from "react-icons/fa6";
 import { useState } from 'react';
 import categoriesArr from '@/app/jsonFiles/promptsCategories';
 import pageArr from '@/app/jsonFiles/pageLinks';
-
+import { hideNav } from '@/app/Redux/Features/navbar/navbarSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const MobileNavbar = () => {
+
+    const dispatch = useDispatch();
+    const hideNavbar = useSelector((state) => state.navbar.position)
 
     const [hideCategory, sethideCategory] = useState(null);
     const [hideSubCategory, sethideSubCategory] = useState(null);
     const [arrowIcon, setarrowIcon] = useState(null)
     const [subArrowIcon, setsubArrowIcon] = useState(null)
-
     function appendFunc(index) {
         sethideCategory(hideCategory === index ? null : index)
         setarrowIcon(arrowIcon === index ? null : index)
@@ -28,14 +31,14 @@ const MobileNavbar = () => {
 
 
     return (
-        <div className={styles.parentContainer}>
+        <div className={styles.parentContainer} style={{ left: `${hideNavbar}` }}>
             <div className={styles.header}>
                 <div className={styles.headerContent}>
                     <div className={styles.logo}>
                         <Image src="/assets/imageAssets/logo.png" width={30} height={30} />
                     </div>
                     <div className={styles.crossIcon}>
-                        <RxCross2 onClick={() => dispatch(increment())} />
+                        <RxCross2 onClick={() => dispatch(hideNav())} />
                     </div>
                 </div>
                 <div className={styles.explore}>Explore</div>

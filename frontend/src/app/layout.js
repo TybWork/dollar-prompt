@@ -11,10 +11,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={finlandica.className}>
-        <Header />
 
         {/* this provider is from global redux */}
         <Providers>
+          <Header />
           <MobileNavbar />
           {children}
         </Providers>

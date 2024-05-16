@@ -5,7 +5,8 @@
     width: 100%;
     background-color: var(--primaryClr);
     z-index: 10000;
-    padding: 1em 3em;
+    padding: 1em 1em;
+    transition: .5s;
 }
 
 /*header content*/
