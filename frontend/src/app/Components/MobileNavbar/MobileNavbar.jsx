@@ -48,11 +48,11 @@ const MobileNavbar = () => {
             {/* prompts categories */}
             {
                 categoriesArr.map((e, index) =>
-                    <div className={styles.promptCategories}>
+                    <div className={styles.promptCategories} key={index}>
                         <div className={styles.mainCategories} onClick={() => appendFunc(index)}>{e.name} <FaAngleRight className={styles.bottomIcon} style={{ transform: arrowIcon === index ? `rotate(-90deg)` : `rotate(90deg)` }} /></div>
                         <div className={styles.subCategories} style={{ display: hideCategory === index ? 'block' : 'none' }}>
                             {e.SubCategories.map((subCat, subIndex) => (
-                                <div>
+                                <div key={subIndex}>
                                     <div className={styles.subCategoryHeading} onClick={() => appendSubCategory(subIndex)}>
                                         {subCat.subCategoryTitle}
                                         <FaAngleRight style={{ transform: subArrowIcon === subIndex ? `rotate(-90deg)` : `rotate(90deg)` }} className={styles.bottomIcon} />
@@ -60,8 +60,8 @@ const MobileNavbar = () => {
 
                                     <div className={styles.subCategoryTitle} style={{ display: hideSubCategory === subIndex ? 'block' : 'none' }}>
                                         {
-                                            subCat.innerCategroies.map((val) =>
-                                                <div className={styles.innerCategories}>{val.name}</div>
+                                            subCat.innerCategroies.map((val, innerIndex) =>
+                                                <div key={innerIndex} className={styles.innerCategories}>{val.name}</div>
                                             )
                                         }
                                     </div>
@@ -75,8 +75,8 @@ const MobileNavbar = () => {
             <div className={styles.pagesLinkContainer}>
                 <div className={styles.general}>GENERAL</div>
                 {
-                    pageArr.map((linksData) =>
-                        <div className={styles.linksContainer}>
+                    pageArr.map((linksData, linkIndex) =>
+                        <div key={linkIndex} className={styles.linksContainer}>
                             <Link className={styles.link} href={linksData.link}>{linksData.title}</Link>
                         </div>
                     )
