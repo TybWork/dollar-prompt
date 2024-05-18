@@ -87,7 +87,7 @@ const Header = () => {
                 </nav>
             </header>
             {/* subcategories links */}
-            <div className={styles.subCategoriesContainer} style={{ display: `${checkActiveHeader ? 'flex' : 'none'}` }}
+            <div className={styles.subCategoriesContainer} style={{ display: `${checkActiveHeader ? 'none' : 'none'}` }}
                 onMouseEnter={() => setcheckActiveHeader(true)} onMouseLeave={() => setcheckActiveHeader(false)}
             >
 
