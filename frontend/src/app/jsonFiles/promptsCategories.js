@@ -53,7 +53,7 @@ let categoriesArr = [
         name: "Arts & Illustrations",
         SubCategories: [
             {
-                subCategoryTitle: "Midjourney",
+                subCategoryTitle: "Anime Prompts",
                 innerCategroies: [
                     {
                         name: "All",
@@ -78,7 +78,7 @@ let categoriesArr = [
                 ]
             },
             {
-                subCategoryTitle: "DAAL.E",
+                subCategoryTitle: "Cartoon Prompts",
                 innerCategroies: [
                     {
                         name: "Food",
@@ -101,7 +101,7 @@ let categoriesArr = [
         name: "Logos & Icons",
         SubCategories: [
             {
-                subCategoryTitle: "Midjourney",
+                subCategoryTitle: "Logo Prompts",
                 innerCategroies: [
                     {
                         name: "All",
@@ -126,7 +126,7 @@ let categoriesArr = [
                 ]
             },
             {
-                subCategoryTitle: "DAAL.E",
+                subCategoryTitle: "Icon Prompts",
                 innerCategroies: [
                     {
                         name: "Food",
@@ -149,7 +149,7 @@ let categoriesArr = [
         name: "Graphics & Design",
         SubCategories: [
             {
-                subCategoryTitle: "Midjourney",
+                subCategoryTitle: "Pattern Prompts",
                 innerCategroies: [
                     {
                         name: "All",
@@ -174,7 +174,7 @@ let categoriesArr = [
                 ]
             },
             {
-                subCategoryTitle: "DAAL.E",
+                subCategoryTitle: "Product Design Prompts",
                 innerCategroies: [
                     {
                         name: "Food",
@@ -197,7 +197,7 @@ let categoriesArr = [
         name: "Productivity & Writing",
         SubCategories: [
             {
-                subCategoryTitle: "Midjourney",
+                subCategoryTitle: "Productivity Prompts",
                 innerCategroies: [
                     {
                         name: "All",
@@ -222,7 +222,7 @@ let categoriesArr = [
                 ]
             },
             {
-                subCategoryTitle: "DAAL.E",
+                subCategoryTitle: "Writing Prompts",
                 innerCategroies: [
                     {
                         name: "Food",
@@ -245,7 +245,7 @@ let categoriesArr = [
         name: "Marketing & Business",
         SubCategories: [
             {
-                subCategoryTitle: "Midjourney",
+                subCategoryTitle: "Marketing Prompts",
                 innerCategroies: [
                     {
                         name: "All",
@@ -270,7 +270,7 @@ let categoriesArr = [
                 ]
             },
             {
-                subCategoryTitle: "DAAL.E",
+                subCategoryTitle: "Business Prompts",
                 innerCategroies: [
                     {
                         name: "Food",
@@ -293,7 +293,7 @@ let categoriesArr = [
         name: "Photography",
         SubCategories: [
             {
-                subCategoryTitle: "Midjourney",
+                subCategoryTitle: "Photography Prompts",
                 innerCategroies: [
                     {
                         name: "All",
@@ -318,7 +318,7 @@ let categoriesArr = [
                 ]
             },
             {
-                subCategoryTitle: "DAAL.E",
+                subCategoryTitle: "Photography style Prompts",
                 innerCategroies: [
                     {
                         name: "Food",
@@ -341,7 +341,7 @@ let categoriesArr = [
         name: "Games & 3D",
         SubCategories: [
             {
-                subCategoryTitle: "Midjourney",
+                subCategoryTitle: "3D Prompts",
                 innerCategroies: [
                     {
                         name: "All",
@@ -366,7 +366,7 @@ let categoriesArr = [
                 ]
             },
             {
-                subCategoryTitle: "DAAL.E",
+                subCategoryTitle: "Fun & Games Prompts",
                 innerCategroies: [
                     {
                         name: "Food",

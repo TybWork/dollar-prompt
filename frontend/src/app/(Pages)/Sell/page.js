@@ -14,10 +14,10 @@ const sell = () => {
                 <SellingProduct />
 
                 {/* PromptDetails */}
-                {/* <PromptDetails /> */}
+                <PromptDetails />
 
                 {/* PromptFile */}
-                {/* <PromptFile /> */}
+                <PromptFile />
             </div>
         </>
     )

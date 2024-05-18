@@ -1,5 +1,6 @@
 'use client'
 import Image from "next/image";
+import { useState } from "react";
 import Link from "next/link";
 import { MdOutlineMessage } from "react-icons/md";
 import { GoBell } from "react-icons/go";
@@ -9,60 +10,108 @@ import { RxHamburgerMenu } from "react-icons/rx";
 
 // bottom nav imports
 import { TbBoxModel } from "react-icons/tb";
-import { IoColorPaletteOutline } from "react-icons/io5";
-import { TbWriting } from "react-icons/tb";
-import { PiBagSimpleLight } from "react-icons/pi";
-import { IoCameraOutline } from "react-icons/io5";
 import Search from "../(liteComponents)/Search/Search";
 import { useDispatch } from "react-redux";
 import { showNav } from "@/app/Redux/Features/navbar/navbarSlice";
+import categoriesArr from "@/app/jsonFiles/promptsCategories";
+import { ImArrowRight2 } from "react-icons/im";
+import { PiCaretRightBold } from "react-icons/pi";
 
 const Header = () => {
+    const [categoryHeading, setcategoryHeading] = useState()
+    const [subHeadingTitle, setsubHeadingTitle] = useState()
+    const [showHeaderBox, setshowHeaderBox] = useState(false)
+    const [checkActiveHeader, setcheckActiveHeader] = useState(false)
+    const [subCategory, setsubCategory] = useState([]);
+    const [innerLinks, setinnerLinks] = useState([])
     const dispatch = useDispatch();
+
+
+    function mainCategory(val) {
+        setsubCategory(val.SubCategories);
+        setcategoryHeading(val.name);
+
+        if (setcheckActiveHeader(true)) {
+            setshowHeaderBox(true);
+        }
+        else (
+            setshowHeaderBox(false)
+        )
+    }
+
+    // showing innerLinks function 
+    function innerLinksFunc(showCategory) {
+        setsubHeadingTitle(showCategory.subCategoryTitle);
+        setinnerLinks(showCategory.innerCategroies);
+    }
     return (
-        <header className={styles.headerContainer}>
-            {/* ------------- top header------------- */}
-            <div className={styles.topHeader}>
-                <div className={styles.logo}></div>
-                <Image src="/assets/imageAssets/logo.png" width={30} height={30} />
+        <>
+            <header className={styles.headerContainer}>
+                {/* ------------- top header------------- */}
+                <div className={styles.topHeader}>
+                    <div className={styles.logo}></div>
+                    <Image src="/assets/imageAssets/logo.png" width={30} height={30} />
 
-                {/* search component */}
-                <Search placeholder="Search Prompts" />
+                    {/* search component */}
+                    <Search placeholder="Search Prompts" />
 
-                {/* top nav icons */}
-                <nav className={styles.mainNav}>
+                    {/* top nav icons */}
+                    <nav className={styles.mainNav}>
+                        <ul>
+                            <li><Link className={styles.link} href="/Marketplace">Marketplace</Link></li>
+                            <li><Link className={styles.link} href="/our-apps">Apps</Link></li>
+                            <li><Link className={styles.link} href="/create">Create</Link></li>
+                            <li><Link className={styles.link} href="/Hire">Hire</Link></li>
+                            <li><Link className={styles.link} href="/Sell">Sell</Link></li>
+                        </ul>
+                    </nav>
+                    <div className={styles.topNavIconsContainer}>
+                        <MdOutlineMessage className={styles.topNavIcons} />
+                        <GoBell className={`${styles.topNavIcons} ${styles.bellIcon}`} />
+                        <div className={styles.cartContainer}>
+                            <HiOutlineShoppingCart className={styles.topNavIcons} />
+                            <div className={styles.cartCounter}>99</div>
+                        </div>
+                        <RxHamburgerMenu className={`${styles.topNavIcons} ${styles.hamburgerIcon}`} onClick={() => dispatch(showNav())} />
+                    </div>
+                </div>
+                {/*------------- bottom navbar --------------- */}
+                <nav className={styles.bottomNav}>
                     <ul>
-                        <li><Link className={styles.link} href="/Marketplace">Marketplace</Link></li>
-                        <li><Link className={styles.link} href="/our-apps">Apps</Link></li>
-                        <li><Link className={styles.link} href="/create">Create</Link></li>
-                        <li><Link className={styles.link} href="/Hire">Hire</Link></li>
-                        <li><Link className={styles.link} href="/Sell">Sell</Link></li>
+                        {
+                            categoriesArr.map((val, index) =>
+                                <li onMouseEnter={() => mainCategory(val, index)} key={index}><TbBoxModel /> <span>{val.name}</span></li>
+                            )
+                        }
                     </ul>
                 </nav>
-                <div className={styles.topNavIconsContainer}>
-                    <MdOutlineMessage className={styles.topNavIcons} />
-                    <GoBell className={`${styles.topNavIcons} ${styles.bellIcon}`} />
-                    <div className={styles.cartContainer}>
-                        <HiOutlineShoppingCart className={styles.topNavIcons} />
-                        <div className={styles.cartCounter}>99</div>
-                    </div>
-                    <RxHamburgerMenu className={`${styles.topNavIcons} ${styles.hamburgerIcon}`} onClick={() => dispatch(showNav())} />
+            </header>
+            {/* subcategories links */}
+            <div className={styles.subCategoriesContainer} style={{ display: `${checkActiveHeader ? 'flex' : 'none'}` }}
+                onMouseEnter={() => setcheckActiveHeader(true)} onMouseLeave={() => setcheckActiveHeader(false)}
+            >
+
+                <div className={styles.subCategories}>
+
+                    <div className={styles.categoryHeading}>All {categoryHeading}<ImArrowRight2 className={styles.arrowIcons} /></div>
+
+                    {
+                        subCategory.map((val, subIndex) => <div className={styles.singleSubCategory} key={subIndex} onMouseEnter={() => innerLinksFunc(val, subIndex)}>{val.subCategoryTitle} <PiCaretRightBold className={styles.arrowIcons} /></div>
+                        )
+                    }
+                </div>
+
+                <div className={styles.innerPromptLinksContainer}>
+                    <div className={styles.subHeadingTitle}>All {subHeadingTitle}</div>
+                    {
+                        innerLinks.map((e) =>
+                            <div className={styles.innerPromptLink}>{e.name}</div>
+                        )
+                    }
                 </div>
             </div>
-            {/*------------- bottom navbar --------------- */}
-            <nav className={styles.bottomNav}>
-                <ul>
-                    <li><TbBoxModel /> <span>Ai Models</span></li>
-                    <li><IoColorPaletteOutline /> <span>Art & Illustrations</span></li>
-                    <li><TbBoxModel /> <span>Logos & Icons</span></li>
-                    <li><IoColorPaletteOutline /> <span>Graphics & Design</span></li>
-                    <li><TbWriting /> <span>Productivity & Writing</span></li>
-                    <li><PiBagSimpleLight /> <span>Marketing & Business</span></li>
-                    <li><IoCameraOutline /> <span>IoCameraOutline</span></li>
-                </ul>
-            </nav>
-        </header>
+        </>
     )
 }
 
-export default Header
+export default Header;
