@@ -9,9 +9,9 @@ const CreateUser = () => {
     const users = {
         firstName: "",
         lastName: "",
-        gender: " ",
-        email: " ",
-        password: " ",
+        gender: "",
+        email: "",
+        password: "",
 
     }
     const [user, setuser] = useState(users);
@@ -26,6 +26,7 @@ const CreateUser = () => {
     const submitForm = async (e) => {
         e.preventDefault();
         await axios.post("http://localhost:4001/api/user/login", user)
+        setuser(users)
     }
 
     return (
@@ -35,18 +36,18 @@ const CreateUser = () => {
             <h1 className={styles.heading}>Create An Account</h1>
             <form onSubmit={submitForm} action="" className={styles.formContainer}>
 
-                <InputField name="firstName" id="firstName" onchangeFunc={inputHandler} placeholder="First Name *" />
+                <InputField name="firstName" id="firstName" onchangeFunc={inputHandler} placeholder="First Name *" value={user.firstName} />
 
-                <InputField name="lastName" id="lastName" onchangeFunc={inputHandler} placeholder="Last Name *" />
+                <InputField name="lastName" id="lastName" onchangeFunc={inputHandler} placeholder="Last Name *" value={user.lastName} />
 
-                <InputField name="email" id="email" onchangeFunc={inputHandler} placeholder="Email *" />
+                <InputField name="email" id="email" onchangeFunc={inputHandler} placeholder="Email *" value={user.email} />
 
-                <InputField name="password" id="password" onchangeFunc={inputHandler} placeholder="Password *" />
+                <InputField name="password" id="password" onchangeFunc={inputHandler} placeholder="Password *" value={user.password} />
 
                 <div className={styles.genderInputContainer}>
                     <div className={styles.genderInput}>
                         <label htmlFor="male">Male</label><br />
-                        <input type="radio" id="male" name="gender" value="male" onChange={inputHandler} />
+                        <input type="radio" id="male" name="gender" value="male" checked onChange={inputHandler} />
 
                         <label htmlFor="female">Female</label><br />
                         <input type="radio" id="female" name="gender" value="female" onChange={inputHandler} />
