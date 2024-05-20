@@ -1,0 +1,35 @@
+.parentContainer {
+    margin: 2em auto;
+    width: 850px;
+    padding: 16px;
+    gap: 32px;
+    display: flex;
+    flex-direction: column;
+}
+
+.mainHeading {
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.subHeading {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: .7em;
+}
+
+.mainTxt {
+    font-size: 14px;
+}
+
+.ul {
+    padding: 14px;
+    padding-left: 32px;
+}
+
+@media screen and (max-width:846px) {
+    .parentContainer {
+        width: 100%;
+        margin: 1em auto;
+    }
+}

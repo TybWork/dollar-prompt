@@ -68,7 +68,7 @@ const CreateUser = () => {
             </button>
 
             {/* terms & condition */}
-            <div className={styles.terms}>By creating an account, you agree to our <Link href="">terms of service.</Link></div>
+            <div className={styles.terms}>By creating an account, you agree to our <Link href="/tandcs">terms of service.</Link></div>
 
             {/* already have account */}
             <Link className={styles.link} href="">I already have an account</Link>
