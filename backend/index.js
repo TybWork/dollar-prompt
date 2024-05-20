@@ -2,7 +2,9 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
-import { route } from './src/routes/User/user.js';
+import { route as user } from './src/routes/User/user.js';
+import { route as dalleRoute } from './src/routes/Prompts/DallE/Dalle.js';
+
 import cors from 'cors'
 
 dotenv.config();
@@ -28,4 +30,5 @@ app.listen(port, () => {
     console.log(`App is running on port: ${port}`);
 })
 
-app.use('/api/', route)
+app.use('/api/', user);
+app.use('/api/', dalleRoute)

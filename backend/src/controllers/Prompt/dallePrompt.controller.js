@@ -1,56 +1,55 @@
-import { Dalle } from "../../models/Prompt/dallePrompt.model.js"
+import { DallE } from "../../models/Prompt/dallePrompt.model.js";
 
-
-// create Prompt
-export const createPrompt = async (req, res) => {
+// create dalle prompt
+export const createDallE = async (req, res) => {
     try {
-        const newUser = new User(req.body);
-        const saveUser = await newUser.save();
-        return res.status(200).json(saveUser);
+        const newPrompt = new DallE(req.body);
+        const savePrompt = await newPrompt.save();
+        return res.status(200).json(savePrompt);
     } catch (error) {
-        return res.status(500).json({ msg: "Failed to create User" })
+        return res.status(500).json({ msg: `Failed to create dalle prompt ${error}` })
     }
 }
 
-// get all Prompts
-export const getPrompt = async (req, res) => {
+//get all prompts
+export const getAllDallE = async (req, res) => {
     try {
-        const user = await User.find();
-        return res.status(200).json(user);
+        const dallPrompt = await DallE.find();
+        return res.status(200).json(dallPrompt);
     } catch (error) {
-        return res.status(500).json({ msg: "failed to get users" })
+        return res.status(500).json({ msg: `Failed to get dallPrompts ${error}` })
     }
 }
 
-// get single Prompt
-export const singlePrompt = async (req, res) => {
+//get single prompt
+export const getSingleDallE = async (req, res) => {
+    const id = req.params.id;
     try {
-        const id = req.params.id;
-        const user = await User.findById(id)
-        return res.status(200).json(user)
+        const dallPrompt = await DallE.findById(id);
+        return res.status(200).json(dallPrompt);
     } catch (error) {
-        return res.status(200).json({ msg: "Failed to get single user" })
+        return res.status(500).json({ msg: `Failed to get single dalle prompt` })
     }
 }
 
-// update single Prompt
-export const updatePrompt = async (req, res) => {
+//update single prompt
+export const updateDallE = async (req, res) => {
+    const id = req.params.id;
     try {
-        const id = req.params.id;
-        const updatedUser = await User.findByIdAndUpdate(id, req.body, { new: true })
-        return res.status(200).json(updatedUser);
+        const updatePrompt = await DallE.findByIdAndUpdate(id, req.body, { new: true });
+        return res.status(200).json(updatePrompt);
     } catch (error) {
-        return res.status(500).json({ msg: "failed to updated user" })
+        res.status(500).json({ msg: `Failde to update dalle prompt:${error}` })
     }
 }
 
-// delete single Prompt
-export const deletePrompt = async (req, res) => {
+//delete single prompt
+export const deleteDallE = async (req, res) => {
+    const id = req.params.id;
     try {
-        const id = req.params.id;
-        await User.findByIdAndDelete(id);
-        return res.status(200).json({ msg: "User has been deleted successfully" })
+        await DallE.findByIdAndDelete(id);
+        return res.status(200).json({ msg: "Dalle prompt has been deleted successfully" })
     } catch (error) {
-        return res.status(500).json({ msg: "failed to delete user" })
+
     }
 }
