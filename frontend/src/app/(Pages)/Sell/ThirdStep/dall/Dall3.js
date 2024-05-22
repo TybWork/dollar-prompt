@@ -1,26 +1,52 @@
-'use client'
-import styles from "@/app/Components/PromptFile/PromptFile.module.css"
-import FieldInfo from "../(liteComponents)/FieldInfo/FieldInfo"
-import DropDownList from "../(liteComponents)/DropDownList/DropDownList"
-import TextArea from "../(liteComponents)/TextAreaComponent/TextArea"
-import GradientButton from "../GradientButton/GradientButton"
-import { useState } from "react"
-const PromptFile = () => {
+// import React from 'react'
 
-    const [sellPromptBtn, setsellPromptBtn] = useState('block')
-    function clickTest() {
-        console.log("Button Clicked")
-        setsellPromptBtn("none")
-    }
+// const Dall3 = ({ onNext, onChange }) => {
+//     return (
+//         <div>
+//             <div>step 3</div>
+//             <button onClick={onNext}>Next</button>
+//             <input type="text" name="firstName" onChange={onChange} />
+//             <input type="text" name='lastName' onChange={onChange} />
+//         </div>
+//     )
+// }
+
+// export default Dall3
+
+import { useState } from 'react'
+// import styles from '@/app/(Pages)/sell/dall/Dall3.module.css'
+import styles from '@/app/(Pages)/sell/ThirdStep/dall/Dall3.module.css'
+import FieldInfo from '@/app/Components/(liteComponents)/FieldInfo/FieldInfo'
+import GradientButton from '@/app/Components/GradientButton/GradientButton'
+import TextArea from '@/app/Components/(liteComponents)/TextAreaComponent/TextArea'
+import DropDownList from '@/app/Components/(liteComponents)/DropDownList/DropDownList'
+
+const categoryArr = [
+    {
+        name: "DALL-E 2",
+        value: "DALL-E 2"
+    },
+    {
+        name: "DALL-E 3",
+        value: "DALL-E 3"
+    },
+];
+
+const Dall3 = ({ onNext }) => {
+    const [selectCategory, setselectCategory] = useState(categoryArr[0]);
     return (
-        <div className={styles.parentContainer} style={{ display: sellPromptBtn }}>
+        <div className={styles.parentContainer}>
             <h2 className={styles.heading}>Prompt File</h2>
 
             {/* version */}
             <FieldInfo title="Version" description="Select the version of DALL-E you're using." />
 
             {/* dropdown */}
-            <DropDownList />
+            <DropDownList
+                options={categoryArr}
+                value={selectCategory}
+                onChange={setselectCategory}
+            />
 
             {/* prompt */}
             <FieldInfo title="*Prompt" description="Put any variables in [square brackets]." />
@@ -41,11 +67,11 @@ const PromptFile = () => {
 
             {/* next button */}
             <div className={styles.nextBtn}>
-                <GradientButton title="Next" onClick={clickTest} />
+                <GradientButton title="Next" onClick={onNext} />
             </div>
 
         </div>
     )
 }
 
-export default PromptFile;
+export default Dall3

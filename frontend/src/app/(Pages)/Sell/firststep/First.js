@@ -1,15 +1,8 @@
-'use client'
-import GradientButton from "../GradientButton/GradientButton"
+import GradientButton from '@/app/Components/GradientButton/GradientButton'
 import styles from '@/app/Components//SellingProduct/SellingProduct.module.css'
-import { useState } from "react"
-const SellingProduct = () => {
-    const [sellPromptBtn, setsellPromptBtn] = useState('flex')
-    function clickTest() {
-        console.log("Button Clicked")
-        setsellPromptBtn("none")
-    }
+const SellingProduct = ({ onNext }) => {
     return (
-        <div className={styles.mainContainer} style={{ display: sellPromptBtn }} >
+        <div className={styles.mainContainer}>
             {/* leftCol */}
             <div className={styles.leftCol}>
                 {/* heading Text */}
@@ -20,7 +13,7 @@ const SellingProduct = () => {
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
                 </div>
                 {/* button component */}
-                <GradientButton title="Sell Prompt" onClick={clickTest} />
+                <GradientButton title="Sell Prompt" onClick={onNext} />
             </div>
 
             {/* rightCol */}
