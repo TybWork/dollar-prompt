@@ -18,7 +18,7 @@ const SellingProduct = ({ onNext }) => {
 
             {/* rightCol */}
             <div className="rightCol">
-                <iframe width="600" height="337" src="https://www.youtube.com/embed/nnT9fXw2T4c" title="MGT211 Short Lecture 3_Highlighted Questions_MGT211short Lectures_Mid Term_Full Detail In Short Time" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe width="600" height="337" src="https://www.youtube.com/embed/nnT9fXw2T4c" title="MGT211 Short Lecture 3_Highlighted Questions_MGT211short Lectures_Mid Term_Full Detail In Short Time" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             </div>
         </div >
     )

@@ -7,22 +7,6 @@
     line-height: 2.2em;
 }
 
-.select {
-    background-color: var(--tertiaryClr);
-    border-radius: 4px;
-    margin: 4px 0px 16px;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    padding: 8px;
-    color: var(--textClr);
-}
-
-.select option {
-    padding: 4px;
-    font-size: 14px;
-}
-
 .textInput {
     padding: 8px;
     border-radius: 4px;
@@ -45,22 +29,6 @@
     display: flex;
     flex-direction: column;
     width: fit-content;
-}
-
-.select {
-    background-color: var(--tertiaryClr);
-    width: 150px;
-    border-radius: 4px;
-    margin: 4px 0px 16px;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    padding: 8px;
-    color: var(--textClr);
-}
-
-.select:nth-child(1) {
-    width: 80px;
 }
 
 @media screen and (max-width:792px) {

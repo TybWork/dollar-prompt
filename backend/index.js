@@ -2,7 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
-import { route as user } from './src/routes/User/user.js';
+// import { route as user } from './src/routes/User/user.js';
 import { route as dalleRoute } from './src/routes/Prompts/DallE/Dalle.js';
 
 import cors from 'cors'
@@ -15,7 +15,7 @@ app.use(cors());
 
 (async () => {
     try {
-        mongoose.connect(process.env.MONGO_CONNECT);
+        await mongoose.connect(process.env.MONGO_CONNECT);
         console.log("Mongo db connected successfully")
     } catch (error) {
         console.log("Failed to connect mongo db")
@@ -30,5 +30,5 @@ app.listen(port, () => {
     console.log(`App is running on port: ${port}`);
 })
 
-app.use('/api/', user);
+// app.use('/api/', user);
 app.use('/api/', dalleRoute)

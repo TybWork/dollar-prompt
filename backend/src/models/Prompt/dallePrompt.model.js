@@ -5,7 +5,7 @@ const dallePromptSchema = new Schema(
         promptType: {
             type: String,
             enum: ["Dall-E", "GPT", "Leonardo Ai", "Llama", "Midjourney", "Stable Diffusion"],
-            default: "Dalle-E",
+            default: "Dall-E",
             required: true,
         },
         title: {
@@ -43,34 +43,34 @@ const dallePromptSchema = new Schema(
         //     },
         //     required: true
         // },
-        exampleImage: {
-            type: [
-                {
-                    img_URL: {
-                        type: String,
-                        required: true,
-                    },
-                    img_Title: {
-                        type: String,
-                        required: true,
-                    }
-                },
-            ],
-            required: true,
-            validate: {
-                validator: function (arr) {
-                    return arr.length === 9
-                },
-                message: "Please upload 9 example images."
-            },
-        },
+        // exampleImage: {
+        //     type: [
+        //         {
+        //             img_URL: {
+        //                 type: String,
+        //                 // required: true,
+        //             },
+        //             img_Title: {
+        //                 type: String,
+        //                 // required: true,
+        //             }
+        //         },
+        //     ],
+        //     // required: true,
+        //     validate: {
+        //         validator: function (arr) {
+        //             return arr.length === 9
+        //         },
+        //         message: "Please upload 9 example images."
+        //     },
+        // },
         promptInstruction: {
             type: String,
             required: true
         },
         country: {
             type: String,
-            required: true
+            // required: true
         },
         getUser: {
             type: Schema.Types.ObjectId,

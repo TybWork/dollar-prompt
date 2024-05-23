@@ -101,8 +101,6 @@ let countriesArr = [
     { name: 'Iceland', value: 'IS' },
     { name: 'India', value: 'IN' },
     { name: 'Indonesia', value: 'ID' },
-    { name: 'Iran, Islamic Republic Of', value: 'IR' },
-    { name: 'Iraq', value: 'IQ' },
     { name: 'Ireland', value: 'IE' },
     { name: 'Isle of Man', value: 'IM' },
     { name: 'Israel', value: 'IL' },
@@ -179,7 +177,6 @@ let countriesArr = [
     { name: 'Qatar', value: 'QA' },
     { name: 'Reunion', value: 'RE' },
     { name: 'Romania', value: 'RO' },
-    { name: 'Russian Federation', value: 'RU' },
     { name: 'RWANDA', value: 'RW' },
     { name: 'Saint Helena', value: 'SH' },
     { name: 'Saint Kitts and Nevis', value: 'KN' },
@@ -209,7 +206,6 @@ let countriesArr = [
     { name: 'Swaziland', value: 'SZ' },
     { name: 'Sweden', value: 'SE' },
     { name: 'Switzerland', value: 'CH' },
-    { name: 'Syrian Arab Republic', value: 'SY' },
     { name: 'Taiwan, Province of China', value: 'TW' },
     { name: 'Tajikistan', value: 'TJ' },
     { name: 'Tanzania, United Republic of', value: 'TZ' },
@@ -239,9 +235,7 @@ let countriesArr = [
     { name: 'Virgin Islands, U.S.', value: 'VI' },
     { name: 'Wallis and Futuna', value: 'WF' },
     { name: 'Western Sahara', value: 'EH' },
-    { name: 'Yemen', value: 'YE' },
     { name: 'Zambia', value: 'ZM' },
     { name: 'Zimbabwe', value: 'ZW' }
 ]
-
 export default countriesArr;

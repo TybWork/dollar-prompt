@@ -18,7 +18,7 @@ import GradientButton from '@/app/Components/GradientButton/GradientButton';
 import FieldInfo from '@/app/Components/(liteComponents)/FieldInfo/FieldInfo';
 import TextArea from '@/app/Components/(liteComponents)/TextAreaComponent/TextArea';
 
-const Second = ({ onNext, onSelect }) => {
+const Second = ({ onNext, onSelect, onChange }) => {
     return (
         <div>
             {/* heading */}
@@ -34,29 +34,30 @@ const Second = ({ onNext, onSelect }) => {
             <FieldInfo title="Prompt Type" description="Select the type of prompt you want to sell" />
 
             {/* promptType */}
-            <select className={styles.select} name="promptType" id="" onClick={onSelect}>
-                <option key="" value="Dall-E">Dall-E</option>
-                <option key="" value="GPT">GPT</option>
+            <select className="select" defaultValue="Select Prompt Type" name="promptType" id="promoptType" onChange={onChange} onClick={onSelect}>
+                <option key="Select Prompt Type" value="Select Prompt Type" disabled>Select Prompt Type</option>
+                <option key="Dall-E" value="Dall-E">Dall-E</option>
+                <option key="GPT" value="GPT">GPT</option>
             </select>
 
 
             {/* name field */}
             <FieldInfo title="Name" description="Suggest a title for this prompt." />
-            <input className={styles.textInput} placeholder="Movie to Emoji Generator" type="text" name="" id="" />
+            <input className={styles.textInput} placeholder="Movie to Emoji Generator" type="text" name="title" id="title" onChange={onChange} />
 
             {/* textArea field */}
             <FieldInfo title="Description" description="Describe what your prompt does to a potential buyer. A more detailed description will increase your sales." />
-            <TextArea placeholder="Movie to Emoji Generator" rows="3" />
+            <TextArea placeholder="Movie to Emoji Generator" rows="3" name="description" id="description" onChange={onChange} />
 
             {/* price */}
             <FieldInfo title="Estimated Price" description="What do you think the price of this prompt should be?" />
             <div className={styles.pricingContainer}>
-                <select className={styles.select} name="promptType" id="" onClick={onSelect}>
-                    <option key="" value="2.99">$2.99</option>
-                    <option key="" value="3.99">$3.99</option>
-                    <option key="" value="4.99">$4.99</option>
-                    <option key="" value="5.99">$5.99</option>
-                    <option key="" value="6.99">$6.99</option>
+                <select className="select" name="price" id="price" onChange={onChange} style={{ width: '100px' }}>
+                    <option key="2.99" value="2.99">$2.99</option>
+                    <option key="3.99" value="3.99">$3.99</option>
+                    <option key="4.99" value="4.99">$4.99</option>
+                    <option key="5.99" value="5.99">$5.99</option>
+                    <option key="6.99" value="6.99">$6.99</option>
                 </select>
             </div>
 

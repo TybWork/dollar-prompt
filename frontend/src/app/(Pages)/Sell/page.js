@@ -8,6 +8,7 @@ import Gpt3 from "./ThirdStep/gpt/Gpt3"
 import StepsCounter from "@/app/Components/(liteComponents)/StepsCounter/StepsCounter"
 import styles from '@/app/(Pages)/sell/sell.module.css'
 import SelectCountry from "./fourthstep/SelectCountry"
+import axios from "axios"
 
 const page = () => {
     const [step, setstep] = useState(1);
@@ -15,6 +16,7 @@ const page = () => {
     const [counter, setcounter] = useState(20);
     const [stepCount, setstepCount] = useState(1)
     const [user, setuser] = useState({})
+    const [data, setdata] = useState(user)
 
     // next button handle
     function handleNext() {
@@ -32,23 +34,31 @@ const page = () => {
             setstepCount(prev => prev - 1)
         }
     }
-    function handleSelect(e) {
-        const seletedValue = e.target.value;
+    function handleSelect(select) {
+        const seletedValue = select.target.value;
         setselected(`${seletedValue}`)
     }
 
-    function handleOnchange(e) {
-        // console.log(e.target.value)
-        const { name, value } = e.target
-        console.log(name, value)
+    function handleOnchange(changeVal) {
+        const { name, value } = changeVal.target
         setuser({ ...user, [name]: value })
+        setdata(user)
         console.log(user)
+    }
+
+    const handleSubmit = async () => {
+        try {
+            await axios.post("http://localhost:4001/api/prompt/dalle/create", data)
+            setdata(user)
+        } catch (error) {
+            console.log("myErrro is here :", error)
+        }
     }
     return (
         <div className={styles.parentContainer}>
             <StepsCounter stepCount={stepCount} onPrev={handlePrev} width={counter} />
             {step === 1 && <First onNext={handleNext} />}
-            {step === 2 && <Second onSelect={handleSelect} onNext={handleNext} />}
+            {step === 2 && <Second onSelect={handleSelect} onNext={handleNext} onChange={handleOnchange} />}
 
 
             {/* *************conditional rendering (step3)*********** */}
@@ -68,7 +78,7 @@ const page = () => {
             )}
 
             {/* ************* select Country (step4)*********** */}
-            {step === 4 && <SelectCountry />}
+            {step === 4 && <SelectCountry onClick={handleSubmit} />}
 
         </div >
     )
