@@ -38,6 +38,7 @@ const Second = ({ onNext, onSelect, onChange }) => {
                 <option key="Select Prompt Type" value="Select Prompt Type" disabled>Select Prompt Type</option>
                 <option key="Dall-E" value="Dall-E">Dall-E</option>
                 <option key="GPT" value="GPT">GPT</option>
+                <option key="Leonardo Ai" value="Leonardo Ai">Leonardo Ai</option>
             </select>
 
 

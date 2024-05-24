@@ -10,7 +10,11 @@
   --secondryClr: #2A2B44;
   --tertiaryClr: #454566;
   --cardHoverClr: #393954;
-  --cardHoverClr: #393954;
+
+  /* --primaryClr: #141619;
+  --secondryClr: #2c2e3a;
+  --tertiaryClr: #050a44;
+  --cardHoverClr: #0a21c0; */
   --textClr: white;
   --buttonGradient: linear-gradient(122deg, #fee5a5, #fea5a5 62%, #f69393 100%, #fff);
   --buttonGradientHover: linear-gradient(122deg, #ffffff, #f69393 62%, #fee5a5 100%);

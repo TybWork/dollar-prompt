@@ -9,6 +9,7 @@ import StepsCounter from "@/app/Components/(liteComponents)/StepsCounter/StepsCo
 import styles from '@/app/(Pages)/sell/sell.module.css'
 import SelectCountry from "./fourthstep/SelectCountry"
 import axios from "axios"
+import Leonardo from "./ThirdStep/leonardo/Leonardo"
 
 const page = () => {
     const [step, setstep] = useState(1);
@@ -74,6 +75,13 @@ const page = () => {
             {selected === "GPT" && step >= 3 && (
                 <div>
                     {step === 3 && <Gpt3 onNext={handleNext} onChange={handleOnchange} />}
+                </div>
+            )}
+
+            {/* Leonardo prompt sell */}
+            {selected === "Leonardo Ai" && step >= 3 && (
+                <div>
+                    {step === 3 && <Leonardo onNext={handleNext} onChange={handleOnchange} />}
                 </div>
             )}
 
