@@ -11,6 +11,7 @@ import SelectCountry from "./fourthstep/SelectCountry"
 import axios from "axios"
 import Leonardo from "./ThirdStep/leonardo/Leonardo"
 import Llama from "./ThirdStep/Llama/Llama"
+import Midjourney from "./ThirdStep/Midjourney/Midjourney"
 
 const page = () => {
     const [step, setstep] = useState(1);
@@ -90,6 +91,20 @@ const page = () => {
             {selected === "Llama" && step >= 3 && (
                 <div>
                     {step === 3 && <Llama onNext={handleNext} onChange={handleOnchange} />}
+                </div>
+            )}
+
+            {/* Midjourney prompt sell */}
+            {selected === "Midjourney" && step >= 3 && (
+                <div>
+                    {step === 3 && <Midjourney onNext={handleNext} onChange={handleOnchange} />}
+                </div>
+            )}
+
+            {/* stable diffusion prompt sell */}
+            {selected === "Stable Diffusion" && step >= 3 && (
+                <div>
+                    {step === 3 && <Midjourney onNext={handleNext} onChange={handleOnchange} />}
                 </div>
             )}
 
