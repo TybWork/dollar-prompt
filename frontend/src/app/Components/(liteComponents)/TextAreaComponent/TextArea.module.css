@@ -2,7 +2,7 @@
     padding: 8px;
     border-radius: 4px;
     background: var(--tertiaryClr);
-    width: 600px;
+    width: 100%;
     border: none;
     color: var(--textClr);
     caret-color: --textClr;

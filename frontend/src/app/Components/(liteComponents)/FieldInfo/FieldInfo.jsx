@@ -3,7 +3,7 @@ const FieldInfo = (props) => {
     return (
         <div className={styles.fieldContainer}>
             <div className={styles.fieldTitle}>{props.title}</div>
-            <div className={styles.fieldDescription}>{props.description}</div>
+            <i className={styles.fieldDescription}>{props.description}</i>
         </div>
     )
 }

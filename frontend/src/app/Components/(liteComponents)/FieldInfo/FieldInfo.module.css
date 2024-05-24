@@ -1,14 +1,17 @@
 .fieldContainer {
-    line-height: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
     margin: .5em 0em;
+    font-size: 12px;
 }
 
 .fieldTitle {
-    font-size: 14px;
+    font-size: 12px;
+    font-weight: 500;
 }
 
 .fieldDescription {
     color: var(--textClr);
     opacity: .8;
-    font-size: 13px;
 }

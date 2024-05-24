@@ -1,0 +1,26 @@
+.heading {
+    font-size: 24px;
+    font-weight: 500;
+    padding-bottom: 24px;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 12px;
+    width: 570px;
+}
+
+.fieldType {
+    font-weight: 500;
+}
+
+.info {
+    opacity: .8;
+}
+
+.btnContainer {
+    width: 200px;
+    margin-top: 4px;
+}
