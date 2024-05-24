@@ -10,6 +10,7 @@ import styles from '@/app/(Pages)/sell/sell.module.css'
 import SelectCountry from "./fourthstep/SelectCountry"
 import axios from "axios"
 import Leonardo from "./ThirdStep/leonardo/Leonardo"
+import Llama from "./ThirdStep/Llama/Llama"
 
 const page = () => {
     const [step, setstep] = useState(1);
@@ -82,6 +83,13 @@ const page = () => {
             {selected === "Leonardo Ai" && step >= 3 && (
                 <div>
                     {step === 3 && <Leonardo onNext={handleNext} onChange={handleOnchange} />}
+                </div>
+            )}
+
+            {/* Leonardo prompt sell */}
+            {selected === "Llama" && step >= 3 && (
+                <div>
+                    {step === 3 && <Llama onNext={handleNext} onChange={handleOnchange} />}
                 </div>
             )}
 
