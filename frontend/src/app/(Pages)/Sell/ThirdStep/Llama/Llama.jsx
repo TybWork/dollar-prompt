@@ -9,7 +9,7 @@ const Llama = () => {
             {/* main field */}
             <div className={styles.mainField}>
                 <FieldInfo title="*Prompt" description="Put any variables in [square brackets]." />
-                <TextArea placeholder="An Impressionist oil painting of [Flower] in a purple vase.." rows={15} />
+                <TextArea placeholder="An Impressionist oil painting of [Flower] in a purple vase.." rows={15} margin="0px" />
             </div>
 
             {/* model field */}

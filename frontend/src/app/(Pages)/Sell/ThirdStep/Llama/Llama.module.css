@@ -1,5 +1,6 @@
 .LlamaContainer {
     width: 50%;
+    min-width: 570px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -25,4 +26,11 @@
     display: flex;
     gap: 10px;
     overflow-x: auto;
+}
+
+@media screen and (max-width:768px) {
+    .LlamaContainer {
+        width: 100%;
+        min-width: 100%;
+    }
 }
