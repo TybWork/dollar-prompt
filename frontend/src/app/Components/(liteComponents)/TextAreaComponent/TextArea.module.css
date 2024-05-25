@@ -11,6 +11,10 @@
     margin-bottom: 2.4em;
 }
 
+.textInput:focus {
+    outline: 3px solid var(--activeClr);
+}
+
 .textInput::placeholder {
     color: var(--textClr);
     opacity: .6;
