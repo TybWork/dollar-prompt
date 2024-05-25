@@ -62,7 +62,7 @@ const Header = () => {
                             <li><Link className={styles.link} href="/our-apps">Apps</Link></li>
                             <li><Link className={styles.link} href="/create">Create</Link></li>
                             <li><Link className={styles.link} href="/Hire">Hire</Link></li>
-                            <li><Link className={styles.link} href="/Sell">Sell</Link></li>
+                            <li><Link className={styles.link} href="/sell">Sell</Link></li>
                         </ul>
                     </nav>
                     <div className={styles.topNavIconsContainer}>

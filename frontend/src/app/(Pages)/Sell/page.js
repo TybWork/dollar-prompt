@@ -12,6 +12,7 @@ import axios from "axios"
 import Leonardo from "./ThirdStep/leonardo/Leonardo"
 import Llama from "./ThirdStep/Llama/Llama"
 import Midjourney from "./ThirdStep/Midjourney/Midjourney"
+import StableDiffusion from "./ThirdStep/StableDiffusion/StableDiffusion"
 
 const page = () => {
     const [step, setstep] = useState(1);
@@ -104,7 +105,7 @@ const page = () => {
             {/* stable diffusion prompt sell */}
             {selected === "Stable Diffusion" && step >= 3 && (
                 <div>
-                    {step === 3 && <Midjourney onNext={handleNext} onChange={handleOnchange} />}
+                    {step === 3 && <StableDiffusion onNext={handleNext} onChange={handleOnchange} />}
                 </div>
             )}
 
