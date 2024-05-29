@@ -1,7 +1,7 @@
 .gradientBtn {
     background: var(--buttonGradient);
     padding: 9px 17px;
-    color: var(--primaryClr);
+    color: var(--textClr);
     border: none;
     border-radius: 5px;
     font-size: 18px;

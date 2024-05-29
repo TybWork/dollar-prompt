@@ -2,7 +2,7 @@
     text-align: center;
     padding: 2.5em;
     background-color: var(--secondryClr);
-    border-top: 1px solid #393954;
+    border-top: 1px solid var(--customBorder);
     display: flex;
     flex-direction: column;
     gap: 1em;

@@ -50,7 +50,8 @@ const Header = () => {
                 {/* ------------- top header------------- */}
                 <div className={styles.topHeader}>
                     <div className={styles.logo}></div>
-                    <Image src="/assets/imageAssets/logo.png" width={30} height={30} />
+                    {/* <Image src="/assets/imageAssets/logo.svg" width={150} height={150} /> */}
+                    <img src="/assets/imageAssets/logo.svg" style={{ width: "180px" }} alt="" />
 
                     {/* search component */}
                     <Search placeholder="Search Prompts" />

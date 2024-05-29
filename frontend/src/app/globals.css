@@ -6,18 +6,22 @@
 }
 
 :root {
-  --primaryClr: #222236;
+  /* --primaryClr: #222236;
   --secondryClr: #2A2B44;
   --tertiaryClr: #454566;
   --cardHoverClr: #393954;
-  --activeClr: rgb(19, 81, 151);
+  --activeClr: rgb(19, 81, 151); */
 
-  /* --primaryClr: #141619;
-  --secondryClr: #2c2e3a;
-  --tertiaryClr: #050a44;
-  --cardHoverClr: #0a21c0; */
+
+  --primaryClr: #0b1e0d;
+  --secondryClr: #102e13;
+  --tertiaryClr: #153d19;
+  --buttonGradient: linear-gradient(122deg, #1B1D5E, #44C151);
+
+  --customBorder: #44c1507a;
+
   --textClr: white;
-  --buttonGradient: linear-gradient(122deg, #fee5a5, #fea5a5 62%, #f69393 100%, #fff);
+  /* --buttonGradient: linear-gradient(122deg, #fee5a5, #fea5a5 62%, #f69393 100%, #fff); */
   --buttonGradientHover: linear-gradient(122deg, #ffffff, #f69393 62%, #fee5a5 100%);
   --textGradient: linear-gradient(122deg, #f17b85, #f79393 15%, #fee4a5 45%, #9ae8b0 65%, #5ba5d0 90%, #9078d0);
 
@@ -46,7 +50,7 @@ body::-webkit-scrollbar {
 }
 
 body::-webkit-scrollbar-thumb {
-  background: linear-gradient(122deg, #454566, #fea5a5 62%, #f69393 100%, #fff);
+  background: linear-gradient(122deg, var(--tertiaryClr), #44C151);
   border-radius: 5px;
 }
 
