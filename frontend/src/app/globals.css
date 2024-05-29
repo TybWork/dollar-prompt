@@ -20,7 +20,7 @@
 
   --customBorder: #44c1507a;
 
-  --textClr: white;
+  --textClr: rgb(255, 251, 0);
   /* --buttonGradient: linear-gradient(122deg, #fee5a5, #fea5a5 62%, #f69393 100%, #fff); */
   --buttonGradientHover: linear-gradient(122deg, #ffffff, #f69393 62%, #fee5a5 100%);
   --textGradient: linear-gradient(122deg, #f17b85, #f79393 15%, #fee4a5 45%, #9ae8b0 65%, #5ba5d0 90%, #9078d0);
