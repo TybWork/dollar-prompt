@@ -1,5 +1,5 @@
 'use client'
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import First from "./firststep/First"
 import Second from "./secondstep/Second"
 import Dall3 from "./ThirdStep/dall/Dall3"
@@ -43,27 +43,52 @@ const page = () => {
         setselected(`${seletedValue}`)
     }
 
+    // ************working fine with text inputs************
+    // function handleOnchange(changeVal) {
+    //     const { name, value } = changeVal.target
+    //     setuser({ ...user, [name]: value })
+    //     setdata(user)
+    //     console.log(user)
+    // }
+
     function handleOnchange(changeVal) {
-        const { name, value } = changeVal.target
-        setuser({ ...user, [name]: value })
-        setdata(user)
-        console.log(user)
+        const { name, value, type } = changeVal.target;
+
+        if (type === 'file') {
+            const files = changeVal.target.files; // Get the selected files array
+            setuser((prevUser) => ({ ...prevUser, myfiles: files })); // Update user state with the files array
+            setdata(user)
+        } else {
+            setuser((prevUser) => ({ ...prevUser, [name]: value })); // Update user state with the input value
+            setdata(user)
+        }
     }
 
     const handleSubmit = async () => {
-        try {
-            await axios.post("http://localhost:4001/api/prompt/dalle/create", data)
-            setdata(user)
-        } catch (error) {
-            console.log("myErrro is here :", error)
+        const formData = new FormData();
+        for (const key in user) {
+            if (key === 'myfiles') {
+                Array.from(user[key]).forEach(file => formData.append(key, file));
+            } else {
+                formData.append(key, user[key]);
+            }
         }
-    }
+
+        try {
+            await axios.post("http://localhost:4001/api/prompt/dalle/create", formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+        } catch (error) {
+            console.log("myError is here:", error);
+        }
+    };
     return (
         <div className={styles.parentContainer}>
             <StepsCounter stepCount={stepCount} onPrev={handlePrev} width={counter} />
             {step === 1 && <First onNext={handleNext} />}
             {step === 2 && <Second onSelect={handleSelect} onNext={handleNext} onChange={handleOnchange} />}
-
 
             {/* *************conditional rendering (step3)*********** */}
 

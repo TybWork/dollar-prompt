@@ -1,11 +1,35 @@
 import { DallE } from "../../models/Prompt/dallePrompt.model.js";
+import { cloudinaryFunc } from '../../utils/cloudinary.utils.js'
+import fs from 'fs'
 
 // create dalle prompt
 export const createDallE = async (req, res) => {
     try {
-        const newPrompt = new DallE(req.body);
-        const savePrompt = await newPrompt.save();
-        return res.status(200).json(savePrompt);
+
+        // cloudinary setup
+        const urls = [];
+
+        for (const file of req.files) {
+            const url = await cloudinaryFunc(file)
+            urls.push(url);
+
+            // Delete the file from the server
+            fs.unlink(file.path, (err) => {
+                if (err) {
+                    console.error('Error deleting file:', err);
+                } else {
+                    console.log('File deleted successfully');
+                }
+            });
+        }
+
+        // ...............
+        const newPrompt = new DallE({
+            ...req.body,
+            Image_Url: urls
+        })
+        const savedPrompt = await newPrompt.save()
+        return res.status(200).json(savedPrompt);
     } catch (error) {
         return res.status(500).json({ msg: `Failed to create dalle prompt ${error}` })
     }

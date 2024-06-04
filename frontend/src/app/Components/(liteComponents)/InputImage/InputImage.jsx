@@ -1,10 +1,10 @@
 import styles from '@/app/Components/(liteComponents)/InputImage/InputImage.module.css'
-const InputImage = () => {
+const InputImage = ({ onChange }) => {
     return (
         <div className={styles.ImageContainer}>
-            <input className={styles.imageInput} type="file" multiple name="" id="" />
+            <input onChange={onChange} className={styles.imageInput} type="file" name="myfiles" accept="image/jpeg,image/png,video/*" multiple required />
         </div>
     )
 }
 
-export default InputImage
+export default InputImage;
