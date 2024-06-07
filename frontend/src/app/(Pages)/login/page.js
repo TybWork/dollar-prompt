@@ -1,15 +1,12 @@
 'use client'
-import axios from "axios";
 import { useState } from "react";
-import styles from '@/app/(Pages)/signup/signup.module.css'
+import styles from '@/app/(Pages)/login/login.module.css'
 import Image from "next/image";
 import InputField from "@/app/Components/(liteComponents)/InputField/InputField";
 import Link from "next/link";
-const CreateUser = () => {
+import { post } from "@/app/Services/ApiEndpoint.js";
+const loginUser = () => {
     const users = {
-        firstName: "",
-        lastName: "",
-        gender: "",
         email: "",
         password: "",
     }
@@ -19,42 +16,32 @@ const CreateUser = () => {
     const inputHandler = (e) => {
         const { name, value } = e.target;
         setuser({ ...user, [name]: value })
+        console.log(user)
     }
 
     // function to handle submit
-    const submitForm = async (e) => {
+    const submitForms = async (e) => {
         e.preventDefault();
-        await axios.post("http://localhost:4001/api/user/signup", user)
-        setuser(users)
-        window.location.href = "http://localhost:3000/login";
+        const request = await post("/api/user/login", user)
+        const response = request.data
+        document.cookie = `token = ${response.token} id= ${response.user._id}; path=/`
+        console.log(response)
+
+        window.location.href = `/profile/${response.user._id}`
     }
 
     return (
         <div className={styles.container}>
             <Image src="/assets/imageAssets/logo.png" width={0} height={0} className={styles.logo} sizes="100vw" />
             {/* heading */}
-            <h1 className={styles.heading}>Create An Account</h1>
-            <form onSubmit={submitForm} action="" className={styles.formContainer}>
-
-                <InputField name="firstName" id="firstName" onchangeFunc={inputHandler} placeholder="First Name *" value={user.firstName} />
-
-                <InputField name="lastName" id="lastName" onchangeFunc={inputHandler} placeholder="Last Name *" value={user.lastName} />
+            <h1 className={styles.heading}>Account Login</h1>
+            <form onSubmit={submitForms} action="" className={styles.formContainer}>
 
                 <InputField name="email" id="email" onchangeFunc={inputHandler} placeholder="Email *" value={user.email} />
 
                 <InputField name="password" id="password" onchangeFunc={inputHandler} placeholder="Password *" value={user.password} />
 
-                <div className={styles.genderInputContainer}>
-                    <div className={styles.genderInput}>
-                        <label htmlFor="male">Male</label><br />
-                        <input type="radio" id="male" name="gender" value="male" onChange={inputHandler} />
-
-                        <label htmlFor="female">Female</label><br />
-                        <input type="radio" id="female" name="gender" value="female" onChange={inputHandler} />
-                    </div>
-                </div>
-
-                <input className={styles.submitBtn} type="submit" value="Register" />
+                <input className={styles.submitBtn} type="submit" value="Login" />
 
                 {/* borderbottom  */}
                 <div className={styles.borderBottom}></div>
@@ -71,8 +58,8 @@ const CreateUser = () => {
             <div className={styles.terms}>By creating an account, you agree to our <Link href="/tandcs">terms of service.</Link></div>
 
             {/* already have account */}
-            <Link className={styles.link} href="">I already have an account</Link>
+            <Link className={styles.link} href="">Create a new account</Link>
         </div>
     )
 }
-export default CreateUser;
+export default loginUser;

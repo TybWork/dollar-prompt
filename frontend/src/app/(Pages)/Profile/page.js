@@ -7,7 +7,6 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaUserPlus } from "react-icons/fa";
 import { IoMdEye } from "react-icons/io";
 import { BsFillGearFill } from "react-icons/bs";
-import { FaStar } from "react-icons/fa";
 import { MdStar } from "react-icons/md";
 import Search from '@/app/Components/(liteComponents)/Search/Search';
 

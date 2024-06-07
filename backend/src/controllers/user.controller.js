@@ -41,7 +41,7 @@ export const loginUser = async (req, res) => {
     try {
         const user = await User.findOne({ email })
         if (!user) {
-            return res.status(200).json({ msg: "No such user!!" })
+            return res.status(400).json({ msg: "No such user!!" })
         }
 
         const compare = bcrypt.compareSync(password, user.password)
@@ -57,7 +57,7 @@ export const loginUser = async (req, res) => {
             maxAge: 24 * 60 * 60 * 1000
         })
 
-        return res.status(400).json({ msg: "User loged in successfully!!", user, token })
+        return res.status(200).json({ msg: "User loged in successfully!!", user, token })
 
     } catch (error) {
         console.log(`User log in failed ${error}`)
