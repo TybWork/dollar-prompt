@@ -50,6 +50,17 @@ const dallePromptSchema = new Schema(
             type: String,
             // required: true
         },
+        status: {
+            type: Number,
+            enum: [0, 1], //unverified:0  verified:1
+            default: 0
+        },
+        verifiedBy: {
+            type: String,
+        },
+        isOpen: {
+            type: Boolean,
+        },
         getUser: {
             type: Schema.Types.ObjectId,
             ref: "User"
