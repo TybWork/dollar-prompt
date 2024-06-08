@@ -9,6 +9,7 @@ import { IoMdEye } from "react-icons/io";
 import { BsFillGearFill } from "react-icons/bs";
 import { MdStar } from "react-icons/md";
 import Image from 'next/image';
+import SellerPromptCard from '../SellerPromptCard/SellerPromptCard';
 
 const Tab = ({ sellerId }) => {
     const [activeTab, setactiveTab] = useState('PROMPTS')
@@ -42,7 +43,14 @@ const Tab = ({ sellerId }) => {
 
                     <Search placeholder={`Search ${sellerId}'s Prompts`} />
 
-                    <Slider component={<SinglePromptCard />} />
+                    <div className={styles.sellerPrompt}>
+                        <SellerPromptCard />
+                        <SellerPromptCard />
+                        <SellerPromptCard />
+                        <SellerPromptCard />
+                        <SellerPromptCard />
+                        <SellerPromptCard />
+                    </div>
                 </div>
             }
 
@@ -103,7 +111,7 @@ const Tab = ({ sellerId }) => {
                             266<span> Followings</span>
                         </div>
 
-                    </div>cs
+                    </div>
                 </div>
             }
 
