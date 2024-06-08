@@ -1,4 +1,3 @@
-
 // const UserProfile = async ({ params }) => {
 //     const { userid } = params;
 //     return (
@@ -10,7 +9,6 @@
 // };
 
 // export default UserProfile;
-
 
 import styles from '@/app/(Pages)/Profile/page.module.css'
 import Image from 'next/image'
