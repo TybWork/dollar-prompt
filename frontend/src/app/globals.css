@@ -65,3 +65,7 @@ body::-webkit-scrollbar-thumb {
   padding: 8px;
   color: var(--textClr);
 }
+
+.select option:hover {
+  background: red !important;
+}
