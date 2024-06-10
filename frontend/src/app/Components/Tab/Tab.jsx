@@ -3,8 +3,6 @@ import { useEffect, useState } from 'react';
 import styles from '@/app/Components/Tab/Tab.module.css'
 import CategoriesBtn from '@/app/Components/(liteComponents)/categoriesBtn/categoriesBtn';
 import Search from '../(liteComponents)/Search/Search';
-import Slider from '../Slider/Slider';
-import SinglePromptCard from '../SinglePromptCard/SinglePromptCard';
 import { IoMdEye } from "react-icons/io";
 import { BsFillGearFill } from "react-icons/bs";
 import { MdStar } from "react-icons/md";

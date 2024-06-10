@@ -11,7 +11,7 @@ const userProfileSchema = new Schema({
         required: true
     },
     profileLink: {
-        type: String,
+        type: [String],
     },
     profileDescription: {
         type: String,
@@ -26,9 +26,6 @@ const userProfileSchema = new Schema({
     rank: {
         type: Number,
     },
-    joinedAt: {
-        type: new Date().toLocaleString
-    },
     following: {
         type: Number
     },
@@ -37,7 +34,11 @@ const userProfileSchema = new Schema({
     },
     prompts: {
         type: [{}]
+    },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
     }
-})
+}, { timestamps: true })
 
 export const userProfile = mongoose.model("userProfile", userProfileSchema)
