@@ -60,10 +60,9 @@ const Header = () => {
                     <nav className={styles.mainNav}>
                         <ul>
                             <li><Link className={styles.link} href="/Marketplace">Marketplace</Link></li>
-                            <li><Link className={styles.link} href="/our-apps">Apps</Link></li>
                             <li><Link className={styles.link} href="/create">Create</Link></li>
                             <li><Link className={styles.link} href="/Hire">Hire</Link></li>
-                            <li><Link className={styles.link} href="/sell">Sell</Link></li>
+                            <li><Link className={styles.link} href="/sellerinfo">BecomeSeller</Link></li>
                         </ul>
                     </nav>
                     <div className={styles.topNavIconsContainer}>

@@ -25,9 +25,9 @@ function multerFunc(req, res, next) {
 
     const upload = multer({
         storage: storage,
-        limits: { fileSize: 100 * 1024 * 1024, files: 7 }, // 100MB limit for files and limit to 2 files
+        limits: { fileSize: 100 * 1024 * 1024 }, // 100MB limit for files and limit to 2 files
         fileFilter: fileFilter,
-    }).array('myfiles', 7);
+    }).any()
 
     upload(req, res, (err) => {
         if (err instanceof multer.MulterError) {

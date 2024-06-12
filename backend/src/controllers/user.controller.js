@@ -33,7 +33,6 @@ export const signUp = async (req, res) => {
     }
 }
 
-
 // login user
 export const loginUser = async (req, res) => {
     const { email, password } = req.body
@@ -54,6 +53,7 @@ export const loginUser = async (req, res) => {
         res.cookie('token', token, {
             httpOnly: true,
             secure: false,
+            // sameSite: "Strict",
             maxAge: 24 * 60 * 60 * 1000
         })
 

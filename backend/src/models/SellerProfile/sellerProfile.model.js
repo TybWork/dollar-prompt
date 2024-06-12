@@ -2,20 +2,28 @@ import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
 const userProfileSchema = new Schema({
-    banner: {
-        type: String,
-        required: true
+    profileBanner: {
+        type: [String],
+        // required: true
     },
-    logo: {
+    role: {
         type: String,
-        required: true
+        default: 'user'
     },
-    profileLink: {
+    profileImage: {
+        type: [String],
+        // required: true
+    },
+    profileHandle: {
+        type: String,
+        // required: true
+    },
+    socialLinks: {
         type: [String],
     },
     profileDescription: {
         type: String,
-        required: true
+        // required: true
     },
     views: {
         type: Number,
@@ -41,4 +49,4 @@ const userProfileSchema = new Schema({
     }
 }, { timestamps: true })
 
-export const userProfile = mongoose.model("userProfile", userProfileSchema)
+export const SellerProfile = mongoose.model("SellerProfile", userProfileSchema)
