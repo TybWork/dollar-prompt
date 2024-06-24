@@ -29,7 +29,7 @@ export const isAdmin = async (req, res, next) => {
 
 // for seller
 
-export const isSeller = async (req, res, next) => {
+export const getUserId = async (req, res, next) => {
     try {
         const token = req.cookies.token;
         if (!token) {

@@ -26,7 +26,8 @@ export const createDallE = async (req, res) => {
         // ...............
         const newPrompt = new DallE({
             ...req.body,
-            Image_Url: urls
+            Image_Url: urls,
+            userId: req.userId
         })
         const savedPrompt = await newPrompt.save()
         return res.status(200).json(savedPrompt);

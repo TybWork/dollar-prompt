@@ -78,7 +78,8 @@ const page = () => {
             await axios.post("http://localhost:4001/api/prompt/dalle/create", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
-                }
+                },
+                withCredentials: true
             });
         } catch (error) {
             console.log("myError is here:", error);

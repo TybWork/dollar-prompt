@@ -1,6 +1,9 @@
 import styles from '@/app/(Pages)/seller/seller.module.css'
 import Image from 'next/image'
 import Tab from '@/app/Components/Tab/Tab';
+// import { HiPlus } from "react-icons/hi";
+import { IoMdCreate } from "react-icons/io";
+import Link from 'next/link';
 
 
 const page = async ({ params }) => {
@@ -33,6 +36,15 @@ const page = async ({ params }) => {
 
                 {/* ................categories............ */}
                 <Tab sellerId={userid} />
+            </div>
+
+            <div className={styles.createPrompt}>
+                <Link href='/sell'>
+                    <div className={styles.createPromptIcon}>
+                        <IoMdCreate />
+                    </div>
+                    {/* Create Prompt */}
+                </Link>
             </div>
         </div>
     )

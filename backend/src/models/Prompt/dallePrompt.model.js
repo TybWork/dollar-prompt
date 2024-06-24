@@ -61,7 +61,7 @@ const dallePromptSchema = new Schema(
         isOpen: {
             type: Boolean,
         },
-        getUser: {
+        userId: {
             type: Schema.Types.ObjectId,
             ref: "User"
         },
