@@ -26,7 +26,7 @@ export const postSellerData = async (req, res) => {
             ...req.body,
             profileBanner: urls[0], // Assuming first image as profile banner
             profileImage: urls[1],
-            userId: req.user._id
+            // userId: req.user._id
         })
         const savedSeller = await newSeller.save()
         return res.status(200).json(savedSeller);
