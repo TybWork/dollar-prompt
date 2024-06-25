@@ -40,3 +40,13 @@ export const postSellerData = async (req, res) => {
         return res.status(500).json({ msg: `Failed to create new seller ${error}` })
     }
 };
+
+// get sellerInfo
+export const getSellerInfo = async (req, res) => {
+    try {
+        const filterSeller = await SellerProfile.find({ userId: req.query.userId })
+        return res.status(200).json(filterSeller);
+    } catch (error) {
+        return res.status(400).json({ msg: "Failed to get Seller" })
+    }
+}

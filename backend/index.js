@@ -42,7 +42,7 @@ app.listen(port, () => {
 })
 
 // app.use('/api/', user);
-app.use('/api/', dalleRoute)
+app.use('/api', dalleRoute)
 
 // routes
 app.use('/api/user', authRout)

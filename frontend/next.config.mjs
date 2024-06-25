@@ -1,13 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // rewrites() {
-  //   return [
-  //     {
-  //       source: '/api',
-  //       destination: "http://localhost:4001/",
-  //     },
-  //   ];
-  // },
+  // next.config.js
+  images: {
+    domains: ['res.cloudinary.com'],
+  }
+
 };
 
 export default nextConfig;

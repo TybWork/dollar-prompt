@@ -1,22 +1,47 @@
+'use client'
 import styles from '@/app/(Pages)/seller/seller.module.css'
 import Image from 'next/image'
 import Tab from '@/app/Components/Tab/Tab';
 // import { HiPlus } from "react-icons/hi";
 import { IoMdCreate } from "react-icons/io";
 import Link from 'next/link';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 
-
-const page = async ({ params }) => {
+const page = ({ params }) => {
     const { userid } = params;
+
+    const [sellerData, setsellerData] = useState({})
+
+    useEffect(() => {
+        axios.get(`http://localhost:4001/api/seller/getseller?userId=${userid}`)
+            .then((response) => {
+                setsellerData(response.data[0])
+            })
+
+    }, [])
 
     return (
         <div className={styles.mainContainer}>
             <div className={styles.bannerOuterContainer}>
                 <div className={styles.banner}>
-                    <Image className={styles.bannerImage} src="/assets/imageAssets/profileBanner.webp" width={0} height={0} sizes='100vw' />
+                    {sellerData.profileBanner && (  // ensures that logging only happens when sellerData and sellerData.profileBanner
+                        <Image
+                            className={styles.bannerImage}
+                            src={sellerData.profileBanner[0]}
+                            width={0}
+                            height={0}
+                            sizes='100vw'
+                            alt='Banner'
+                        />
+                    )}
                 </div>
                 <div className={styles.userLogo}>
-                    <Image className={styles.logoImage} src="/assets/imageAssets/logo.webp" width={0} height={0} sizes='100vw' />
+                    {
+                        sellerData.profileImage && (
+                            <Image className={styles.logoImage} alt="profile Image" src={sellerData.profileImage[0]} width={0} height={0} sizes='100vw' />
+                        )
+                    }
                 </div>
             </div>
 
@@ -25,13 +50,13 @@ const page = async ({ params }) => {
 
                 {/* user name links */}
                 <div className={styles.userNameLinks}>
-                    <div className={styles.userName}>@{userid}
+                    <div className={styles.userName}>@{sellerData.profileHandle}
                     </div>
                 </div>
 
                 {/* profile bio */}
                 <div className={styles.profileBio}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam similique expedita officiis nesciunt voluptatem possimus repellat repudiandae? Aperiam distinctio fuga omnis veniam, a ab veritatis quas unde voluptates consequuntur enim quam ducimus iusto accusantium sit!
+                    {sellerData.profileDescription}
                 </div>
 
                 {/* ................categories............ */}
