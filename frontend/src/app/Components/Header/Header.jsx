@@ -1,6 +1,5 @@
 'use client'
-import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { MdOutlineMessage } from "react-icons/md";
 import { GoBell } from "react-icons/go";
@@ -16,16 +15,33 @@ import { showNav } from "@/app/Redux/Features/navbar/navbarSlice";
 import categoriesArr from "@/app/jsonFiles/promptsCategories";
 import { ImArrowRight2 } from "react-icons/im";
 import { PiCaretRightBold } from "react-icons/pi";
+import { jwtDecode } from "jwt-decode";
 
 const Header = () => {
     const [categoryHeading, setcategoryHeading] = useState()
     const [subHeadingTitle, setsubHeadingTitle] = useState()
+    const [seller, setseller] = useState({ text: "Login", link: "/login" })
     const [showHeaderBox, setshowHeaderBox] = useState(false)
     const [checkActiveHeader, setcheckActiveHeader] = useState(false)
     const [subCategory, setsubCategory] = useState([]);
     const [innerLinks, setinnerLinks] = useState([])
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        if (document.cookie) {
+            const token = document.cookie;
+            const decodedToken = jwtDecode(token)
+            const role = decodedToken.userRole
+            const userId = decodedToken.userId
+            if (role === "seller") {
+                setseller({ text: "Profile", link: `/seller/${userId}` })
+            } else if (role === "user") {
+                setseller({ text: "becomeSeller", link: '/sellerinfo' })
+            } else {
+                setseller({ text: "Login", link: '/login' })
+            }
+        }
+    }, [])
 
     function mainCategory(val) {
         setsubCategory(val.SubCategories);
@@ -62,7 +78,7 @@ const Header = () => {
                             <li><Link className={styles.link} href="/Marketplace">Marketplace</Link></li>
                             <li><Link className={styles.link} href="/create">Create</Link></li>
                             <li><Link className={styles.link} href="/Hire">Hire</Link></li>
-                            <li><Link className={styles.link} href="/sellerinfo">BecomeSeller</Link></li>
+                            <li><Link className={styles.link} href={seller.link}>{seller.text}</Link></li>
                         </ul>
                     </nav>
                     <div className={styles.topNavIconsContainer}>
