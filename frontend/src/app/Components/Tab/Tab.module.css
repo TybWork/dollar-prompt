@@ -5,6 +5,12 @@
     gap: 36px;
 }
 
+.promptBtns {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+}
+
 .btns {
     display: flex;
     gap: 20px;
@@ -14,6 +20,61 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+.promptStateBtn {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.promptStateBtn li {
+    position: relative;
+    list-style: none;
+    cursor: pointer;
+    color: var(--textClr);
+    font-size: 14;
+    transition: var(--transition);
+}
+
+.active {
+    position: absolute;
+    top: -9px;
+    left: -6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50px;
+    background: var(--buttonGradientHover);
+    z-index: -1;
+    transition: var(--transition);
+    opacity: 1;
+}
+
+.inActive {
+    position: absolute;
+    top: -2px;
+    left: -6px;
+    width: 0px;
+    height: 0px;
+    border-radius: 50px;
+    background: transparent;
+    z-index: -1;
+    transition: var(--transition);
+}
+
+.sellerPrompt {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    /* justify-content: space-between; */
+    gap: 24px;
+}
+
+.createPrompt {
+    color: var(--textClr);
+    text-decoration: none;
+    background: var(--buttonGradientHover);
+    padding: 8px 16px;
 }
 
 /* ....................analytics tab............... */
@@ -105,12 +166,4 @@
     width: 20%;
     height: 20%;
     margin: auto;
-}
-
-.sellerPrompt {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
 }

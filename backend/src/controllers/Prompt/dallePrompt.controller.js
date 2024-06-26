@@ -57,6 +57,17 @@ export const getSingleDallE = async (req, res) => {
     }
 }
 
+// get prompts the basis of userId
+export const getFilteredPrompt = async (req, res) => {
+    // http://localhost:4001/api/endpoint?userId=234&username='john'
+    try {
+        const filter = await DallE.find(req.query);
+        return res.status(200).json(filter)
+    } catch (error) {
+        return res.filter(400).json({ msg: `Failed to get single user` })
+    }
+}
+
 //update single prompt
 export const updateDallE = async (req, res) => {
     const id = req.params.id;

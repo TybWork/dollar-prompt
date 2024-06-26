@@ -62,15 +62,6 @@ const page = ({ params }) => {
                 {/* ................categories............ */}
                 <Tab sellerId={userid} />
             </div>
-
-            <div className={styles.createPrompt}>
-                <Link href='/sell'>
-                    <div className={styles.createPromptIcon}>
-                        <IoMdCreate />
-                    </div>
-                    {/* Create Prompt */}
-                </Link>
-            </div>
         </div>
     )
 }

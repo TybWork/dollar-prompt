@@ -51,9 +51,9 @@ const dallePromptSchema = new Schema(
             // required: true
         },
         status: {
-            type: Number,
-            enum: [0, 1], //unverified:0  verified:1
-            default: 0
+            type: String,
+            enum: ['active', 'pending', 'paused'], //unverified:0  verified:1
+            default: 'pending'
         },
         verifiedBy: {
             type: String,

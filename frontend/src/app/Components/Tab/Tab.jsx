@@ -8,18 +8,32 @@ import { BsFillGearFill } from "react-icons/bs";
 import { MdStar } from "react-icons/md";
 import Image from 'next/image';
 import SellerPromptCard from '../SellerPromptCard/SellerPromptCard';
+import axios from 'axios';
+import Link from 'next/link';
 
 const Tab = ({ sellerId }) => {
     const [activeTab, setactiveTab] = useState('PROMPTS')
+    const [promptState, setpromptState] = useState('Active')
+    const [prompt, setprompt] = useState([])
+
     //switch categroy function for tab buttons
     function switchCategory(e) {
         const buttonText = e.target.innerText;
         setactiveTab(buttonText)
     }
 
+    //switch prompt state function for tab buttons
+    function switchPrompt(e) {
+        const buttonText = e.target.innerText;
+        setpromptState(buttonText)
+    }
     useEffect(() => {
-        console.log(activeTab)
-    }, [activeTab])
+        axios.get(`http://localhost:4001/api/prompt/dalle/filter/?userId=${sellerId}&&status=${promptState.toLocaleLowerCase()}`)
+            .then((response) => {
+                setprompt(response.data)
+            })
+    }, [promptState])
+
     return (
         <div className={styles.categories}>
 
@@ -34,20 +48,35 @@ const Tab = ({ sellerId }) => {
             {
                 activeTab === "PROMPTS" &&
                 <div className={styles.prompt}>
-                    <select name="promptCategories" id="" className='select'>
-                        <option key="dall" value="dall">DallE</option>
-                        <option key="gpt" value="gpt">GPT</option>
-                    </select>
-
                     <Search placeholder={`Search ${sellerId}'s Prompts`} />
 
+                    <div className={styles.promptBtns}>
+                        {/* Prompt State */}
+
+                        <ul className={styles.promptStateBtn}>
+                            <li onClick={switchPrompt} style={promptState === "Active" ? { opacity: "1" } : { opacity: '0.7' }}>Active
+                                <span className={promptState === "Active" ? styles.active : styles.inActive}></span>
+                            </li>
+                            <li onClick={switchPrompt} style={promptState === "Pending" ? { opacity: "1" } : { opacity: '0.7' }}>
+                                Pending <span className={promptState === "Pending" ? styles.active : styles.inActive}></span>
+                            </li>
+                            <li onClick={switchPrompt} style={promptState === "Paused" ? { opacity: "1" } : { opacity: '0.7' }}>
+                                Paused <span className={promptState === "Paused" ? styles.active : styles.inActive}></span>
+                            </li>
+                        </ul>
+
+                        {/* <CategoriesBtn title="Create Prompt" btnClass="active" /> */}
+                        <Link href="/sell" className={styles.createPrompt}>Create Prompt</Link>
+
+                    </div>
+
+
                     <div className={styles.sellerPrompt}>
-                        <SellerPromptCard />
-                        <SellerPromptCard />
-                        <SellerPromptCard />
-                        <SellerPromptCard />
-                        <SellerPromptCard />
-                        <SellerPromptCard />
+                        {/* <SellerPromptCard /> */}
+                        {prompt && prompt.map((e, index) =>
+                            <SellerPromptCard key={index} label={e.promptType} image={e.Image_Url[0]} description={e.description} />
+                        )}
+
                     </div>
                 </div>
             }
