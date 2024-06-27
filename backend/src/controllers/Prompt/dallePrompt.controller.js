@@ -5,7 +5,6 @@ import fs from 'fs'
 // create dalle prompt
 export const createDallE = async (req, res) => {
     try {
-
         // cloudinary setup
         const urls = [];
 
@@ -70,9 +69,8 @@ export const getFilteredPrompt = async (req, res) => {
 
 //update single prompt
 export const updateDallE = async (req, res) => {
-    const id = req.params.id;
     try {
-        const updatePrompt = await DallE.findByIdAndUpdate(id, req.body, { new: true });
+        const updatePrompt = await DallE.findOneAndUpdate(req.query, req.body, { new: true });
         return res.status(200).json(updatePrompt);
     } catch (error) {
         res.status(500).json({ msg: `Failde to update dalle prompt:${error}` })
@@ -86,6 +84,6 @@ export const deleteDallE = async (req, res) => {
         await DallE.findByIdAndDelete(id);
         return res.status(200).json({ msg: "Dalle prompt has been deleted successfully" })
     } catch (error) {
-
+        return res.status(400).json({ msg: "Failed to delete prompt" })
     }
 }

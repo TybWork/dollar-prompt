@@ -22,15 +22,17 @@ const dallePromptSchema = new Schema(
             default: 2.99,
             required: true,
         },
-        version: {
+        gptType: {
             type: String,
-            enum: ["DALL-E 2", "DALL-E 3"],
-            default: "DALL-E 2",
-            required: true
+            enum: ["Completion (Regular Gpt)", "Chat (Chat Gpt)"],
+            default: "Chat (Chat Gpt)",
+            // required: true
         },
-        describePrompt: {
+        gptEngine: {
             type: String,
-            required: true,
+            enum: ["Chat gpt-4o", "Chat gpt-4-turbo", "Chat gpt-4", "Chat gpt-3.5-turbo"],
+            default: "Chat gpt-4o"
+            // required: true,
         },
         Image_Url: {
             type: [String],
@@ -48,6 +50,7 @@ const dallePromptSchema = new Schema(
         },
         country: {
             type: String,
+            // required: true
         },
         status: {
             type: String,

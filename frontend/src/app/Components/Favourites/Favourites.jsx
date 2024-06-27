@@ -5,7 +5,7 @@ const Favourites = (props) => {
     return (
         <div className={styles.favouriteContainer}>
             <div className={styles.counter}><span>4</span>{props.icon}</div>
-            <div>{props.text}</div>
+            <div className={styles.text}>{props.text}</div>
         </div>
     )
 }

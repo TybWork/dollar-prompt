@@ -2,9 +2,6 @@
 import styles from '@/app/(Pages)/seller/seller.module.css'
 import Image from 'next/image'
 import Tab from '@/app/Components/Tab/Tab';
-// import { HiPlus } from "react-icons/hi";
-import { IoMdCreate } from "react-icons/io";
-import Link from 'next/link';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 

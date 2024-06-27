@@ -16,6 +16,7 @@ const userProfileSchema = new Schema({
     },
     profileHandle: {
         type: String,
+        unique: true
         // required: true
     },
     socialLinks: {
@@ -45,7 +46,7 @@ const userProfileSchema = new Schema({
     },
     userId: {
         type: Schema.Types.ObjectId,
-        ref: "User"
+        ref: "User",
     }
 }, { timestamps: true })
 

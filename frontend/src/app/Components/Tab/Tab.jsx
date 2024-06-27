@@ -74,7 +74,9 @@ const Tab = ({ sellerId }) => {
                     <div className={styles.sellerPrompt}>
                         {/* <SellerPromptCard /> */}
                         {prompt && prompt.map((e, index) =>
-                            <SellerPromptCard key={index} label={e.promptType} image={e.Image_Url[0]} description={e.description} />
+                            // <Link href={`/dallprompt/${e._id}`}>
+                            <SellerPromptCard previewPromptLink={`/dallprompt/${e._id}`} key={index} label={e.promptType} image={e.Image_Url[0]} description={e.description} />
+                            // </Link>
                         )}
 
                     </div>

@@ -5,8 +5,10 @@ import { FaShareAlt } from "react-icons/fa";
 import { useState } from 'react';
 import { BiSolidEdit } from "react-icons/bi";
 import { MdDeleteForever } from "react-icons/md";
+import { FaRegEye } from "react-icons/fa";
+import Link from 'next/link';
 
-const SellerPromptCard = ({ label, description, image }) => {
+const SellerPromptCard = ({ label, description, image, previewPromptLink }) => {
     const [dropdownMenu, setdropdownMenu] = useState('0')
     function dropdownFunc() {
         setdropdownMenu((prev) => prev == '0' ? '1' : '0')
@@ -32,8 +34,9 @@ const SellerPromptCard = ({ label, description, image }) => {
 
             {/* dropdown */}
             <ul className={styles.dropdown} onMouseLeave={hideDropdownFunc} style={{ transform: `scale(${dropdownMenu})` }}>
-                <li>Edit <BiSolidEdit /> </li>
-                <li>Delete <MdDeleteForever /></li>
+                <li><Link href={previewPromptLink}>Preview <FaRegEye /></Link></li>
+                <li><Link href="">Edit <BiSolidEdit /> </Link></li>
+                <li><Link href="">Delete <MdDeleteForever /></Link></li>
             </ul>
         </div>
     )
