@@ -1,9 +1,9 @@
-"use client";
-import { useEffect, useState, useRef } from "react";
+'use client';
+import { useEffect, useState, useRef } from 'react';
 import styles from '@/app/Components/Slider/Slider.module.css';
-import { FaAngleRight } from "react-icons/fa6";
+import { FaAngleRight } from 'react-icons/fa6';
 
-const Slider = (props) => {
+const Slider = ({ component: Component, data }) => {
     const imageListRef = useRef(null);
     const [maxScrollLeft, setMaxScrollLeft] = useState(0);
 
@@ -16,26 +16,25 @@ const Slider = (props) => {
         };
 
         const handleScroll = () => {
-            slideButtons[0].style.display = imageList.scrollLeft <= 0 ? "none" : "flex";
-            slideButtons[1].style.display = imageList.scrollLeft >= maxScrollLeft ? "none" : "flex";
+            slideButtons[0].style.display = imageList.scrollLeft <= 0 ? 'none' : 'flex';
+            slideButtons[1].style.display = imageList.scrollLeft >= maxScrollLeft ? 'none' : 'flex';
         };
 
-        // Initialize slider
         const initSlider = () => {
             updateMaxScrollLeft();
             slideButtons.forEach(button => {
-                button.addEventListener("click", () => {
+                button.addEventListener('click', () => {
                     const direction = button.id === styles.prevSlide ? -1 : 1;
                     const scrollAmount = imageList.clientWidth * direction;
-                    imageList.scrollBy({ left: scrollAmount, behavior: "smooth" });
+                    imageList.scrollBy({ left: scrollAmount, behavior: 'smooth' });
                 });
             });
 
-            imageList.addEventListener("scroll", handleScroll);
+            imageList.addEventListener('scroll', handleScroll);
         };
 
         initSlider();
-    }, [maxScrollLeft]);
+    }, [maxScrollLeft, data]);
 
     return (
         <div className={styles.container}>
@@ -43,12 +42,9 @@ const Slider = (props) => {
                 <button id={styles.prevSlide} className={styles.slideButton}>
                     <FaAngleRight style={{ transform: 'rotate(180deg)' }} />
                 </button>
-                <div ref={imageListRef} className={styles.imageList} style={{ gridTemplateColumns: "repeat(200, 1fr)" }}>
-                    {[...Array(200).keys()].map(() => (
-                        // <div key={index} className={styles.imageItem}>
-                        //     {index + 1}
-                        // </div>
-                        props.component
+                <div ref={imageListRef} className={styles.imageList} style={{ gridTemplateColumns: `repeat(${data.length}, 1fr)` }}>
+                    {data.map((item, index) => (
+                        <Component key={index} data={item} />
                     ))}
                 </div>
                 <button id={styles.nextSlide} className={styles.slideButton}>
