@@ -2,6 +2,7 @@ import styles from '@/app/(Pages)/sell/secondstep/Second.module.css'
 import GradientButton from '@/app/Components/GradientButton/GradientButton';
 import FieldInfo from '@/app/Components/(liteComponents)/FieldInfo/FieldInfo';
 import TextArea from '@/app/Components/(liteComponents)/TextAreaComponent/TextArea';
+import InputField from '@/app/Components/(liteComponents)/InputField/InputField';
 
 const Second = ({ onNext, onSelect, onChange }) => {
     return (

@@ -34,6 +34,11 @@ const Tab = ({ sellerId }) => {
             })
     }, [promptState])
 
+    async function promptDeleteFunc(id) {
+        await axios.delete(`http://localhost:4001/api/prompt/dalle/delete/${id}`)
+        setprompt((prevPrompts) => prevPrompts.filter((prompt) => prompt._id !== id))
+    }
+
     return (
         <div className={styles.categories}>
 
@@ -76,6 +81,7 @@ const Tab = ({ sellerId }) => {
                             <SellerPromptCard
                                 previewPromptLink={`/dallprompt/${e._id}`}
                                 updatePromptLink={`/dallprompt/updateprompt/${e._id}`}
+                                deletePromptFunc={() => promptDeleteFunc(e._id)}
                                 key={index}
                                 label={e.promptType}
                                 image={e.Image_Url[0]}

@@ -63,7 +63,7 @@ export const getFilteredPrompt = async (req, res) => {
         const filter = await DallE.find(req.query);
         return res.status(200).json(filter)
     } catch (error) {
-        return res.filter(400).json({ msg: `Failed to get single user` })
+        return res.status(400).json({ msg: `Failed to get prompt` })
     }
 }
 

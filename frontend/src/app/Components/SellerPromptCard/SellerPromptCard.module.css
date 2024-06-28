@@ -82,6 +82,17 @@
     transform-origin: top right;
 }
 
+.dropdown li:nth-child(3) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.dropdown li:nth-child(3):hover {
+    color: yellow;
+}
+
 .dropdown li a {
     cursor: pointer;
     display: flex;
