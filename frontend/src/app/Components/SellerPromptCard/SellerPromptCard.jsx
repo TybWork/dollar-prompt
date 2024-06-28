@@ -8,7 +8,7 @@ import { MdDeleteForever } from "react-icons/md";
 import { FaRegEye } from "react-icons/fa";
 import Link from 'next/link';
 
-const SellerPromptCard = ({ label, description, image, previewPromptLink }) => {
+const SellerPromptCard = ({ label, description, image, previewPromptLink, updatePromptLink }) => {
     const [dropdownMenu, setdropdownMenu] = useState('0')
     function dropdownFunc() {
         setdropdownMenu((prev) => prev == '0' ? '1' : '0')
@@ -35,7 +35,7 @@ const SellerPromptCard = ({ label, description, image, previewPromptLink }) => {
             {/* dropdown */}
             <ul className={styles.dropdown} onMouseLeave={hideDropdownFunc} style={{ transform: `scale(${dropdownMenu})` }}>
                 <li><Link href={previewPromptLink}>Preview <FaRegEye /></Link></li>
-                <li><Link href="">Edit <BiSolidEdit /> </Link></li>
+                <li><Link href={updatePromptLink}>Edit <BiSolidEdit /> </Link></li>
                 <li><Link href="">Delete <MdDeleteForever /></Link></li>
             </ul>
         </div>

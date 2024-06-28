@@ -67,15 +67,19 @@ const Tab = ({ sellerId }) => {
 
                         {/* <CategoriesBtn title="Create Prompt" btnClass="active" /> */}
                         <Link href="/sell" className={styles.createPrompt}>Create Prompt</Link>
-
                     </div>
-
 
                     <div className={styles.sellerPrompt}>
                         {/* <SellerPromptCard /> */}
                         {prompt && prompt.map((e, index) =>
                             // <Link href={`/dallprompt/${e._id}`}>
-                            <SellerPromptCard previewPromptLink={`/dallprompt/${e._id}`} key={index} label={e.promptType} image={e.Image_Url[0]} description={e.description} />
+                            <SellerPromptCard
+                                previewPromptLink={`/dallprompt/${e._id}`}
+                                updatePromptLink={`/dallprompt/updateprompt/${e._id}`}
+                                key={index}
+                                label={e.promptType}
+                                image={e.Image_Url[0]}
+                                description={e.description} />
                             // </Link>
                         )}
 

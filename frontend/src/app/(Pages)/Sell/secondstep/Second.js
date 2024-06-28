@@ -1,18 +1,3 @@
-// const Second = ({ onNext, onSelect }) => {
-//     return (
-//         <div>
-//             <div>Second Step</div>
-//             <select name="no name" id="one" onClick={onSelect}>
-//                 <option value="gpt">Gpt</option>
-//                 <option value="dall">Dall</option>
-//             </select>
-//             <button onClick={onNext}>Next</button>
-//         </div>
-//     )
-// }
-
-// export default Second
-
 import styles from '@/app/(Pages)/sell/secondstep/Second.module.css'
 import GradientButton from '@/app/Components/GradientButton/GradientButton';
 import FieldInfo from '@/app/Components/(liteComponents)/FieldInfo/FieldInfo';
@@ -48,6 +33,12 @@ const Second = ({ onNext, onSelect, onChange }) => {
             {/* name field */}
             <FieldInfo title="Name" description="Suggest a title for this prompt." />
             <input className={styles.textInput} placeholder="Movie to Emoji Generator" type="text" name="title" id="title" onChange={onChange} />
+            <InputField
+                placeholder="Movie to Emoji Generator"
+                name="title"
+                id="title"
+                onChange={onChange}
+            />
 
             {/* textArea field */}
             <FieldInfo title="Description" description="Describe what your prompt does to a potential buyer. A more detailed description will increase your sales." />
