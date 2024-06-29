@@ -1,9 +1,6 @@
-/* .parentContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background-color: red;
-} */
+.parentContainer {
+    position: relative;
+}
 
 .heading {
     font-size: 24px;
@@ -87,4 +84,13 @@
     background: var(--buttonGradient);
     padding: 4px;
     cursor: pointer;
+}
+
+.confirmBoxContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: fit-content;
+    background-color: red;
 }

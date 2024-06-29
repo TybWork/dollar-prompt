@@ -12,6 +12,8 @@
 
 // export default Gpt3
 import styles from '@/app/(Pages)/sell/ThirdStep/gpt/Gpt3.module.css'
+import AlertBox from '@/app/Components/(liteComponents)/AlertBox/AlertBox';
+import ConfirmBox from '@/app/Components/(liteComponents)/ConfirmBox/ConfirmBox';
 import FieldInfo from '@/app/Components/(liteComponents)/FieldInfo/FieldInfo';
 import InputField from '@/app/Components/(liteComponents)/InputField/InputField';
 import MultiFuntionBtn from '@/app/Components/(liteComponents)/MultiFunctionBtn/MultiFuntionBtn';
@@ -159,7 +161,6 @@ const Gpt3 = () => {
                     </div>
                 </div>
             </div>
-
         </div>
     )
 }

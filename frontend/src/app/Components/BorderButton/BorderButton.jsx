@@ -1,7 +1,7 @@
 import styles from "@/app/Components/BorderButton/BorderButton.module.css"
-const BorderButton = (props) => {
+const BorderButton = ({ onClick, title }) => {
     return (
-        <button className={styles.borderBtn}>{props.title}</button>
+        <button onClick={onClick} className={styles.borderBtn}>{title}</button>
     )
 }
 export default BorderButton;

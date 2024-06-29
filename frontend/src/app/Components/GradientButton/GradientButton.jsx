@@ -1,7 +1,7 @@
 import styles from "@/app/Components/GradientButton/GradientButton.module.css"
-const GradientButton = (props) => {
+const GradientButton = ({ title, onClick }) => {
     return (
-        <button className={styles.gradientBtn} onClick={props.onClick}>{props.title}</button>
+        <button className={styles.gradientBtn} onClick={onClick}>{title}</button>
     )
 }
-export default GradientButton
+export default GradientButton;

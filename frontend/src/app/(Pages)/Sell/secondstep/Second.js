@@ -6,7 +6,7 @@ import InputField from '@/app/Components/(liteComponents)/InputField/InputField'
 
 const Second = ({ onNext, onSelect, onChange }) => {
     return (
-        <div>
+        <div className={styles.parentContainer}>
             {/* heading */}
             <h2 className={styles.heading}>Prompt Details</h2>
 

@@ -1,12 +1,12 @@
 .borderBtn {
     background: transparent;
-    padding: 8px 16px;
+    padding: 9px 16px;
     color: var(--textClr);
     border: none;
     border-radius: 5px;
     border: 1px solid var(--textClr);
-    font-weight: 600;
     cursor: pointer;
+    font-size: 18px;
 }
 
 .borderBtn:hover {
