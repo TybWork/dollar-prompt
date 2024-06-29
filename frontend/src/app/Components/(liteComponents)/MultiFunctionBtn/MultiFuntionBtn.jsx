@@ -1,7 +1,7 @@
 import styles from '@/app/Components/(liteComponents)/MultiFunctionBtn/MultiFunctionBtn.module.css'
-const MultiFuntionBtn = () => {
+const MultiFuntionBtn = ({ onClick, gradient, disabled }) => {
     return (
-        <button className={styles.gradient}>Add example +</button>
+        <button disabled={disabled} className={gradient ? styles.gradient : styles.bordered} onClick={onClick}>Add example +</button>
     )
 }
 

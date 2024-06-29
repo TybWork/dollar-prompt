@@ -14,9 +14,11 @@
 import styles from '@/app/(Pages)/sell/ThirdStep/gpt/Gpt3.module.css'
 import FieldInfo from '@/app/Components/(liteComponents)/FieldInfo/FieldInfo';
 import InputField from '@/app/Components/(liteComponents)/InputField/InputField';
+import MultiFuntionBtn from '@/app/Components/(liteComponents)/MultiFunctionBtn/MultiFuntionBtn';
 import TextArea from '@/app/Components/(liteComponents)/TextAreaComponent/TextArea';
 import GradientButton from '@/app/Components/GradientButton/GradientButton';
 import { useState } from 'react'
+import { FaPlus } from "react-icons/fa6";
 const Gpt3 = () => {
     // firstSelection 
     const [prompt, setprompt] = useState("chat");
@@ -25,6 +27,37 @@ const Gpt3 = () => {
     // prompt engineSelection
     const [engine, setengine] = useState('disabled')
     const [divOnEngine, setdivOnEngine] = useState('none')
+    // sample prompts
+    const [samplePromptArray, setsamplePromptArray] = useState([]);
+    const [outPutText, setoutPutText] = useState('')
+    const [samplePromptTitle, setsamplePromptTitle] = useState('')
+
+    // unique sample text function
+    function promptBracesFunc(e) {
+        const uniqueTxt = e.target.value;
+        setsamplePromptTitle(uniqueTxt);
+        console.log(uniqueTxt);
+        const firstIndex = samplePromptTitle.indexOf('[') + 1;
+        const lastIndex = samplePromptTitle.indexOf(']')
+        const splitText = samplePromptTitle.slice(firstIndex, lastIndex)
+        console.log(splitText)
+    }
+    // to get custom text
+    function customOutPutFunc(e) {
+        setoutPutText(e.target.value)
+    }
+
+    // to get add texts to array
+    function examplePromptAddFunc() {
+        setsamplePromptArray(prevArray => [...prevArray, outPutText])
+        setoutPutText('');
+    }
+
+    // delete sample
+    function deleteSampleFunc(index) {
+        setsamplePromptArray(prev => prev.filter((_, i) => i !== index));
+    }
+
 
     function selectType(e) {
         setprompt(e.target.value)
@@ -45,6 +78,7 @@ const Gpt3 = () => {
             setdivOnEngine('block')
         }
     }
+
     return (
         <div className={styles.parentContainer}>
             {/* top selection */}
@@ -69,7 +103,7 @@ const Gpt3 = () => {
                 <i className={styles.info}>Copy and paste the JSON GPT prompt file from the OpenAI playground. Ensure any editable parts of your prompt are indicated by [square brackets].
                 </i>
                 <i className={styles.info}>Watch our 19 second guide to the right (below on mobile) if you're stuck.</i>
-                <TextArea rows={20} />
+                <TextArea onChange={promptBracesFunc} rows={20} />
             </div>
 
             {/* ..........................fieldInfo bottom...................... */}
@@ -91,11 +125,25 @@ const Gpt3 = () => {
                 <div className={styles.engineDetail} style={{ display: divOnEngine }}>
                     {/* *prompt */}
                     <FieldInfo title="*Prompt" description="Copy and paste your prompt below. Ensure any editable parts of your prompt are indicated by [square brackets]." />
-                    <TextArea rows={6} />
+                    <TextArea onChange={promptBracesFunc} rows={6} />
 
+                    {/* .......................... */}
                     {/* *Example outputs */}
                     <FieldInfo title="*Example outputs" description="Add 4 example outputs from your prompt." />
-                    <TextArea rows={6} placeholder="Paste your output here" />
+                    <TextArea margin="8px" value={outPutText} onChange={customOutPutFunc} rows={6} placeholder="Paste your output here" />
+                    <MultiFuntionBtn gradient={outPutText == "" ? false : true} disabled={outPutText == "" ? true : false} onClick={examplePromptAddFunc} />
+
+                    {/* prompts sample */}
+
+                    <div className={styles.samplesContainer}>
+                        {samplePromptArray.map((item, index) => (
+                            <div className={styles.sampleTextContainer}>
+                                <textarea key={index} disabled value={item} name="" id=""></textarea>
+                                <FaPlus className={styles.cancel} onClick={() => deleteSampleFunc(index)} />
+                            </div>
+                        ))}
+                    </div>
+                    {/* ........................ */}
 
                     {/* *Prompt Instructions */}
                     <FieldInfo title="*Prompt Instructions" description="Any extra tips or examples for the buyer on how to use this prompt." />

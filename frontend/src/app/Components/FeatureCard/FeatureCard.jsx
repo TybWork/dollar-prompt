@@ -2,7 +2,6 @@
 import Image from 'next/image';
 import styles from '@/app/Components/FeatureCard/FeatureCard.module.css';
 import { useRouter } from 'next/navigation';
-
 export const FeatureCard = ({ data }) => {
     const router = useRouter();
     return (

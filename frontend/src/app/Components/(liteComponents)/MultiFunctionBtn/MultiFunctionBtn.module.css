@@ -15,7 +15,7 @@
     cursor: pointer;
     background: var(--buttonGradient);
     border: 1px solid transparent;
-    color: var(--primaryClr);
+    color: var(--textClr);
     width: fit-content;
     transition: var(--transition);
 }
