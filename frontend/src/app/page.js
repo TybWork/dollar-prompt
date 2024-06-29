@@ -4,13 +4,13 @@ import HomeTopSlider from './Components/HomeTopSlider/HomeTopSlider';
 import FeatureCard from './Components/FeatureCard/FeatureCard';
 import SinglePromptCard from './Components/SinglePromptCard/SinglePromptCard';
 import SimpleSlider from './Components/SimpleSlider/SimpleSlider';
-import SinglePrompt from './Components/SinglePrompt/SinglePrompt';
 import Slider from './Components/Slider/Slider';
 import AnimatedHeading from './Components/(liteComponents)/AnimatedHeading/AnimatedHeading';
 import ItemTopList from './Components/ItemTopList/ItemTopList';
 import TopItemSingleList from './Components/TopItemSingleList/TopItemSingleList';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import Loading from './(Pages)/Loading';
 
 export default function Home() {
   const [dallprompt, setDallPrompt] = useState([]);
@@ -29,6 +29,13 @@ export default function Home() {
     fetchData();
   }, []);
 
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
+    setTimeout(() => setLoading(false), 3300)
+  }, [])
+  if (loading) {
+    return <Loading />
+  }
   return (
     <div className={styles.mainContainer}>
       {/* Top slider */}
