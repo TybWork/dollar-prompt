@@ -14,6 +14,7 @@
 import styles from '@/app/(Pages)/sell/ThirdStep/gpt/Gpt3.module.css'
 import AlertBox from '@/app/Components/(liteComponents)/AlertBox/AlertBox';
 import ConfirmBox from '@/app/Components/(liteComponents)/ConfirmBox/ConfirmBox';
+import EditableTextComponent from '@/app/Components/(liteComponents)/EditableTextComponent/EditableTextComponent';
 import FieldInfo from '@/app/Components/(liteComponents)/FieldInfo/FieldInfo';
 import InputField from '@/app/Components/(liteComponents)/InputField/InputField';
 import MultiFuntionBtn from '@/app/Components/(liteComponents)/MultiFunctionBtn/MultiFuntionBtn';
@@ -53,6 +54,19 @@ const Gpt3 = () => {
     function examplePromptAddFunc() {
         setsamplePromptArray(prevArray => [...prevArray, outPutText])
         setoutPutText('');
+
+        // {
+        //     "title": 'asdfsf',
+        //     "outputText": 'safasdfasdfasfdasdfsafd'
+        // },
+        // {
+        //     "title": 'asdfsf',
+        //     "outputText": 'safasdfasdfasfdasdfsafd'
+        // },
+        // {
+        //     "title": 'asdfsf',
+        //     "outputText": 'safasdfasdfasfdasdfsafd'
+        // }
     }
 
     // delete sample
@@ -145,6 +159,18 @@ const Gpt3 = () => {
                             </div>
                         ))}
                     </div>
+
+                    {/* example prompts */}
+                    <FieldInfo title="*Example Prompts" description="Provide the exact prompts shown in the examples for the customer. Type the variable values into the input boxes below." />
+                    <div className={styles.exampleContainer}>
+                        {samplePromptArray.map((item, index) => (
+                            <div className={styles.sampleTextContainer2}>
+                                <EditableTextComponent titleString={samplePromptTitle} />
+                                <textarea key={index} disabled value={item} name="" id=""></textarea>
+                            </div>
+                        ))}
+                    </div>
+
                     {/* ........................ */}
 
                     {/* *Prompt Instructions */}

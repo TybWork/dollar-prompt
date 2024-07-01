@@ -71,6 +71,32 @@
     padding: 6px;
 }
 
+.exampleContainer {
+    display: flex;
+    gap: 36px;
+    flex-direction: column;
+}
+
+.sampleTextContainer2 {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sampleTextContainer2 textarea {
+    width: 168px !important;
+    height: 170px;
+    background: var(--tertiaryClr);
+    border-radius: 8px;
+    flex-shrink: 0;
+    color: var(--textClr);
+    outline: none;
+    border: none;
+    resize: none;
+    padding: 6px;
+}
+
 .cancel {
     position: absolute;
     top: -6px;
