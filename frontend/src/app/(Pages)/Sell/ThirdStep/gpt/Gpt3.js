@@ -1,28 +1,14 @@
-// import React from 'react'
-
-// const Gpt3 = ({ onNext, onChange }) => {
-//     return (
-//         <div>
-//             <div>gpt step 3</div>
-//             <input type="text" name="a1" onChange={onChange} />
-//             <button onClick={onNext}>Next</button>
-//         </div>
-//     )
-// }
-
-// export default Gpt3
 import styles from '@/app/(Pages)/sell/ThirdStep/gpt/Gpt3.module.css'
-import AlertBox from '@/app/Components/(liteComponents)/AlertBox/AlertBox';
-import ConfirmBox from '@/app/Components/(liteComponents)/ConfirmBox/ConfirmBox';
-import EditableTextComponent from '@/app/Components/(liteComponents)/EditableTextComponent/EditableTextComponent';
 import FieldInfo from '@/app/Components/(liteComponents)/FieldInfo/FieldInfo';
-import InputField from '@/app/Components/(liteComponents)/InputField/InputField';
-import MultiFuntionBtn from '@/app/Components/(liteComponents)/MultiFunctionBtn/MultiFuntionBtn';
 import TextArea from '@/app/Components/(liteComponents)/TextAreaComponent/TextArea';
 import GradientButton from '@/app/Components/GradientButton/GradientButton';
+import EditableTextComponent from '@/app/Components/(liteComponents)/EditableTextComponent/EditableTextComponent';
+import MultiFuntionBtn from '@/app/Components/(liteComponents)/MultiFunctionBtn/MultiFuntionBtn';
+import InputField from '@/app/Components/(liteComponents)/InputField/InputField';
 import { useState } from 'react'
 import { FaPlus } from "react-icons/fa6";
-const Gpt3 = () => {
+
+const Gpt3 = ({ onNext }) => {
     // firstSelection 
     const [prompt, setprompt] = useState("chat");
     // second selection enableDisable
@@ -33,18 +19,15 @@ const Gpt3 = () => {
     // sample prompts
     const [samplePromptArray, setsamplePromptArray] = useState([]);
     const [outPutText, setoutPutText] = useState('')
-    const [samplePromptTitle, setsamplePromptTitle] = useState('')
+    const [samplePromptTitle, setsamplePromptTitle] = useState('');
+    const [sampleObj, setsampleObj] = useState([])
 
     // unique sample text function
     function promptBracesFunc(e) {
         const uniqueTxt = e.target.value;
         setsamplePromptTitle(uniqueTxt);
-        console.log(uniqueTxt);
-        const firstIndex = samplePromptTitle.indexOf('[') + 1;
-        const lastIndex = samplePromptTitle.indexOf(']')
-        const splitText = samplePromptTitle.slice(firstIndex, lastIndex)
-        console.log(splitText)
     }
+
     // to get custom text
     function customOutPutFunc(e) {
         setoutPutText(e.target.value)
@@ -52,27 +35,47 @@ const Gpt3 = () => {
 
     // to get add texts to array
     function examplePromptAddFunc() {
-        setsamplePromptArray(prevArray => [...prevArray, outPutText])
+        const newSample = { title: samplePromptTitle, text: outPutText };
+        setsamplePromptArray(prevArray => [...prevArray, outPutText]);
         setoutPutText('');
-
-        // {
-        //     "title": 'asdfsf',
-        //     "outputText": 'safasdfasdfasfdasdfsafd'
-        // },
-        // {
-        //     "title": 'asdfsf',
-        //     "outputText": 'safasdfasdfasfdasdfsafd'
-        // },
-        // {
-        //     "title": 'asdfsf',
-        //     "outputText": 'safasdfasdfasfdasdfsafd'
-        // }
+        setsampleObj(prev => [...prev, newSample]);
+        console.log(sampleObj);
     }
 
     // delete sample
     function deleteSampleFunc(index) {
-        setsamplePromptArray(prev => prev.filter((_, i) => i !== index));
+        setsampleObj(prev => prev.filter((_, i) => i !== index));
+        console.log(index)
     }
+
+    // ..................logic for customised title for unique prompt ...............
+    const parseContent = (content, val) => {
+        const parts = content.split(/(\[[^\]]+\])/g); // Split the content into parts
+        return parts.map(part => {
+            if (part.match(/\[[^\]]+\]/)) {
+                // If the part is inside square brackets
+                // const text = part.slice(1, -1); // Remove square brackets
+                return `${val}`;
+            } else {
+                return `${part}`;
+            }
+        }).join('');
+    };
+
+
+    function handleEditableTextChange(index, value) {
+        setsampleObj(prev => {
+            const newSampleObj = [...prev];
+            const updatedItem = { ...newSampleObj[index], title: `${parseContent(samplePromptTitle, value)}` };
+            newSampleObj[index] = updatedItem;
+
+            newSampleObj[index] = updatedItem;
+            console.log('Updated sampleObj:', newSampleObj);
+            return newSampleObj;
+        });
+    }
+    // ..................logic for customised title for unique prompt ends ...............
+
 
 
     function selectType(e) {
@@ -97,6 +100,7 @@ const Gpt3 = () => {
 
     return (
         <div className={styles.parentContainer}>
+
             {/* top selection */}
             <h2 className={styles.heading}>Prompt File</h2>
 
@@ -152,21 +156,29 @@ const Gpt3 = () => {
                     {/* prompts sample */}
 
                     <div className={styles.samplesContainer}>
-                        {samplePromptArray.map((item, index) => (
-                            <div className={styles.sampleTextContainer}>
-                                <textarea key={index} disabled value={item} name="" id=""></textarea>
+                        {sampleObj.map((item, index) => (
+                            <div className={styles.sampleTextContainer} key={index}>
+                                <textarea disabled value={item.text} name="" id=""></textarea>
                                 <FaPlus className={styles.cancel} onClick={() => deleteSampleFunc(index)} />
                             </div>
                         ))}
                     </div>
 
                     {/* example prompts */}
-                    <FieldInfo title="*Example Prompts" description="Provide the exact prompts shown in the examples for the customer. Type the variable values into the input boxes below." />
+                    <div style={{
+                        display: sampleObj.length === 0 ? 'none'
+                            : 'block'
+                    }}>
+                        <FieldInfo title="*Example Prompts" description="Provide the exact prompts shown in the examples for the customer. Type the variable values into the input boxes below." />
+                    </div>
                     <div className={styles.exampleContainer}>
-                        {samplePromptArray.map((item, index) => (
-                            <div className={styles.sampleTextContainer2}>
-                                <EditableTextComponent titleString={samplePromptTitle} />
-                                <textarea key={index} disabled value={item} name="" id=""></textarea>
+                        {sampleObj.map((item, index) => (
+                            <div className={styles.sampleTextContainer2} key={index}>
+                                <EditableTextComponent
+                                    titleString={samplePromptTitle}
+                                    onTextChange={(i, value) => handleEditableTextChange(index, value)}
+                                />
+                                <textarea key={index} disabled value={item.text} name="" id=""></textarea>
                             </div>
                         ))}
                     </div>
@@ -178,17 +190,17 @@ const Gpt3 = () => {
                     <TextArea rows={12} placeholder="To get the most out of this prompt you need to.." />
 
                     {/* *Prompt Instructions */}
-                    <FieldInfo title="*ChatGPT Share Link" description='Copy the " Share chat" link to you using this prompt in ChatGPT.' />
+                    <FieldInfo title="*ChatGPT Share Link" description='Copy the "Share chat" link to you using this prompt in ChatGPT.' />
                     <InputField placeholder="https://chatgpt.com/share/00000000-0000-0000-0000-0000000000" />
 
                     {/* button */}
                     <div className={styles.btnContainer}>
-                        <GradientButton title="Next" />
+                        <GradientButton title="Next" onClick={onNext} />
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
-export default Gpt3
+export default Gpt3;
