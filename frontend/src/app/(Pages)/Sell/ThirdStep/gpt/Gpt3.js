@@ -39,7 +39,6 @@ const Gpt3 = ({ onNext }) => {
         setsamplePromptArray(prevArray => [...prevArray, outPutText]);
         setoutPutText('');
         setsampleObj(prev => [...prev, newSample]);
-        console.log(sampleObj);
     }
 
     // delete sample
@@ -151,7 +150,7 @@ const Gpt3 = ({ onNext }) => {
                     {/* *Example outputs */}
                     <FieldInfo title="*Example outputs" description="Add 4 example outputs from your prompt." />
                     <TextArea margin="8px" value={outPutText} onChange={customOutPutFunc} rows={6} placeholder="Paste your output here" />
-                    <MultiFuntionBtn gradient={outPutText == "" ? false : true} disabled={outPutText == "" ? true : false} onClick={examplePromptAddFunc} />
+                    <MultiFuntionBtn gradient={outPutText == "" || sampleObj.length ? false : true} disabled={outPutText == "" || sampleObj.length > 3 ? true : false} onClick={examplePromptAddFunc} />
 
                     {/* prompts sample */}
 
