@@ -1,3 +1,7 @@
+.parentContainer {
+    width: 50%;
+}
+
 .heading {
     font-size: 24px;
     font-weight: normal;

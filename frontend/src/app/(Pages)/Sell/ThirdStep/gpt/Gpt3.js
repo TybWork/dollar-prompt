@@ -48,6 +48,7 @@ const Gpt3 = ({ onNext }) => {
     }
 
     // ..................logic for customised title for unique prompt ...............
+
     const parseContent = (content, val) => {
         const parts = content.split(/(\[[^\]]+\])/g); // Split the content into parts
         return parts.map(part => {
@@ -60,7 +61,6 @@ const Gpt3 = ({ onNext }) => {
             }
         }).join('');
     };
-
 
     function handleEditableTextChange(index, value) {
         setsampleObj(prev => {

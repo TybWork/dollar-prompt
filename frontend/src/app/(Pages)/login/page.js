@@ -57,7 +57,7 @@ const loginUser = () => {
             <div className={styles.terms}>By creating an account, you agree to our <Link href="/tandcs">terms of service.</Link></div>
 
             {/* already have account */}
-            <Link className={styles.link} href="">Create a new account</Link>
+            <Link className={styles.link} href="/signup">Create a new account</Link>
         </div>
     )
 }

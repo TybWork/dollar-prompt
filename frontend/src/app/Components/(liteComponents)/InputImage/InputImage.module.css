@@ -1,3 +1,8 @@
+.imgParentContainer {
+    width: 100%;
+    border: 1px solid red;
+}
+
 .ImageContainer {
     width: 100%;
     display: flex;
@@ -25,4 +30,36 @@
     display: flex;
     font-size: 16px;
     background-color: var(--primaryClr);
+}
+
+.outputImgContainer {
+    width: 80%;
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.outputImgContainer img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+}
+
+.singleImgContainer {
+    position: relative;
+}
+
+.cancel {
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    color: var(--textClr);
+    transform: rotate(45deg);
+    font-size: 18px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    background: var(--buttonGradient);
+    padding: 4px;
+    cursor: pointer;
 }

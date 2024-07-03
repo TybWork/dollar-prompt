@@ -21,6 +21,7 @@ const page = () => {
     const [stepCount, setstepCount] = useState(1)
     const [user, setuser] = useState({})
     const [data, setdata] = useState(user)
+    const [file, setfile] = useState([])
 
     // next button handle
     function handleNext() {
@@ -43,24 +44,21 @@ const page = () => {
         setselected(`${seletedValue}`)
     }
 
-    // ************working fine with text inputs************
-    // function handleOnchange(changeVal) {
-    //     const { name, value } = changeVal.target
-    //     setuser({ ...user, [name]: value })
-    //     setdata(user)
-    //     console.log(user)
-    // }
-
     function handleOnchange(changeVal) {
         const { name, value, type } = changeVal.target;
 
         if (type === 'file') {
-            const files = changeVal.target.files; // Get the selected files array
-            setuser((prevUser) => ({ ...prevUser, myfiles: files })); // Update user state with the files array
+            const files = changeVal.target.files[0]; // Get the selected files array
+            console.log(files)
+            setfile(prev => [...prev, files])
+            setuser(prevUser => ({ ...prevUser, myfiles: file }));
+            // Update user state with the files array
             setdata(user)
+            console.log(data)
         } else {
             setuser((prevUser) => ({ ...prevUser, [name]: value })); // Update user state with the input value
             setdata(user)
+            console.log(data)
         }
     }
 
