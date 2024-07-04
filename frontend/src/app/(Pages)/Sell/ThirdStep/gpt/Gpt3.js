@@ -75,8 +75,6 @@ const Gpt3 = ({ onNext }) => {
     }
     // ..................logic for customised title for unique prompt ends ...............
 
-
-
     function selectType(e) {
         setprompt(e.target.value)
         if (e.target.value == "chat") {

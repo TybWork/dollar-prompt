@@ -19,7 +19,12 @@ import GradientButton from '@/app/Components/GradientButton/GradientButton'
 import TextArea from '@/app/Components/(liteComponents)/TextAreaComponent/TextArea'
 import InputImage from '@/app/Components/(liteComponents)/InputImage/InputImage'
 
-const Dall3 = ({ onNext, onChange }) => {
+const Dall3 = ({ onNext, onChange, imgFunc }) => {
+
+    // const handleImageChange = (selectedFiles) => {
+    //     console.log('Selected files:', selectedFiles);
+    //     // Perform any operations with selected files here
+    // };
     return (
         <div className={styles.parentContainer}>
             <h2 className={styles.heading}>Prompt File</h2>
@@ -40,7 +45,8 @@ const Dall3 = ({ onNext, onChange }) => {
             <TextArea placeholder="To get the most out of this prompt you need to.." rows="18" name="promptInstruction" id="describePrompt" onChange={onChange} />
 
             {/* *Example images */}
-            <InputImage onChange={onChange} />
+            {/* <InputImage onChange={onChange} /> */}
+            <InputImage onChange={imgFunc} />
 
             {/* next button */}
             <div className={styles.nextBtn}>
