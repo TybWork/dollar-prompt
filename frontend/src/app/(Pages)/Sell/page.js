@@ -58,7 +58,6 @@ const page = () => {
             setuser(prevUser => ({ ...prevUser, [name]: value }));
         }
         setdata(user);
-        console.log(data);
     }
 
     const handleSubmit = async () => {

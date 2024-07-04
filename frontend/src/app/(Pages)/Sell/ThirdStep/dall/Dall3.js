@@ -1,18 +1,3 @@
-// import React from 'react'
-
-// const Dall3 = ({ onNext, onChange }) => {
-//     return (
-//         <div>
-//             <div>step 3</div>
-//             <button onClick={onNext}>Next</button>
-//             <input type="text" name="firstName" onChange={onChange} />
-//             <input type="text" name='lastName' onChange={onChange} />
-//         </div>
-//     )
-// }
-
-// export default Dall3
-
 import styles from '@/app/(Pages)/sell/ThirdStep/dall/Dall3.module.css'
 import FieldInfo from '@/app/Components/(liteComponents)/FieldInfo/FieldInfo'
 import GradientButton from '@/app/Components/GradientButton/GradientButton'
@@ -20,11 +5,6 @@ import TextArea from '@/app/Components/(liteComponents)/TextAreaComponent/TextAr
 import InputImage from '@/app/Components/(liteComponents)/InputImage/InputImage'
 
 const Dall3 = ({ onNext, onChange, imgFunc }) => {
-
-    // const handleImageChange = (selectedFiles) => {
-    //     console.log('Selected files:', selectedFiles);
-    //     // Perform any operations with selected files here
-    // };
     return (
         <div className={styles.parentContainer}>
             <h2 className={styles.heading}>Prompt File</h2>
@@ -57,4 +37,4 @@ const Dall3 = ({ onNext, onChange, imgFunc }) => {
     )
 }
 
-export default Dall3
+export default Dall3;
