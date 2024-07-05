@@ -52,7 +52,7 @@ const page = () => {
 
     // this function will append samplePrompts object to mainobject when gpt is active 
     function getSamplePromptFunc(myObj) {
-        if (selected == "GPT" || selected === "Llama") {
+        if (selected == "GPT" || selected === "Llama" || selected === "Midjourney") {
             setuser(prevUser => ({ ...prevUser, examplePrompts: myObj }))
         }
     }
@@ -133,7 +133,7 @@ const page = () => {
             {/* Midjourney prompt sell */}
             {selected === "Midjourney" && step >= 3 && (
                 <div>
-                    {step === 3 && <Midjourney onNext={handleNext} onChange={handleOnchange} />}
+                    {step === 3 && <Midjourney onNext={handleNext} onChange={handleOnchange} imgFunc={imageChangeFunc} />}
                 </div>
             )}
 
