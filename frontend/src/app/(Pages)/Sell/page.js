@@ -28,6 +28,7 @@ const page = () => {
         setcounter(prev => prev + 20)
         setstepCount(prev => prev + 1)
     }
+
     // previous button handle
     function handlePrev() {
         if (stepCount < 2) {
@@ -38,6 +39,7 @@ const page = () => {
             setstepCount(prev => prev - 1)
         }
     }
+
     function handleSelect(select) {
         const seletedValue = select.target.value;
         setselected(`${seletedValue}`)
@@ -47,6 +49,13 @@ const page = () => {
         handleOnchange({ target: { name: 'myfiles', value: selectedFiles, type: 'file' } });
 
     };
+
+    // this function will append samplePrompts object to mainobject when gpt is active 
+    function getSamplePromptFunc(myObj) {
+        if (selected == "GPT") {
+            setuser(prevUser => ({ ...prevUser, examplePrompts: myObj }))
+        }
+    }
 
     function handleOnchange(changeVal) {
         const { name, value, type } = changeVal.target;
@@ -58,7 +67,10 @@ const page = () => {
             setuser(prevUser => ({ ...prevUser, [name]: value }));
         }
         setdata(user);
+        console.log(data)
     }
+
+    // get sample prompts
 
     const handleSubmit = async () => {
         const formData = new FormData();
@@ -81,6 +93,7 @@ const page = () => {
             console.log("myError is here:", error);
         }
     };
+
     return (
         <div className={styles.parentContainer}>
             <StepsCounter stepCount={stepCount} onPrev={handlePrev} width={counter} />
@@ -99,7 +112,7 @@ const page = () => {
             {/* dalle prompt sell */}
             {selected === "GPT" && step >= 3 && (
                 <div>
-                    {step === 3 && <Gpt3 onNext={handleNext} onChange={handleOnchange} />}
+                    {step === 3 && <Gpt3 onNext={handleNext} onChange={handleOnchange} promptSamples={getSamplePromptFunc} />}
                 </div>
             )}
 
@@ -138,4 +151,4 @@ const page = () => {
     )
 }
 
-export default page
+export default page;
