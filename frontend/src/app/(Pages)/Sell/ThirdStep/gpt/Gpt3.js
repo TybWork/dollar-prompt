@@ -112,7 +112,7 @@ const Gpt3 = ({ onNext, onChange, promptSamples }) => {
                 {/* selection  */}
                 <select className='select' defaultValue="chat" value={prompt} onChange={selectType} style={{ width: '200px' }} name="gptPromptType" id="gptPromptType">
                     <option key="selectType" value="selectType" disabled>Select Gpt Type</option>
-                    <option key="Completion" value="Completion">Completion (Regular Gpt)</option>
+                    {/* <option key="Completion" value="Completion">Completion (Regular Gpt)</option> */}
                     <option key="chat" value="chat">Chat (Chat Gpt)</option>
                 </select>
             </div>

@@ -33,7 +33,6 @@ const Second = ({ onNext, onSelect, onChange }) => {
 
             {/* name field */}
             <FieldInfo title="Name" description="Suggest a title for this prompt." />
-            <input className={styles.textInput} placeholder="Movie to Emoji Generator" type="text" name="title" id="title" onChange={onChange} />
             <InputField
                 placeholder="Movie to Emoji Generator"
                 name="title"

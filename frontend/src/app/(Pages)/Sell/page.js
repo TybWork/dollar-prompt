@@ -52,7 +52,7 @@ const page = () => {
 
     // this function will append samplePrompts object to mainobject when gpt is active 
     function getSamplePromptFunc(myObj) {
-        if (selected == "GPT") {
+        if (selected == "GPT" || selected === "Llama") {
             setuser(prevUser => ({ ...prevUser, examplePrompts: myObj }))
         }
     }
@@ -119,14 +119,14 @@ const page = () => {
             {/* Leonardo prompt sell */}
             {selected === "Leonardo Ai" && step >= 3 && (
                 <div>
-                    {step === 3 && <Leonardo onNext={handleNext} onChange={handleOnchange} />}
+                    {step === 3 && <Leonardo onNext={handleNext} onChange={handleOnchange} imgFunc={imageChangeFunc} />}
                 </div>
             )}
 
             {/* Leonardo prompt sell */}
             {selected === "Llama" && step >= 3 && (
                 <div>
-                    {step === 3 && <Llama onNext={handleNext} onChange={handleOnchange} />}
+                    {step === 3 && <Llama onNext={handleNext} onChange={handleOnchange} promptSamples={getSamplePromptFunc} />}
                 </div>
             )}
 
