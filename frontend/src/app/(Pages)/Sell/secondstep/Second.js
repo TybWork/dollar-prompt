@@ -37,7 +37,7 @@ const Second = ({ onNext, onSelect, onChange }) => {
                 placeholder="Movie to Emoji Generator"
                 name="title"
                 id="title"
-                onChange={onChange}
+                onchangeFunc={onChange}
             />
 
             {/* textArea field */}

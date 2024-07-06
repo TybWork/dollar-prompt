@@ -8,8 +8,10 @@ import FieldInfo from '@/app/Components/(liteComponents)/FieldInfo/FieldInfo';
 import ImageUploader from '@/app/Components/(liteComponents)/ImageUploader/ImageUploader';
 import GradientButton from '@/app/Components/GradientButton/GradientButton';
 import { jwtDecode } from 'jwt-decode';
+import { useRouter } from 'next/navigation';
 
 const Page = () => {
+    const router = useRouter();
     const [user, setUser] = useState({});
 
     function getValue(val) {
@@ -49,7 +51,8 @@ const Page = () => {
         const userId = decodedToken.userId;
         await refreshCookie(userId, 'seller')
 
-        // document.cookie = `token2 =${newCookie}; path=/`
+        // push to profile page
+        router.push(`/seller/${userId}`)
     }
 
     async function onSubmitFunc() {
@@ -74,6 +77,7 @@ const Page = () => {
         } catch (error) {
             console.log("myError is here:", error);
         }
+
     }
 
     return (

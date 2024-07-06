@@ -16,9 +16,11 @@ import categoriesArr from "@/app/jsonFiles/promptsCategories";
 import { ImArrowRight2 } from "react-icons/im";
 import { PiCaretRightBold } from "react-icons/pi";
 import { jwtDecode } from "jwt-decode";
+import { useRouter } from "next/navigation";
 import axios from "axios";
 
 const Header = () => {
+    const router = useRouter();
     const [categoryHeading, setcategoryHeading] = useState()
     const [subHeadingTitle, setsubHeadingTitle] = useState()
     const [seller, setseller] = useState({ text: "Login", link: "/login" })
@@ -51,12 +53,12 @@ const Header = () => {
     // logout Function
     const logoutFunc = async () => {
         try {
-            const response = await axios.get('http://localhost:4001/api/user/logout', {
+            await axios.get('http://localhost:4001/api/user/logout', {
                 withCredentials: true
             })
             setseller({ text: 'Login', link: '/login' })
             setlogout(false)
-            console.log(`logout successfully`, response.data)
+            router.push('/')
         } catch (error) {
             console.log(`Failed to logout ${error}`)
         }
