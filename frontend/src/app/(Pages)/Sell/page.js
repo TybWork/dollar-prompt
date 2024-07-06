@@ -52,7 +52,7 @@ const page = () => {
 
     // this function will append samplePrompts object to mainobject when gpt is active 
     function getSamplePromptFunc(myObj) {
-        if (selected == "GPT" || selected === "Llama" || selected === "Midjourney") {
+        if (selected == "GPT" || selected === "Llama" || selected === "Midjourney" || selected === "Stable Diffusion") {
             setuser(prevUser => ({ ...prevUser, examplePrompts: myObj }))
         }
     }
@@ -140,7 +140,7 @@ const page = () => {
             {/* stable diffusion prompt sell */}
             {selected === "Stable Diffusion" && step >= 3 && (
                 <div>
-                    {step === 3 && <StableDiffusion onNext={handleNext} onChange={handleOnchange} />}
+                    {step === 3 && <StableDiffusion onNext={handleNext} onChange={handleOnchange} imgFunc={imageChangeFunc} />}
                 </div>
             )}
 

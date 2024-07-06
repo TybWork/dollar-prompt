@@ -63,3 +63,11 @@ export const loginUser = async (req, res) => {
         console.log(`User log in failed ${error}`)
     }
 }
+
+// controller for clear cookie route
+export const clearCookie = async (req, res) => {
+    const cookieName = 'token';
+    res.clearCookie(cookieName);
+    return res.status(200).json({ msg: `cookie ${cookieName} deleted successfully!` })
+
+}

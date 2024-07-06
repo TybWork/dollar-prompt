@@ -16,6 +16,7 @@ import categoriesArr from "@/app/jsonFiles/promptsCategories";
 import { ImArrowRight2 } from "react-icons/im";
 import { PiCaretRightBold } from "react-icons/pi";
 import { jwtDecode } from "jwt-decode";
+import axios from "axios";
 
 const Header = () => {
     const [categoryHeading, setcategoryHeading] = useState()
@@ -26,6 +27,7 @@ const Header = () => {
     const [subCategory, setsubCategory] = useState([]);
     const [innerLinks, setinnerLinks] = useState([])
     const dispatch = useDispatch();
+    const [logout, setlogout] = useState(false)
 
     useEffect(() => {
         if (document.cookie) {
@@ -35,13 +37,28 @@ const Header = () => {
             const userId = decodedToken.userId
             if (role === "seller") {
                 setseller({ text: "Profile", link: `/seller/${userId}` })
+                setlogout(true)
             } else if (role === "user") {
                 setseller({ text: "becomeSeller", link: '/sellerinfo' })
+                setlogout(true)
             } else {
                 setseller({ text: "Login", link: '/login' })
+                setlogout(false)
             }
         }
     }, [])
+
+    // logout Function
+    const logoutFunc = async () => {
+        try {
+            const response = await axios.get('http://localhost:4001/api/user/logout', {
+                withCredentials: true
+            })
+            alert(`logout successfully`, response.data)
+        } catch (error) {
+            console.log(`Failed to logout ${error}`)
+        }
+    }
 
     function mainCategory(val) {
         setsubCategory(val.SubCategories);
@@ -76,9 +93,10 @@ const Header = () => {
                     <nav className={styles.mainNav}>
                         <ul>
                             <li><Link className={styles.link} href="/Marketplace">Marketplace</Link></li>
-                            <li><Link className={styles.link} href="/create">Create</Link></li>
+                            {/* <li><Link className={styles.link} href="/create">Create</Link></li> */}
                             <li><Link className={styles.link} href="/Hire">Hire</Link></li>
                             <li><Link className={styles.link} href={seller.link}>{seller.text}</Link></li>
+                            <li className={styles.link} style={{ display: `${logout == true ? 'block' : 'none'}` }} onClick={logoutFunc}>Logout</li>
                         </ul>
                     </nav>
                     <div className={styles.topNavIconsContainer}>
