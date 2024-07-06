@@ -25,7 +25,7 @@ const loginUser = () => {
         const request = await post("/api/user/login", user)
         const response = request.data
         document.cookie = `token = ${response.token}; path=/`
-
+        console.log(response)
         window.location.href = `/`
     }
 

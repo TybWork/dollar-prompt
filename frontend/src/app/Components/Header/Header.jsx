@@ -54,7 +54,9 @@ const Header = () => {
             const response = await axios.get('http://localhost:4001/api/user/logout', {
                 withCredentials: true
             })
-            alert(`logout successfully`, response.data)
+            setseller({ text: 'Login', link: '/login' })
+            setlogout(false)
+            console.log(`logout successfully`, response.data)
         } catch (error) {
             console.log(`Failed to logout ${error}`)
         }
