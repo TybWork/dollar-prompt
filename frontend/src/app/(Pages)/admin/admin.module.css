@@ -1,0 +1,10 @@
+.parentContainer {
+    margin: 2em 4em;
+}
+
+.promptsContainer {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: 2em 0em;
+}
