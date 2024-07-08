@@ -59,7 +59,7 @@ const page = () => {
             <div className={styles.promptsContainer}>
                 {
                     promptData.map((e, index) =>
-                        <ReviewCard key={index} label={e.promptType} image={e.Image_Url[0]} description={e.description} onClick={() => router.push(`/admin/review/dalle/${e._id}`)} />
+                        <ReviewCard key={index} label={e.promptType} image={e.Image_Url[0]} description={`${e.description.slice(0, 48)}...`} onClick={() => router.push(`/admin/review/dalle/${e._id}`)} />
                     )
                 }
             </div>
