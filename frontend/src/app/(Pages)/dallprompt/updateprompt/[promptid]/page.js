@@ -5,23 +5,30 @@ import TextArea from '@/app/Components/(liteComponents)/TextAreaComponent/TextAr
 import InputImage from '@/app/Components/(liteComponents)/InputImage/InputImage';
 import GradientButton from '@/app/Components/GradientButton/GradientButton';
 import InputField from '@/app/Components/(liteComponents)/InputField/InputField';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const Page = ({ params }) => {
+    const router = useRouter();
     const { promptid } = params;
 
-    const [promptData, setPromptData] = useState(null);
+    const [promptData, setPromptData] = useState({});
     const [user, setUser] = useState({ status: 'pending' });
 
     useEffect(() => {
-        axios.get(`http://localhost:4001/api/prompt/dalle/update/${promptid}`)
-            .then((response) => {
-                let fetchedData = response.data[0]
-                setPromptData(fetchedData)
-                setUser(fetchedData)
-            })
-            .catch((error) => console.error('Error fetching prompt data:', error));
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`http://localhost:4001/api/prompt/dalle/get/${promptid}`);
+                let fetchedData = response.data;
+                setPromptData(fetchedData);
+                setUser(fetchedData);
+            } catch (error) {
+                console.error('Error fetching prompt data:', error);
+            }
+        };
+
+        fetchData();
     }, [promptid]);
 
     // onchange function
@@ -37,11 +44,10 @@ const Page = ({ params }) => {
         });
     }
 
-    console.log(user)
-    console.log(promptid)
     const updateDataFunc = async () => {
-        await axios.put(`http://localhost:4001/api/prompt/dalle/update/${promptid}`, user)
-        alert("form updated successfully")
+        await axios.put(`http://localhost:4001/api/prompt/dalle/update/${promptid}`, { ...user, status: 'pending' })
+        router.push(`/`)
+        // alert("form updated successfully")
         // const formData = new FormData();
         // for (const key in user) {
         //     if (key === 'myfiles') {
@@ -162,9 +168,9 @@ const Page = ({ params }) => {
             </div>
 
             {/* *Example images */}
-            <div>
+            {/* <div>
                 <InputImage onChange={handleOnChange} />
-            </div>
+            </div> */}
             <GradientButton title="Update Prompt" onClick={updateDataFunc} />
         </div>
     );

@@ -25,11 +25,15 @@ const loginUser = () => {
     // function to handle submit
     const submitForms = async (e) => {
         e.preventDefault();
-        const request = await post("/api/user/login", user)
-        const response = request.data
-        document.cookie = `token = ${response.token}; path=/`
-        // router.push('/')
-        window.location.href = '/'
+        try {
+            const request = await post("/api/user/login", user)
+            const response = request.data
+            document.cookie = `token = ${response.token}; path=/`
+            // router.push('/')
+            window.location.href = '/'
+        } catch (error) {
+            alert(error.response.data.msg)
+        }
     }
 
     return (

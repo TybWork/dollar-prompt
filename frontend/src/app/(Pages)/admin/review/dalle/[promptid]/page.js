@@ -31,17 +31,11 @@ const Page = ({ params }) => {
 
     const updateStatus = async (e) => {
         const target = e.target.innerText;
-        // if (target === 'Approve') {
-        //     setstatus('active')
-        // } else if (target === 'Reject') {
-        //     setstatus('paused')
-        // }
-        const newStatus = target === 'Active' ? 'active' : 'paused';
+        const newStatus = target === 'Approve' ? 'active' : 'paused';
         setstatus(newStatus)
         await axios.put(`http://localhost:4001/api/admin/dalle/update/${promptid}`, { status: newStatus }, {
             withCredentials: true
         })
-
         router.push('/admin')
     }
 
@@ -110,7 +104,6 @@ const Page = ({ params }) => {
                 </div>
 
             </div>
-
 
             {/* right container */}
             <div className={styles.rightContainer}>
