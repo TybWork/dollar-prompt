@@ -15,7 +15,7 @@ const Page = ({ params }) => {
     const [user, setUser] = useState({ status: 'pending' });
 
     useEffect(() => {
-        axios.get(`http://localhost:4001/api/prompt/dalle/filter/?_id=${promptid}`)
+        axios.get(`http://localhost:4001/api/prompt/dalle/update/${promptid}`)
             .then((response) => {
                 let fetchedData = response.data[0]
                 setPromptData(fetchedData)

@@ -96,7 +96,7 @@ const Page = () => {
             </div>
             <div>
                 <FieldInfo title="Profile Description" />
-                <TextArea name="profileDescription" onChange={getValue} placeholder="Short Profile description...." rows={10} margin="0px" />
+                <TextArea name="profileDescription" onChange={getValue} placeholder="Short Profile description..." rows={10} margin="0px" />
             </div>
             <div className={styles.submitBtn}>
                 <GradientButton title="Submit" onClick={onSubmitFunc} />
