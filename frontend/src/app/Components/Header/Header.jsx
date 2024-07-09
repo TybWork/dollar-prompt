@@ -30,12 +30,13 @@ const Header = () => {
     const [innerLinks, setinnerLinks] = useState([])
     const dispatch = useDispatch();
     const [logout, setlogout] = useState(false)
+    const [role, setrole] = useState('')
 
     useEffect(() => {
         if (document.cookie) {
             const token = document.cookie;
             const decodedToken = jwtDecode(token)
-            const role = decodedToken.userRole
+            setrole(decodedToken.userRole)
             const userId = decodedToken.userId
             if (role === "seller") {
                 setseller({ text: "Profile", link: `/seller/${userId}` })
@@ -43,12 +44,17 @@ const Header = () => {
             } else if (role === "user") {
                 setseller({ text: "becomeSeller", link: '/sellerinfo' })
                 setlogout(true)
-            } else {
+            } else if (role === 'admin') {
+                setseller({ text: 'Admin', link: '/admin' })
+                setlogout(true)
+                router.push('/admin')
+            }
+            else {
                 setseller({ text: "Login", link: '/login' })
                 setlogout(false)
             }
         }
-    }, [])
+    }, [role])
 
     // logout Function
     const logoutFunc = async () => {
