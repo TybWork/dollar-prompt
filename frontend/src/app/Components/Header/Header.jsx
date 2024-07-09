@@ -30,13 +30,14 @@ const Header = () => {
     const [innerLinks, setinnerLinks] = useState([])
     const dispatch = useDispatch();
     const [logout, setlogout] = useState(false)
-    const [role, setrole] = useState('')
+    const [role, setrole] = useState('user')
 
     useEffect(() => {
         if (document.cookie) {
             const token = document.cookie;
             const decodedToken = jwtDecode(token)
             setrole(decodedToken.userRole)
+            console.log(decodedToken.userRole)
             const userId = decodedToken.userId
             if (role === "seller") {
                 setseller({ text: "Profile", link: `/seller/${userId}` })
@@ -65,6 +66,7 @@ const Header = () => {
             setseller({ text: 'Login', link: '/login' })
             setlogout(false)
             router.push('/')
+            setrole('user')
         } catch (error) {
             console.log(`Failed to logout ${error}`)
         }
@@ -87,6 +89,7 @@ const Header = () => {
         setsubHeadingTitle(showCategory.subCategoryTitle);
         setinnerLinks(showCategory.innerCategroies);
     }
+
     return (
         <>
             <header className={styles.headerContainer}>
@@ -109,7 +112,7 @@ const Header = () => {
                             <li className={styles.link} style={{ display: `${logout == true ? 'block' : 'none'}` }} onClick={logoutFunc}>Logout</li>
                         </ul>
                     </nav>
-                    <div className={styles.topNavIconsContainer}>
+                    <div className={styles.topNavIconsContainer} style={{ display: role === "admin" ? 'none' : 'flex' }}>
                         <MdOutlineMessage className={styles.topNavIcons} />
                         <GoBell className={`${styles.topNavIcons} ${styles.bellIcon}`} />
                         <div className={styles.cartContainer}>
@@ -120,7 +123,7 @@ const Header = () => {
                     </div>
                 </div>
                 {/*------------- bottom navbar --------------- */}
-                <nav className={styles.bottomNav}>
+                <nav className={styles.bottomNav} style={{ display: role === 'admin' ? 'none' : 'block' }}>
                     <ul>
                         {
                             categoriesArr.map((val, index) =>
