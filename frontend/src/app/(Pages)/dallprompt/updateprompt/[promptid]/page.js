@@ -8,6 +8,7 @@ import InputField from '@/app/Components/(liteComponents)/InputField/InputField'
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Loading from '@/app/Components/(liteComponents)/Loading/Loading';
 
 const Page = ({ params }) => {
     const router = useRouter();
@@ -70,7 +71,7 @@ const Page = ({ params }) => {
     }
 
     if (!promptData) {
-        return <div>Loading...</div>;
+        return <Loading />
     }
 
     return (

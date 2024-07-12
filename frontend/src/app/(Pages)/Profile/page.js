@@ -9,6 +9,7 @@ import { IoMdEye } from "react-icons/io";
 import { BsFillGearFill } from "react-icons/bs";
 import { MdStar } from "react-icons/md";
 import Search from '@/app/Components/(liteComponents)/Search/Search';
+import Loading from '@/app/Components/(liteComponents)/Loading/Loading';
 
 
 const page = () => {

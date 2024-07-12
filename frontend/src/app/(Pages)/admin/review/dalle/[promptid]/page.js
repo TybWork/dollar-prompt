@@ -6,6 +6,7 @@ import GradientButton from '@/app/Components/GradientButton/GradientButton';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import Loading from '@/app/Components/(liteComponents)/Loading/Loading';
 
 const Page = ({ params }) => {
     const router = useRouter();
@@ -27,7 +28,7 @@ const Page = ({ params }) => {
         };
         fetchData();
     }, [promptid]);
-    if (!promptData) return <div>Loading...</div>
+    if (!promptData) return <Loading />
 
     const updateStatus = async (e) => {
         const target = e.target.innerText;

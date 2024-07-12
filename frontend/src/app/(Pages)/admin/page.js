@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { jwtDecode } from 'jwt-decode'
 import axios from 'axios'
 import ReviewCard from '@/app/Components/reviewCard/reviewCard'
+import Loading from '@/app/Components/(liteComponents)/Loading/Loading'
 const page = () => {
     const router = useRouter();
     const [isAdmin, setisAdmin] = useState(false)
@@ -46,6 +47,8 @@ const page = () => {
     }, [router]);
 
     if (!isAdmin) return null
+
+    if (!promptData) return <Loading />
 
     return (
         <div className={styles.parentContainer}>

@@ -10,7 +10,7 @@ const finlandica = Finlandica({ subsets: ["latin"] });
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={finlandica.className}>
+      <body className={finlandica.className} style={{ display: 'flex', height: '100vh', flexDirection: 'column', justifyContent: 'space-between' }}>
 
         {/* this provider is from global redux */}
         <Providers>

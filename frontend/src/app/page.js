@@ -10,17 +10,17 @@ import ItemTopList from './Components/ItemTopList/ItemTopList';
 import TopItemSingleList from './Components/TopItemSingleList/TopItemSingleList';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import Loading from './(Pages)/Loading';
+import Loading from './Components/(liteComponents)/Loading/Loading';
+// import Loading from './(Pages)/Loading';
 
 export default function Home() {
-  const [dallprompt, setDallPrompt] = useState([]);
+  const [dallprompt, setDallPrompt] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('http://localhost:4001/api/prompt/dalle/get');
         setDallPrompt(response.data);
-        console.log('Data fetched:', response.data); // Debugging line
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -29,11 +29,7 @@ export default function Home() {
     fetchData();
   }, []);
 
-  const [loading, setLoading] = useState(true)
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 3300)
-  }, [])
-  if (loading) {
+  if (!dallprompt) {
     return <Loading />
   }
   return (

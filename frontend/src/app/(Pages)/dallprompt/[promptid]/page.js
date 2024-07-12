@@ -13,6 +13,7 @@ import GradientButton from '@/app/Components/GradientButton/GradientButton';
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import { useState } from 'react';
 import axios from 'axios';
+import Loading from '@/app/Components/(liteComponents)/Loading/Loading';
 
 const page = ({ params }) => {
     const { promptid } = params;
@@ -27,7 +28,7 @@ const page = ({ params }) => {
     }, [promptid])
 
     if (!prompt) {
-        return <div>Loading...</div>;
+        return <Loading />
     }
 
     // formate createdAt date 
