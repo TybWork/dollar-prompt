@@ -5,8 +5,10 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import SinglePromptCard from '@/app/Components/SinglePromptCard/SinglePromptCard';
 import Loading from '@/app/Components/(liteComponents)/Loading/Loading';
+import { useRouter } from 'next/navigation';
 
 const MarketPlace = () => {
+  const router = useRouter();
   const [promptData, setPromptData] = useState(null);
 
   useEffect(() => {
@@ -32,7 +34,7 @@ const MarketPlace = () => {
       <Filter />
       <div className={styles.leftContainer}>
         {promptData.map((item) => (
-          <SinglePromptCard image={item.Image_Url[0]} label={item.promptType} title={item.title.slice(0, 18)} price={item.price} />
+          <SinglePromptCard image={item.Image_Url[0]} label={item.promptType} title={`${item.title.slice(0, 18)} . . .`} price={item.price} onClick={() => { router.push(`/dallprompt/${item._id}`) }} />
         ))}
       </div>
     </div>

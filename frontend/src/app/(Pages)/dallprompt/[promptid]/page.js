@@ -4,6 +4,7 @@ import styles from "@/app/(Pages)/dallprompt/page.module.css"
 import Image from 'next/image';
 import { IoMdHeart } from "react-icons/io";
 import { CiHeart } from "react-icons/ci";
+import { FaHeart } from "react-icons/fa";
 import { MdRemoveRedEye } from "react-icons/md";
 import Favourites from '@/app/Components/Favourites/Favourites';
 import IconText from '@/app/Components/(liteComponents)/IconText/IconText';
@@ -14,11 +15,13 @@ import { MdOutlineAddShoppingCart } from "react-icons/md";
 import { useState } from 'react';
 import axios from 'axios';
 import Loading from '@/app/Components/(liteComponents)/Loading/Loading';
+import { transform } from 'next/dist/build/swc';
 
 const page = ({ params }) => {
     const { promptid } = params;
 
     const [prompt, setPrompt] = useState(null)
+    const [heart, setheart] = useState(true)
 
     useEffect(() => {
         axios.get(`http://localhost:4001/api/prompt/dalle/get/${promptid}`)
@@ -37,12 +40,21 @@ const page = ({ params }) => {
         return date.toLocaleDateString();
     }
 
+    function heartFunc() {
+        console.log('heart clicked')
+        setheart(prev => !prev)
+    }
     return (
         <div className={styles.mainContainer}>
             {/* leftContainer */}
             <div className={styles.leftContainer}>
-                <CiHeart className={styles.favouriteIcon} />
-
+                <div className={styles.favouriteIcon} onClick={heartFunc}>
+                    {/* <CiHeart className={styles.favouriteIcon} style={{ transform: `scale(${heart ? 0 : 1})` }} />
+                    <FaHeart className={styles.favouriteIcon} style={{ transform: `scale(${heart ? 0 : 1})` }} /> */}
+                    {
+                        heart ? <CiHeart className={styles.favouriteIcon} /> : <FaHeart className={styles.favouriteIcon} style={{ fontSize: '30px' }} />
+                    }
+                </div>
                 {/* background Hero Image */}
                 <div className={styles.imageGradient}>
                     <img src={prompt.Image_Url[0]} />
