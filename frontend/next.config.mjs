@@ -3,7 +3,7 @@ const nextConfig = {
   // next.config.js
   images: {
     domains: ['res.cloudinary.com'],
-  }
+  },
 
 };
 

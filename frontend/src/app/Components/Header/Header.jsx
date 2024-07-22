@@ -115,7 +115,7 @@ const Header = () => {
                         <MdOutlineMessage className={styles.topNavIcons} />
                         <GoBell className={`${styles.topNavIcons} ${styles.bellIcon}`} />
                         <div className={styles.cartContainer}>
-                            <HiOutlineShoppingCart className={styles.topNavIcons} />
+                            <Link href='/cart'><HiOutlineShoppingCart className={styles.topNavIcons} /></Link>
                             <div className={styles.cartCounter}>99</div>
                         </div>
                         <RxHamburgerMenu className={`${styles.topNavIcons} ${styles.hamburgerIcon}`} onClick={() => dispatch(showNav())} />
