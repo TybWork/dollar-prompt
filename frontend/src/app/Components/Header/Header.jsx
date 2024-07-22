@@ -33,11 +33,10 @@ const Header = () => {
     const [role, setrole] = useState('user')
 
     useEffect(() => {
-        if (document.cookie) {
+        if (document.cookie.includes('token=')) {
             const token = document.cookie;
             const decodedToken = jwtDecode(token)
             setrole(decodedToken.userRole)
-            console.log(decodedToken.userRole)
             const userId = decodedToken.userId
             if (role === "seller") {
                 setseller({ text: "Profile", link: `/seller/${userId}` })
