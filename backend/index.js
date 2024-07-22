@@ -12,6 +12,7 @@ import { route as dalleRoute } from './src/routes/Prompts/DallE/Dalle.js';
 import cors from 'cors'
 import { sellerRoutes } from './src/routes/sellerRoutes.js';
 import { logRouts } from './src/routes/logs.js';
+import { webhookRoute } from './src/routes/webhook.js';
 
 dotenv.config();
 const stripeData = stripe(process.env.STRIPE_SECRET_KEY)
@@ -19,6 +20,10 @@ const stripeData = stripe(process.env.STRIPE_SECRET_KEY)
 const app = express();
 const port = process.env.PORT;
 //app.use........
+
+// webhook route call(always call it before express.json())
+app.use('/api', webhookRoute)
+
 app.use(express.json());
 app.use(cookieParser());
 // app.use(bodyParser.json());
