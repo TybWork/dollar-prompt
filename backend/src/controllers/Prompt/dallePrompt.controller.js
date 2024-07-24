@@ -69,8 +69,9 @@ export const getFilteredPrompt = async (req, res) => {
 
 //update single prompt
 export const updateDallE = async (req, res) => {
+    const id = req.params.id
     try {
-        const updatePrompt = await DallE.findOneAndUpdate(req.query, req.body, { new: true });
+        const updatePrompt = await DallE.findByIdAndUpdate(id, req.body, { new: true });
         return res.status(200).json(updatePrompt);
     } catch (error) {
         res.status(500).json({ msg: `Failde to update dalle prompt:${error}` })

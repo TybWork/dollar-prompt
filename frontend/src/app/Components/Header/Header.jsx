@@ -16,8 +16,11 @@ import categoriesArr from "@/app/jsonFiles/promptsCategories";
 import { ImArrowRight2 } from "react-icons/im";
 import { PiCaretRightBold } from "react-icons/pi";
 import { jwtDecode } from "jwt-decode";
+import { useRouter } from "next/navigation";
+import axios from "axios";
 
 const Header = () => {
+    const router = useRouter();
     const [categoryHeading, setcategoryHeading] = useState()
     const [subHeadingTitle, setsubHeadingTitle] = useState()
     const [seller, setseller] = useState({ text: "Login", link: "/login" })
@@ -26,22 +29,47 @@ const Header = () => {
     const [subCategory, setsubCategory] = useState([]);
     const [innerLinks, setinnerLinks] = useState([])
     const dispatch = useDispatch();
+    const [logout, setlogout] = useState(false)
+    const [role, setrole] = useState('user')
 
     useEffect(() => {
-        if (document.cookie) {
+        if (document.cookie.includes('token=')) {
             const token = document.cookie;
             const decodedToken = jwtDecode(token)
-            const role = decodedToken.userRole
+            setrole(decodedToken.userRole)
             const userId = decodedToken.userId
             if (role === "seller") {
                 setseller({ text: "Profile", link: `/seller/${userId}` })
+                setlogout(true)
             } else if (role === "user") {
                 setseller({ text: "becomeSeller", link: '/sellerinfo' })
-            } else {
+                setlogout(true)
+            } else if (role === 'admin') {
+                setseller({ text: 'Admin', link: '/admin' })
+                setlogout(true)
+                router.push('/admin')
+            }
+            else {
                 setseller({ text: "Login", link: '/login' })
+                setlogout(false)
             }
         }
-    }, [])
+    }, [role])
+
+    // logout Function
+    const logoutFunc = async () => {
+        try {
+            await axios.get('http://localhost:4001/api/user/logout', {
+                withCredentials: true
+            })
+            setseller({ text: 'Login', link: '/login' })
+            setlogout(false)
+            router.push('/')
+            setrole('user')
+        } catch (error) {
+            console.log(`Failed to logout ${error}`)
+        }
+    }
 
     function mainCategory(val) {
         setsubCategory(val.SubCategories);
@@ -60,6 +88,7 @@ const Header = () => {
         setsubHeadingTitle(showCategory.subCategoryTitle);
         setinnerLinks(showCategory.innerCategroies);
     }
+
     return (
         <>
             <header className={styles.headerContainer}>
@@ -71,28 +100,28 @@ const Header = () => {
 
                     {/* search component */}
                     <Search placeholder="Search Prompts" />
-
                     {/* top nav icons */}
                     <nav className={styles.mainNav}>
                         <ul>
-                            <li><Link className={styles.link} href="/Marketplace">Marketplace</Link></li>
-                            <li><Link className={styles.link} href="/create">Create</Link></li>
-                            <li><Link className={styles.link} href="/Hire">Hire</Link></li>
+                            <li><Link className={styles.link} style={{ display: role === 'admin' ? 'none' : 'block' }} href="/Marketplace">Marketplace</Link></li>
+                            {/* <li><Link className={styles.link} href="/create">Create</Link></li> */}
+                            <li><Link className={styles.link} style={{ display: role === 'admin' ? 'none' : 'block' }} href="/Hire">Hire</Link></li>
                             <li><Link className={styles.link} href={seller.link}>{seller.text}</Link></li>
+                            <li className={styles.link} style={{ display: `${logout == true ? 'block' : 'none'}` }} onClick={logoutFunc}>Logout</li>
                         </ul>
                     </nav>
-                    <div className={styles.topNavIconsContainer}>
+                    <div className={styles.topNavIconsContainer} style={{ display: role === "admin" ? 'none' : 'flex' }}>
                         <MdOutlineMessage className={styles.topNavIcons} />
                         <GoBell className={`${styles.topNavIcons} ${styles.bellIcon}`} />
                         <div className={styles.cartContainer}>
-                            <HiOutlineShoppingCart className={styles.topNavIcons} />
+                            <Link href='/cart'><HiOutlineShoppingCart className={styles.topNavIcons} /></Link>
                             <div className={styles.cartCounter}>99</div>
                         </div>
                         <RxHamburgerMenu className={`${styles.topNavIcons} ${styles.hamburgerIcon}`} onClick={() => dispatch(showNav())} />
                     </div>
                 </div>
                 {/*------------- bottom navbar --------------- */}
-                <nav className={styles.bottomNav}>
+                <nav className={styles.bottomNav} style={{ display: role === 'admin' ? 'none' : 'block' }}>
                     <ul>
                         {
                             categoriesArr.map((val, index) =>

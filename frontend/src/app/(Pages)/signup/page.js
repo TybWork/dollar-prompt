@@ -5,7 +5,9 @@ import styles from '@/app/(Pages)/signup/signup.module.css'
 import Image from "next/image";
 import InputField from "@/app/Components/(liteComponents)/InputField/InputField";
 import Link from "next/link";
+import { useRouter } from "next/router";
 const CreateUser = () => {
+    const router = useRouter();
     const users = {
         firstName: "",
         lastName: "",
@@ -26,7 +28,7 @@ const CreateUser = () => {
         e.preventDefault();
         await axios.post("http://localhost:4001/api/user/signup", user)
         setuser(users)
-        window.location.href = "http://localhost:3000/login";
+        router.push('/login')
     }
 
     return (

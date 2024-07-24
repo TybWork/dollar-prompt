@@ -16,7 +16,7 @@ export const signUp = async (req, res) => {
 
         const hashedPassword = bcrypt.hashSync(password, 10)
 
-        const user = new User({
+        const user = new User.create({
             firstName,
             lastName,
             gender,
@@ -61,5 +61,34 @@ export const loginUser = async (req, res) => {
 
     } catch (error) {
         console.log(`User log in failed ${error}`)
+    }
+}
+
+// controller for clear cookie route
+export const clearCookie = async (req, res) => {
+    const cookieName = 'token';
+    res.clearCookie(cookieName);
+    return res.status(200).json({ msg: `cookie ${cookieName} deleted successfully!` })
+
+}
+
+// controller for refreshig cookie
+export const refreshCookie = async (req, res) => {
+    const { userId, userRole } = req.body;
+
+    try {
+        const newToken = jwt.sign({ userId, userRole }, process.env.JWT_SECRET)
+
+        res.cookie('token', newToken, {
+            httpOnly: false,
+            secure: false,
+            sameSite: "None"
+        })
+
+        return res.status(200).json({ msg: 'Cookie refreshed successfully!!', newToken })
+    } catch (error) {
+        return res.status(400).json({
+            msg: `Failed to refresh cookie ${error}`
+        })
     }
 }

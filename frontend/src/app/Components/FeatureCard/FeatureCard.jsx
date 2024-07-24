@@ -4,6 +4,11 @@ import styles from '@/app/Components/FeatureCard/FeatureCard.module.css';
 import { useRouter } from 'next/navigation';
 export const FeatureCard = ({ data }) => {
     const router = useRouter();
+    if (!data) {
+        return <div>Loading...</div>; // Or any loading indicator
+    }
+
+
     return (
         <div className={styles.featuredCardContainer} onClick={() => { router.push(`/dallprompt/${data._id}`) }}>
             <Image className={styles.image} alt={data.title} src={data.Image_Url[0]} width={350} height={200} />

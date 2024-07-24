@@ -24,23 +24,23 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
 }
 
 .mainNav ul li {
     list-style: none;
     cursor: pointer;
-    padding: 8px 16px;
-    transition: var(--transition);
-    cursor: pointer;
-    border-radius: 8px;
 }
 
 .link {
     color: var(--textClr);
     text-decoration: none;
+    padding: 8px 16px;
+    transition: var(--transition);
+    cursor: pointer;
 }
 
-.mainNav ul li:hover {
+.link:hover {
     background-color: var(--tertiaryClr);
     border-radius: 4px;
 }

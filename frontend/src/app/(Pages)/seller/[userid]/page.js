@@ -8,15 +8,18 @@ import { useEffect, useState } from 'react';
 const page = ({ params }) => {
     const { userid } = params;
 
-    const [sellerData, setsellerData] = useState({})
+    const [sellerData, setsellerData] = useState(null)
 
     useEffect(() => {
         axios.get(`http://localhost:4001/api/seller/getseller?userId=${userid}`)
             .then((response) => {
                 setsellerData(response.data[0])
             })
-
     }, [])
+
+    if (!sellerData) {
+        return <div>Loading...</div>
+    }
 
     return (
         <div className={styles.mainContainer}>

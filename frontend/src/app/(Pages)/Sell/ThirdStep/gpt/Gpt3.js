@@ -5,10 +5,10 @@ import GradientButton from '@/app/Components/GradientButton/GradientButton';
 import EditableTextComponent from '@/app/Components/(liteComponents)/EditableTextComponent/EditableTextComponent';
 import MultiFuntionBtn from '@/app/Components/(liteComponents)/MultiFunctionBtn/MultiFuntionBtn';
 import InputField from '@/app/Components/(liteComponents)/InputField/InputField';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FaPlus } from "react-icons/fa6";
 
-const Gpt3 = ({ onNext }) => {
+const Gpt3 = ({ onNext, onChange, promptSamples }) => {
     // firstSelection 
     const [prompt, setprompt] = useState("chat");
     // second selection enableDisable
@@ -44,7 +44,6 @@ const Gpt3 = ({ onNext }) => {
     // delete sample
     function deleteSampleFunc(index) {
         setsampleObj(prev => prev.filter((_, i) => i !== index));
-        console.log(index)
     }
 
     // ..................logic for customised title for unique prompt ...............
@@ -67,15 +66,15 @@ const Gpt3 = ({ onNext }) => {
             const newSampleObj = [...prev];
             const updatedItem = { ...newSampleObj[index], title: `${parseContent(samplePromptTitle, value)}` };
             newSampleObj[index] = updatedItem;
-
             newSampleObj[index] = updatedItem;
-            console.log('Updated sampleObj:', newSampleObj);
+            promptSamples(newSampleObj)
             return newSampleObj;
         });
     }
+    useEffect(() => {
+        promptSamples(sampleObj)
+    }, [sampleObj])
     // ..................logic for customised title for unique prompt ends ...............
-
-
 
     function selectType(e) {
         setprompt(e.target.value)
@@ -84,6 +83,7 @@ const Gpt3 = ({ onNext }) => {
             setprompt(e.target.value)
             setdivOnEngine('none')
             setengine('disabled')
+            onChange(e)
         } else {
             setdivsOnType(prev => !prev)
             setprompt(e.target.value)
@@ -95,6 +95,7 @@ const Gpt3 = ({ onNext }) => {
         if (e.target.value !== 'disabled') {
             setdivOnEngine('block')
         }
+        onChange(e)
     }
 
     return (
@@ -111,7 +112,7 @@ const Gpt3 = ({ onNext }) => {
                 {/* selection  */}
                 <select className='select' defaultValue="chat" value={prompt} onChange={selectType} style={{ width: '200px' }} name="gptPromptType" id="gptPromptType">
                     <option key="selectType" value="selectType" disabled>Select Gpt Type</option>
-                    <option key="Completion" value="Completion">Completion (Regular Gpt)</option>
+                    {/* <option key="Completion" value="Completion">Completion (Regular Gpt)</option> */}
                     <option key="chat" value="chat">Chat (Chat Gpt)</option>
                 </select>
             </div>
@@ -150,7 +151,7 @@ const Gpt3 = ({ onNext }) => {
                     {/* *Example outputs */}
                     <FieldInfo title="*Example outputs" description="Add 4 example outputs from your prompt." />
                     <TextArea margin="8px" value={outPutText} onChange={customOutPutFunc} rows={6} placeholder="Paste your output here" />
-                    <MultiFuntionBtn gradient={outPutText == "" || sampleObj.length ? false : true} disabled={outPutText == "" || sampleObj.length > 3 ? true : false} onClick={examplePromptAddFunc} />
+                    <MultiFuntionBtn gradient={outPutText == "" || sampleObj.length > 3 ? false : true} disabled={outPutText == "" || sampleObj.length > 3 ? true : false} onClick={examplePromptAddFunc} />
 
                     {/* prompts sample */}
 
@@ -186,11 +187,11 @@ const Gpt3 = ({ onNext }) => {
 
                     {/* *Prompt Instructions */}
                     <FieldInfo title="*Prompt Instructions" description="Any extra tips or examples for the buyer on how to use this prompt." />
-                    <TextArea rows={12} placeholder="To get the most out of this prompt you need to.." />
+                    <TextArea rows={12} placeholder="To get the most out of this prompt you need to.." name="promptInstructions" onChange={onChange} />
 
                     {/* *Prompt Instructions */}
                     <FieldInfo title="*ChatGPT Share Link" description='Copy the "Share chat" link to you using this prompt in ChatGPT.' />
-                    <InputField placeholder="https://chatgpt.com/share/00000000-0000-0000-0000-0000000000" />
+                    <InputField placeholder="https://chatgpt.com/share/00000000-0000-0000-0000-0000000000" name="gptLink" onchangeFunc={onChange} />
 
                     {/* button */}
                     <div className={styles.btnContainer}>

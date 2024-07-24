@@ -7,8 +7,11 @@ import InputField from '@/app/Components/(liteComponents)/InputField/InputField'
 import FieldInfo from '@/app/Components/(liteComponents)/FieldInfo/FieldInfo';
 import ImageUploader from '@/app/Components/(liteComponents)/ImageUploader/ImageUploader';
 import GradientButton from '@/app/Components/GradientButton/GradientButton';
+import { jwtDecode } from 'jwt-decode';
+import { useRouter } from 'next/navigation';
 
 const Page = () => {
+    const router = useRouter();
     const [user, setUser] = useState({});
 
     function getValue(val) {
@@ -22,7 +25,38 @@ const Page = () => {
         console.log("Updated user state: ", user);
     }
 
+    // refresh cookie function on becoming seller
+    const refreshCookie = async (userId, userRole) => {
+        try {
+            const response = await axios.post('http://localhost:4001/api/user/refreshcookie', {
+                userId,
+                userRole
+            }, {
+                withCredentials: true
+            })
+            document.cookie = `token = ${response.data.newToken}; path=/`
+            setlogout(true)
+            setseller({ text: 'Profile', link: `/seller/${userId}` })
+            console.log(`Cookie refreshed successfully`, response.data)
+        } catch (error) {
+            console.log(`Failed to refresh cookie`)
+        }
+    }
+
+    // becomeSeller function to handle cookie refresh value
+    const becomeSeller = async () => {
+        const token = document.cookie;
+        console.log(token)
+        const decodedToken = jwtDecode(token)
+        const userId = decodedToken.userId;
+        await refreshCookie(userId, 'seller')
+
+        // push to profile page
+        router.push(`/seller/${userId}`)
+    }
+
     async function onSubmitFunc() {
+        becomeSeller()
         const formData = new FormData();
         for (const key in user) {
             if (key === 'profileBanner' || key === 'profileImage') {
@@ -43,6 +77,7 @@ const Page = () => {
         } catch (error) {
             console.log("myError is here:", error);
         }
+
     }
 
     return (
@@ -61,7 +96,7 @@ const Page = () => {
             </div>
             <div>
                 <FieldInfo title="Profile Description" />
-                <TextArea name="profileDescription" onChange={getValue} placeholder="Short Profile description...." rows={10} margin="0px" />
+                <TextArea name="profileDescription" onChange={getValue} placeholder="Short Profile description..." rows={10} margin="0px" />
             </div>
             <div className={styles.submitBtn}>
                 <GradientButton title="Submit" onClick={onSubmitFunc} />

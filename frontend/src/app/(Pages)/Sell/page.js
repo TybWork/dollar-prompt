@@ -3,7 +3,6 @@ import { useState, useEffect } from "react"
 import First from "./firststep/First"
 import Second from "./secondstep/Second"
 import Dall3 from "./ThirdStep/dall/Dall3"
-
 import Gpt3 from "./ThirdStep/gpt/Gpt3"
 import StepsCounter from "@/app/Components/(liteComponents)/StepsCounter/StepsCounter"
 import styles from '@/app/(Pages)/sell/sell.module.css'
@@ -29,6 +28,7 @@ const page = () => {
         setcounter(prev => prev + 20)
         setstepCount(prev => prev + 1)
     }
+
     // previous button handle
     function handlePrev() {
         if (stepCount < 2) {
@@ -39,28 +39,38 @@ const page = () => {
             setstepCount(prev => prev - 1)
         }
     }
+
     function handleSelect(select) {
         const seletedValue = select.target.value;
         setselected(`${seletedValue}`)
+    }
+
+    const imageChangeFunc = (selectedFiles) => {
+        handleOnchange({ target: { name: 'myfiles', value: selectedFiles, type: 'file' } });
+
+    };
+
+    // this function will append samplePrompts object to mainobject when gpt is active 
+    function getSamplePromptFunc(myObj) {
+        if (selected == "GPT" || selected === "Llama" || selected === "Midjourney" || selected === "Stable Diffusion") {
+            setuser(prevUser => ({ ...prevUser, examplePrompts: myObj }))
+        }
     }
 
     function handleOnchange(changeVal) {
         const { name, value, type } = changeVal.target;
 
         if (type === 'file') {
-            const files = changeVal.target.files[0]; // Get the selected files array
-            console.log(files)
-            setfile(prev => [...prev, files])
-            setuser(prevUser => ({ ...prevUser, myfiles: file }));
-            // Update user state with the files array
-            setdata(user)
-            console.log(data)
+            setfile(value);
+            setuser(prevUser => ({ ...prevUser, [name]: value }));
         } else {
-            setuser((prevUser) => ({ ...prevUser, [name]: value })); // Update user state with the input value
-            setdata(user)
-            console.log(data)
+            setuser(prevUser => ({ ...prevUser, [name]: value }));
         }
+        setdata(user);
+        console.log(data)
     }
+
+    // get sample prompts
 
     const handleSubmit = async () => {
         const formData = new FormData();
@@ -83,6 +93,7 @@ const page = () => {
             console.log("myError is here:", error);
         }
     };
+
     return (
         <div className={styles.parentContainer}>
             <StepsCounter stepCount={stepCount} onPrev={handlePrev} width={counter} />
@@ -94,42 +105,42 @@ const page = () => {
             {/* dalle prompt sell */}
             {selected === "Dall-E" && step >= 3 && (
                 <div>
-                    {step === 3 && <Dall3 onNext={handleNext} onChange={handleOnchange} />}
+                    {step === 3 && <Dall3 onNext={handleNext} onChange={handleOnchange} imgFunc={imageChangeFunc} />}
                 </div>
             )}
 
             {/* dalle prompt sell */}
             {selected === "GPT" && step >= 3 && (
                 <div>
-                    {step === 3 && <Gpt3 onNext={handleNext} onChange={handleOnchange} />}
+                    {step === 3 && <Gpt3 onNext={handleNext} onChange={handleOnchange} promptSamples={getSamplePromptFunc} />}
                 </div>
             )}
 
             {/* Leonardo prompt sell */}
             {selected === "Leonardo Ai" && step >= 3 && (
                 <div>
-                    {step === 3 && <Leonardo onNext={handleNext} onChange={handleOnchange} />}
+                    {step === 3 && <Leonardo onNext={handleNext} onChange={handleOnchange} imgFunc={imageChangeFunc} />}
                 </div>
             )}
 
             {/* Leonardo prompt sell */}
             {selected === "Llama" && step >= 3 && (
                 <div>
-                    {step === 3 && <Llama onNext={handleNext} onChange={handleOnchange} />}
+                    {step === 3 && <Llama onNext={handleNext} onChange={handleOnchange} promptSamples={getSamplePromptFunc} />}
                 </div>
             )}
 
             {/* Midjourney prompt sell */}
             {selected === "Midjourney" && step >= 3 && (
                 <div>
-                    {step === 3 && <Midjourney onNext={handleNext} onChange={handleOnchange} />}
+                    {step === 3 && <Midjourney onNext={handleNext} onChange={handleOnchange} imgFunc={imageChangeFunc} />}
                 </div>
             )}
 
             {/* stable diffusion prompt sell */}
             {selected === "Stable Diffusion" && step >= 3 && (
                 <div>
-                    {step === 3 && <StableDiffusion onNext={handleNext} onChange={handleOnchange} />}
+                    {step === 3 && <StableDiffusion onNext={handleNext} onChange={handleOnchange} imgFunc={imageChangeFunc} />}
                 </div>
             )}
 
@@ -140,4 +151,4 @@ const page = () => {
     )
 }
 
-export default page
+export default page;
