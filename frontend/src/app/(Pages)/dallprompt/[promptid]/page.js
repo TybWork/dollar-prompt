@@ -15,14 +15,15 @@ import { MdOutlineAddShoppingCart } from "react-icons/md";
 import { useState } from 'react';
 import axios from 'axios';
 import Loading from '@/app/Components/(liteComponents)/Loading/Loading';
-import { transform } from 'next/dist/build/swc';
+import { addToCart } from '@/app/Redux/Features/cart/cartSlice';
+import { useDispatch } from 'react-redux';
 
 const page = ({ params }) => {
     const { promptid } = params;
 
     const [prompt, setPrompt] = useState(null)
     const [heart, setheart] = useState(true)
-
+    const dispatch = useDispatch()
     useEffect(() => {
         axios.get(`http://localhost:4001/api/prompt/dalle/get/${promptid}`)
             .then((response) => {
@@ -34,6 +35,14 @@ const page = ({ params }) => {
         return <Loading />
     }
 
+    // function to store data on local storage
+    const localStorageFunc = () => {
+        dispatch(addToCart(prompt))
+    }
+
+    // save prompt to local storage
+
+
     // formate createdAt date 
     function formateCreateAt(createdAt) {
         const date = new Date(createdAt);
@@ -44,6 +53,7 @@ const page = ({ params }) => {
         console.log('heart clicked')
         setheart(prev => !prev)
     }
+
     return (
         <div className={styles.mainContainer}>
             {/* leftContainer */}
@@ -103,7 +113,7 @@ const page = ({ params }) => {
                 <div className={styles.getPromptContainer}>
                     <GradientButton title="Get prompt" />
                     <div className={styles.cartContainer}>
-                        <MdOutlineAddShoppingCart className={styles.cart} />
+                        <MdOutlineAddShoppingCart className={styles.cart} onClick={localStorageFunc} />
                     </div>
                 </div>
 

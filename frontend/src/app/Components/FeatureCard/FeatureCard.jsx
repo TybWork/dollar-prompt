@@ -8,9 +8,8 @@ export const FeatureCard = ({ data }) => {
         return <div>Loading...</div>; // Or any loading indicator
     }
 
-
     return (
-        <div className={styles.featuredCardContainer} onClick={() => { router.push(`/dallprompt/${data._id}`) }}>
+        <div className={styles.featuredCardContainer} style={{ cursor: 'pointer' }} onClick={() => { router.push(`/dallprompt/${data._id}`) }}>
             <Image className={styles.image} alt={data.title} src={data.Image_Url[0]} width={350} height={200} />
             <div className={styles.label}>{data.promptType}</div>
             <div className={styles.bottomText}>

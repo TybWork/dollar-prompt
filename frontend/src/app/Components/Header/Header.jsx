@@ -17,7 +17,9 @@ import { ImArrowRight2 } from "react-icons/im";
 import { PiCaretRightBold } from "react-icons/pi";
 import { jwtDecode } from "jwt-decode";
 import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
 import axios from "axios";
+import { showCart } from "@/app/Redux/Features/cart/cartSlice";
 
 const Header = () => {
     const router = useRouter();
@@ -89,6 +91,8 @@ const Header = () => {
         setinnerLinks(showCategory.innerCategroies);
     }
 
+    const cartProducts = useSelector((state) => state.cart.cartItems)
+
     return (
         <>
             <header className={styles.headerContainer}>
@@ -114,8 +118,8 @@ const Header = () => {
                         <MdOutlineMessage className={styles.topNavIcons} />
                         <GoBell className={`${styles.topNavIcons} ${styles.bellIcon}`} />
                         <div className={styles.cartContainer}>
-                            <Link href='/cart'><HiOutlineShoppingCart className={styles.topNavIcons} /></Link>
-                            <div className={styles.cartCounter}>99</div>
+                            <HiOutlineShoppingCart className={styles.topNavIcons} onClick={() => dispatch(showCart())} />
+                            <div className={styles.cartCounter}>{cartProducts.length}</div>
                         </div>
                         <RxHamburgerMenu className={`${styles.topNavIcons} ${styles.hamburgerIcon}`} onClick={() => dispatch(showNav())} />
                     </div>
