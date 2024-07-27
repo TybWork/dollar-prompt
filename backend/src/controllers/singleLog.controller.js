@@ -17,7 +17,7 @@ export const createLog = async (req, res) => {
 export const getLog = async (req, res) => {
     try {
         const getLog = await ProductLog.find()
-        return res.status('200').json(getLog)
+        return res.status(200).json(getLog)
     } catch (error) {
         return res.status(400).json({ msg: `Failed to get log ${error}` })
     }
