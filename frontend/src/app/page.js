@@ -15,21 +15,23 @@ import Loading from './Components/(liteComponents)/Loading/Loading';
 
 export default function Home() {
   const [dallprompt, setDallPrompt] = useState(null);
+  const [trendingPrompt, settrendingPrompt] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('http://localhost:4001/api/prompt/dalle/get');
+        const getTrendingPrompt = await axios.get(`http://localhost:4001/api/prompt/dalle/filter?status=active&&status=paused`)
         setDallPrompt(response.data);
+        settrendingPrompt(getTrendingPrompt.data)
       } catch (error) {
         console.error('Error fetching data:', error);
       }
-    };
-
+    }
     fetchData();
   }, []);
 
-  if (!dallprompt) {
+  if (!dallprompt || !trendingPrompt) {
     return <Loading />
   }
   return (
@@ -38,62 +40,73 @@ export default function Home() {
       <HomeTopSlider />
 
       {/* FeatureCard slider */}
+      <AnimatedHeading title="Featured Prompts" />
       <Slider component={FeatureCard} data={dallprompt} />
+
+      {/* prompts */}
+      <AnimatedHeading title="Trending Prompts" />
+      <div className={styles.allPromptsContainer}>
+
+        {trendingPrompt.map((item) => (
+          <SinglePromptCard image={item.Image_Url[0]} label={item.promptType} title={`${item.title.slice(0, 18)} . . .`} price={item.price} link={`/dallprompt/${item._id}`} />
+        ))}
+      </div>
+
 
       {/* Item top list */}
-      <ItemTopList mainComponent={<Slider component={TopItemSingleList} data={dallprompt} />} />
+      {/* <ItemTopList mainComponent={<Slider component={TopItemSingleList} data={dallprompt} />} /> */}
 
       {/* Hire Card slider */}
-      <Slider component={FeatureCard} data={dallprompt} />
+      {/* <Slider component={FeatureCard} data={dallprompt} /> */}
 
       {/* Featured prompts */}
-      <AnimatedHeading title="Featured Prompts" />
-      <Slider component={SinglePromptCard} data={dallprompt} />
+      {/* <AnimatedHeading title="Featured Prompts" />
+      <Slider component={SinglePromptCard} data={dallprompt} /> */}
 
       {/* Newest prompts */}
-      <AnimatedHeading title="Newest Prompts" />
-      <Slider component={SinglePromptCard} data={dallprompt} />
+      {/* <AnimatedHeading title="Newest Prompts" /> */}
+      {/* <Slider component={SinglePromptCard} data={dallprompt} /> */}
 
       {/* Most popular prompt bundles */}
-      <AnimatedHeading title="Most Popular Prompts Bundles" />
-      <Slider component={SinglePromptCard} data={dallprompt} />
+      {/* <AnimatedHeading title="Most Popular Prompts Bundles" /> */}
+      {/* <Slider component={SinglePromptCard} data={dallprompt} /> */}
 
       {/* Build an app slider */}
-      <SimpleSlider />
+      {/* <SimpleSlider /> */}
 
       {/* Art & Illustration prompts */}
-      <AnimatedHeading title="Art & Illustration Prompts" />
-      <Slider component={SinglePromptCard} data={dallprompt} />
+      {/* <AnimatedHeading title="Art & Illustration Prompts" /> */}
+      {/* <Slider component={SinglePromptCard} data={dallprompt} /> */}
 
       {/* Logo & Icon prompts */}
-      <AnimatedHeading title="Logo & Icon Prompts" />
-      <Slider component={SinglePromptCard} data={dallprompt} />
+      {/* <AnimatedHeading title="Logo & Icon Prompts" /> */}
+      {/* <Slider component={SinglePromptCard} data={dallprompt} /> */}
 
       {/* Portrait Photography prompts */}
-      <AnimatedHeading title="Portrait Photography Prompts" />
-      <Slider component={SinglePromptCard} data={dallprompt} />
+      {/* <AnimatedHeading title="Portrait Photography Prompts" /> */}
+      {/* <Slider component={SinglePromptCard} data={dallprompt} /> */}
 
       {/* Build an app slider */}
-      <SimpleSlider />
+      {/* <SimpleSlider /> */}
 
       {/* Pattern prompts */}
-      <AnimatedHeading title="Pattern Prompts" />
-      <Slider component={SinglePromptCard} data={dallprompt} />
+      {/* <AnimatedHeading title="Pattern Prompts" /> */}
+      {/* <Slider component={SinglePromptCard} data={dallprompt} /> */}
 
       {/* Sticker prompts */}
-      <AnimatedHeading title="Sticker Prompts" />
-      <Slider component={SinglePromptCard} data={dallprompt} />
+      {/* <AnimatedHeading title="Sticker Prompts" /> */}
+      {/* <Slider component={SinglePromptCard} data={dallprompt} /> */}
 
       {/* T-shirt Print prompts */}
-      <AnimatedHeading title="T-shirt Print Prompts" />
-      <Slider component={SinglePromptCard} data={dallprompt} />
+      {/* <AnimatedHeading title="T-shirt Print Prompts" /> */}
+      {/* <Slider component={SinglePromptCard} data={dallprompt} /> */}
 
       {/* Poster Print prompts */}
-      <AnimatedHeading title="Poster Print Prompts" />
-      <Slider component={SinglePromptCard} data={dallprompt} />
+      {/* <AnimatedHeading title="Poster Print Prompts" /> */}
+      {/* <Slider component={SinglePromptCard} data={dallprompt} /> */}
 
       {/* Explore the App Store slider */}
-      <SimpleSlider />
+      {/* <SimpleSlider /> */}
     </div>
   );
 }

@@ -3,7 +3,7 @@
     gap: 1.5em;
     flex-direction: column;
     background-color: var(--secondryClr);
-    padding: 1em 3em;
+    padding: 16px 64px;
     font-size: 14px;
     border-bottom: 1px solid var(--customBorder);
 }
@@ -17,7 +17,10 @@
 
 .logo {
     font-size: var(--logo);
-    font-size: 2rem;
+}
+
+.mobileLogo {
+    display: none;
 }
 
 .mainNav ul {
@@ -47,21 +50,15 @@
 
 .topNavIcons {
     font-size: 24px;
-    width: 42px;
-    height: 42px;
-    padding: 4px 8px;
+    width: 24px;
+    height: 24px;
     cursor: pointer;
     transition: var(--transition);
     border-radius: 4px;
 }
 
 .topNavIcons:hover {
-    width: 42px;
-    height: 42px;
-    padding: 4px 8px;
-    background-color: var(--tertiaryClr);
-    border-radius: 4px;
-
+    transform: scale(1.1);
 }
 
 
@@ -85,8 +82,8 @@
     justify-content: center;
     align-items: center;
     transform: scale(.6);
-    top: 0px;
-    right: 0px
+    top: -8px;
+    right: -8px
 }
 
 .hamburgerIcon {
@@ -95,7 +92,17 @@
 
 /* -------bottom navbar styling------ */
 
+.bottomNav {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.bottomNav::-webkit-scrollbar {
+    display: none;
+}
+
 .bottomNav ul {
+    width: 1200px;
     display: flex;
     gap: 1em;
     align-items: center;
@@ -119,13 +126,19 @@
 }
 
 /* media queries */
-@media screen and (max-width:1296px) {
-    .bottomNav {
+@media screen and (max-width:1024px) {
+    .headerContainer {
+        padding: 16px 32px;
+    }
+
+    .desktopLogo {
         display: none;
     }
-}
 
-@media screen and (max-width:1024px) {
+    .mobileLogo {
+        display: block;
+    }
+
     .mainNav {
         display: none;
     }
@@ -136,6 +149,10 @@
 
     .bellIcon {
         display: none;
+    }
+
+    .bottomNav {
+        display: none !important;
     }
 }
 

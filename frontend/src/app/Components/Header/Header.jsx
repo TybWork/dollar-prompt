@@ -98,12 +98,13 @@ const Header = () => {
             <header className={styles.headerContainer}>
                 {/* ------------- top header------------- */}
                 <div className={styles.topHeader}>
-                    <div className={styles.logo}></div>
-                    {/* <Image src="/assets/imageAssets/logo.svg" width={150} height={150} /> */}
-                    <img src="/assets/imageAssets/logo.svg" style={{ width: "180px" }} alt="" />
+                    {/* logo  */}
+                    <Link className={styles.desktopLogo} href='/'><img src="/assets/imageAssets/logo.svg" style={{ width: "180px" }} alt="site-logo" /></Link>
+                    <Link className={styles.mobileLogo} href='/'><img style={{ width: '36px' }} src="/assets/imageAssets/dollarprompt-mobile-logo.svg" alt="site-logo" /></Link>
 
                     {/* search component */}
                     <Search placeholder="Search Prompts" />
+
                     {/* top nav icons */}
                     <nav className={styles.mainNav}>
                         <ul>

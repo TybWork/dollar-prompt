@@ -204,3 +204,15 @@
     height: fit-content;
     border-radius: 4px;
 }
+
+@media screen and (max-width:870px) {
+    .discountBarWrapper {
+        margin: 16px 0px;
+    }
+}
+
+@media screen and (max-width:658px) {
+    .container {
+        width: 100%;
+    }
+}

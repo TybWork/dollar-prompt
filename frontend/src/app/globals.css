@@ -24,13 +24,17 @@
   --buttonGradientHover: linear-gradient(122deg, #44C151, #1B1D5E);
 
   /* text styles */
-  --logo: 40px;
+  --logo: 2rem;
   --navLinks: 16px;
   --bottomLinks: 12px;
 
   /* others */
   --transition: .3s;
 }
+
+/* breakpoints */
+/* 1024px
+658px */
 
 body {
   margin: auto;

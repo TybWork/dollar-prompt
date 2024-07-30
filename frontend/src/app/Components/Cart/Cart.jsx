@@ -20,7 +20,7 @@ const Cart = () => {
     // for rounding of to 7 digits after decimal simply multipy and divide by 10^7 = 10000000 for 3, 10^3
     totalPayable = Math.round(totalPayable * 100) / 100
     return (
-        <div className={styles.container} style={{ right: cartVisible ? '0%' : "-100%" }}>
+        <div className={styles.container} style={{ right: cartVisible ? '0%' : "-175%" }}>
             {/* header content */}
             <div className={styles.header}>
                 <HiOutlineShoppingCart className={styles.icon} />

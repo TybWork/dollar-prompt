@@ -5,6 +5,12 @@
     height: 140px;
     position: relative;
     cursor: pointer;
+    color: var(--textClr);
+    transition: 1s ease-in-out;
+}
+
+.promptCardContainer:hover {
+    transform: translateY(-4px);
 }
 
 .image {
@@ -14,14 +20,15 @@
 
 .label {
     position: absolute;
-    top: 5px;
-    left: 5px;
+    top: -120px;
+    left: 0px;
     background-color: var(--primaryClr);
     z-index: 100;
     opacity: .7px;
     border-bottom-right-radius: 5px;
-    padding: 3px;
+    padding: 4px 8px;
     font-size: 14px;
+    color: var(--textClr);
 }
 
 .bottomText {

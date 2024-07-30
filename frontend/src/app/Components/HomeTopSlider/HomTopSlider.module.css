@@ -1,6 +1,6 @@
 .sliderContainer {
     position: relative;
-    height: 350px;
+    height: 300px;
     overflow: hidden;
     /* border: 1px solid rgb(0, 255, 76); */
     border-radius: 10px;
@@ -21,23 +21,25 @@
 .content {
     position: absolute;
     z-index: 500;
-    bottom: 12px;
-    left: 12px;
+    bottom: 24px;
+    left: 24px;
 }
 
 .heading {
     font-size: 2.5rem;
     font-weight: 600;
+    margin-bottom: 12px;
 }
 
 .subHeading {
     font-size: 1.3rem;
     font-weight: normal;
+    margin-bottom: 8px;
 }
 
 .highligtedText {
     font-size: 1.5rem;
-    background: var(--textGradient);
+    background: linear-gradient(122deg, #f17b85, #f79393 15%, #fee4a5 45%, #9ae8b0 65%, #5ba5d0 90%, #9078d0);
     font-weight: 600;
     background-clip: text;
     color: transparent;
@@ -47,4 +49,25 @@
     display: flex;
     gap: 1em;
     margin-top: 16px;
+}
+
+@media screen and (max-width:658px) {
+    .heading {
+        font-size: 32px;
+    }
+
+    .subHeading {
+        font-size: 20px;
+    }
+
+    .highligtedText {
+        font-size: 18px;
+        font-weight: 600;
+    }
+}
+
+@media screen and (max-width:420px) {
+    .buttonContainer {
+        flex-direction: column;
+    }
 }

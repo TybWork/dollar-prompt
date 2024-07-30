@@ -34,7 +34,7 @@ const MarketPlace = () => {
       <Filter />
       <div className={styles.leftContainer}>
         {promptData.map((item) => (
-          <SinglePromptCard image={item.Image_Url[0]} label={item.promptType} title={`${item.title.slice(0, 18)} . . .`} price={item.price} onClick={() => { router.push(`/dallprompt/${item._id}`) }} />
+          <SinglePromptCard image={item.Image_Url[0]} label={item.promptType} title={`${item.title.slice(0, 18)} . . .`} price={item.price} link={`/dallprompt/${item._id}`} />
         ))}
       </div>
     </div>
