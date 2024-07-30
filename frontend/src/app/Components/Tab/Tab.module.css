@@ -66,7 +66,6 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    /* justify-content: space-between; */
     gap: 24px;
 }
 
@@ -166,4 +165,33 @@
     width: 20%;
     height: 20%;
     margin: auto;
+}
+
+
+/* media quries */
+@media screen and (max-width:720px) {
+    .btns {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width:440px) {
+    .btns {
+        gap: 4px;
+    }
+
+    .btns button {
+        width: 100%;
+    }
+
+    .promptBtns {
+        flex-direction: column;
+    }
+
+    .createPrompt {
+        text-align: center;
+    }
 }

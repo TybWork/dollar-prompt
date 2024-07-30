@@ -25,7 +25,7 @@ const SellerPromptCard = ({ label, description, image, previewPromptLink, update
                 <FaShareAlt className={styles.shareIcon} />
             </div>
             <div className={styles.optionsContainer}>
-                <div className={styles.infoText}>{description}</div>
+                <div className={styles.infoText}>{description.slice(0, 60)} . . .</div>
 
                 <div >
                     <BsThreeDots className={styles.options} onClick={dropdownFunc} />

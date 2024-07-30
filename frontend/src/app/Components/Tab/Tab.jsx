@@ -53,7 +53,6 @@ const Tab = ({ sellerId }) => {
             {
                 activeTab === "PROMPTS" &&
                 <div className={styles.prompt}>
-                    <Search placeholder={`Search ${sellerId}'s Prompts`} />
 
                     <div className={styles.promptBtns}>
                         {/* Prompt State */}

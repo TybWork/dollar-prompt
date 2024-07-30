@@ -134,11 +134,16 @@
     .mainContainer {
         padding: 1em 4em 4em;
     }
+
 }
 
 @media screen and (max-width:788px) {
     .mainContainer {
         padding: 1em 2em 2em;
+    }
+
+    .userNameLinks {
+        margin-top: 3em;
     }
 
     .banner {
@@ -151,5 +156,11 @@
         width: 70px;
         height: 70px;
         overflow: hidden;
+    }
+}
+
+@media screen and (max-width:658px) {
+    .mainContainer {
+        padding: 1em 14px 4em;
     }
 }
