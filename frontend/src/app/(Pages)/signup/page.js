@@ -5,7 +5,7 @@ import styles from '@/app/(Pages)/signup/signup.module.css'
 import Image from "next/image";
 import InputField from "@/app/Components/(liteComponents)/InputField/InputField";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 const CreateUser = () => {
     const router = useRouter();
     const users = {
