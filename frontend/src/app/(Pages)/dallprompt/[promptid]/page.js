@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect } from 'react'
-import styles from "@/app/(Pages)/dallprompt/page.module.css"
+import styles from "@/app/(Pages)/dallprompt/[promptid]/page.module.css"
 import Image from 'next/image';
 import { IoMdHeart } from "react-icons/io";
 import { CiHeart } from "react-icons/ci";

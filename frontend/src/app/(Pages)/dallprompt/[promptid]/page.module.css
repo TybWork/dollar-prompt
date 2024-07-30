@@ -10,7 +10,7 @@
     top: 0;
     left: 0;
     z-index: -2;
-    height: 250px;
+    height: 200px;
     overflow: hidden;
 }
 
@@ -41,13 +41,13 @@
     top: 0px;
     left: 0px;
     width: 100%;
-    height: 250px;
+    height: 200px;
     z-index: 3;
 }
 
 .imageGradient img {
     width: 100%;
-    height: 100%;
+    height: auto;
     z-index: -3;
 }
 
@@ -133,7 +133,6 @@
     font-size: 12px;
 }
 
-
 .leftContainer {
     display: flex;
     flex-direction: column;
@@ -147,6 +146,7 @@
     min-width: 400px;
     height: 500px;
     overflow-y: scroll;
+    overflow-x: hidden;
     padding: 0px 8px;
     gap: 12px;
     display: flex;
@@ -162,20 +162,42 @@
     background: var(--textClr);
 }
 
-
-
-
-
 @media screen and (max-width:1024px) {
-    .rightContainer {
-        display: none;
+
+    .mainContainer {
+        flex-direction: column;
+        padding: 32px;
     }
 
     .leftContainer {
         width: 100%;
     }
 
+    .rightContainer {
+        width: 100%;
+        min-width: initial;
+        height: 210px;
+        flex-direction: row;
+        overflow-y: hidden;
+        overflow-x: scroll;
+    }
+
+    .rightContainer::-webkit-scrollbar {
+        height: 4px;
+    }
+
     .purchasingBenefits {
         width: 100%;
+    }
+}
+
+@media screen and (max-width:658px) {
+    .mainContainer {
+        padding: 14px 14px;
+    }
+
+    .smallImageSection {
+        gap: 12px;
+        justify-content: space-between;
     }
 }
