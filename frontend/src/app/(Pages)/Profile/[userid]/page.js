@@ -1,3 +1,4 @@
+'use client'
 import styles from '@/app/(Pages)/Profile/page.module.css'
 import Image from 'next/image'
 
@@ -8,19 +9,40 @@ import { FaUserPlus } from "react-icons/fa";
 import { IoMdEye } from "react-icons/io";
 import { BsFillGearFill } from "react-icons/bs";
 import { MdStar } from "react-icons/md";
+import { useEffect, useState } from 'react';
 import Search from '@/app/Components/(liteComponents)/Search/Search';
+import axios from 'axios';
+import Loading from '@/app/Components/(liteComponents)/Loading/Loading';
+import SinglePromptCard from '@/app/Components/SinglePromptCard/SinglePromptCard';
+import AnimatedHeading from '@/app/Components/(liteComponents)/AnimatedHeading/AnimatedHeading';
 
 
 const page = async ({ params }) => {
+    const [prompt, setprompt] = useState(null)
+    const [sellerDetail, setsellerDetail] = useState(null)
     const { userid } = params;
+
+    useEffect(() => {
+        axios.get(`http://localhost:4001/api/prompt/dalle/filter?userId=${userid}&&status=active`)
+            .then((response) => {
+                setprompt(response.data)
+            })
+
+        axios.get(`http://localhost:4001/api/seller/getseller?userId=${userid}`)
+            .then((response) => {
+                setsellerDetail(response.data[0])
+            })
+    }, [userid])
+
+    if (!prompt || !sellerDetail) return <Loading />
     return (
         <div className={styles.mainContainer}>
             <div className={styles.bannerOuterContainer}>
                 <div className={styles.banner}>
-                    <Image className={styles.bannerImage} src="/assets/imageAssets/profileBanner.webp" width={0} height={0} sizes='100vw' />
+                    <Image className={styles.bannerImage} src={sellerDetail.profileBanner[0]} width={0} height={0} sizes='100vw' />
                 </div>
                 <div className={styles.userLogo}>
-                    <Image className={styles.logoImage} src="/assets/imageAssets/logo.webp" width={0} height={0} sizes='100vw' />
+                    <Image className={styles.logoImage} src={sellerDetail.profileImage[0]} width={0} height={0} sizes='100vw' />
                 </div>
                 {/* follow button */}
                 <button className={styles.followBtn}>
@@ -33,7 +55,7 @@ const page = async ({ params }) => {
 
                 {/* user name links */}
                 <div className={styles.userNameLinks}>
-                    <div className={styles.userName}>@charismaenigma {userid}
+                    <div className={styles.userName}>@{sellerDetail.profileHandle}
                     </div>
                     <div className={styles.socialIcons}>
 
@@ -53,7 +75,7 @@ const page = async ({ params }) => {
 
                 {/* profile bio */}
                 <div className={styles.profileBio}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam similique expedita officiis nesciunt voluptatem possimus repellat repudiandae? Aperiam distinctio fuga omnis veniam, a ab veritatis quas unde voluptates consequuntur enim quam ducimus iusto accusantium sit!
+                    {sellerDetail.profileDescription}
                 </div>
 
                 {/*---------------- user stats--------- */}
@@ -113,6 +135,14 @@ const page = async ({ params }) => {
 
                 {/* search bar */}
                 <Search placeholder="Search @charismaenigma's prompts" />
+
+                {/* prompts */}
+                <AnimatedHeading title="Other prompts by this seller" />
+                <div className={styles.promptsWrapper}>
+                    {prompt.map((item) => (
+                        <SinglePromptCard image={item.Image_Url[0]} label={item.promptType} title={`${item.title.slice(0, 18)} . . .`} price={item.price} link={`/dallprompt/${item._id}`} />
+                    ))}
+                </div>
             </div>
 
         </div>
