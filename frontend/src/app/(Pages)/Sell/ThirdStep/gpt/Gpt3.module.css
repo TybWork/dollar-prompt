@@ -120,3 +120,9 @@
     width: fit-content;
     background-color: red;
 }
+
+@media screen and (max-width:658px) {
+    .field {
+        width: 100%;
+    }
+}

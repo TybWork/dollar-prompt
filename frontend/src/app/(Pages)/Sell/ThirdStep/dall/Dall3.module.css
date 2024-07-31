@@ -1,5 +1,6 @@
 .parentContainer {
     width: 50%;
+    min-width: 600px;
 }
 
 .heading {
@@ -35,4 +36,10 @@
 
 .nextBtn {
     margin: 1em 0em 1em;
+}
+
+@media screen and (max-width:658px) {
+    .parentContainer {
+        min-width: 100%;
+    }
 }

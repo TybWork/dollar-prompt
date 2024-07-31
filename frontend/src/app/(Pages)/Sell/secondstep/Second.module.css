@@ -35,6 +35,12 @@
     width: fit-content;
 }
 
+@media screen and (max-width:1024px) {
+    .parentContainer {
+        width: 100%;
+    }
+}
+
 @media screen and (max-width:792px) {
     .textInput {
         width: 100%;
