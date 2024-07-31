@@ -12,3 +12,17 @@
     justify-content: flex-end;
     align-items: center;
 }
+
+@media screen and (max-width:1024px) {
+    .container {
+        width: 100%;
+        padding: 16px 32px;
+    }
+}
+
+@media screen and (max-width:658px) {
+    .container {
+        width: 100%;
+        padding: 16px 14px;
+    }
+}
