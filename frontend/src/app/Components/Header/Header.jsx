@@ -110,7 +110,6 @@ const Header = () => {
                         <ul>
                             <li><Link className={styles.link} style={{ display: role === 'admin' ? 'none' : 'block' }} href="/Marketplace">Marketplace</Link></li>
                             {/* <li><Link className={styles.link} href="/create">Create</Link></li> */}
-                            <li><Link className={styles.link} style={{ display: role === 'admin' ? 'none' : 'block' }} href="/Hire">Hire</Link></li>
                             <li><Link className={styles.link} href={seller.link}>{seller.text}</Link></li>
                             <li className={styles.link} style={{ display: `${logout == true ? 'block' : 'none'}` }} onClick={logoutFunc}>Logout</li>
                         </ul>
