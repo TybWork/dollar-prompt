@@ -15,7 +15,7 @@
 .subHeading {
     font-size: 24px;
     font-weight: 500;
-    margin-bottom: .7em;
+    margin-bottom: 8px;
 }
 
 .mainTxt {
@@ -27,9 +27,34 @@
     padding-left: 32px;
 }
 
+@media screen and (max-width:1024px) {
+    .parentContainer {
+        padding: 0px 32px;
+        margin: 32px auto;
+        gap: 16px;
+    }
+}
+
+
 @media screen and (max-width:846px) {
     .parentContainer {
         width: 100%;
-        margin: 1em auto;
+        margin: 0px auto;
+        padding: 32px;
+    }
+
+    .mainHeading {
+        font-size: 24px;
+    }
+
+    .subHeading {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width:658px) {
+    .parentContainer {
+        padding: 14px;
+        margin: 0px auto;
     }
 }
