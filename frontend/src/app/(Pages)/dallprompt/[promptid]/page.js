@@ -52,6 +52,7 @@ const page = ({ params }) => {
     function heartFunc() {
         console.log('heart clicked')
         setheart(prev => !prev)
+        console.log(window.Notification)
     }
 
     return (

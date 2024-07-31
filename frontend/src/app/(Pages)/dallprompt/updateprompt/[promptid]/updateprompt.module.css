@@ -1,6 +1,6 @@
 .parentContainer {
     width: 50%;
-    margin: 2em 4em;
+    padding: 32px 64px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -39,8 +39,23 @@
     width: fit-content;
 }
 
+@media screen and (max-width:1024px) {
+    .parentContainer {
+        padding: 32px;
+        width: 80%;
+    }
+}
+
 @media screen and (max-width:792px) {
     .textInput {
         width: 100%;
+    }
+}
+
+@media screen and (max-width:658px) {
+    .parentContainer {
+        padding: 16px;
+        width: 100%;
+        gap: 12px;
     }
 }
