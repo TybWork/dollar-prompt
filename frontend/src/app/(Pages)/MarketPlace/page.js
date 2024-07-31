@@ -6,6 +6,7 @@ import axios from 'axios';
 import SinglePromptCard from '@/app/Components/SinglePromptCard/SinglePromptCard';
 import Loading from '@/app/Components/(liteComponents)/Loading/Loading';
 import { useRouter } from 'next/navigation';
+import PromptFilterMobile from '@/app/Components/PromptFilterMobile/PromptFilterMobile';
 
 const MarketPlace = () => {
   const router = useRouter();
@@ -31,7 +32,8 @@ const MarketPlace = () => {
 
   return (
     <div className={styles.mainContainer}>
-      <Filter />
+      <div className={styles.filterComponent}><Filter /></div>
+      <div className={styles.mobileFilterComponent}><PromptFilterMobile /></div>
       <div className={styles.leftContainer}>
         {promptData.map((item) => (
           <SinglePromptCard image={item.Image_Url[0]} label={item.promptType} title={`${item.title.slice(0, 18)} . . .`} price={item.price} link={`/dallprompt/${item._id}`} />
