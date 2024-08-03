@@ -20,7 +20,7 @@ const Page = ({ params }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:4001/api/prompt/dalle/get/${promptid}`);
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/prompt/dalle/get/${promptid}`);
                 let fetchedData = response.data;
                 setPromptData(fetchedData);
                 setUser(fetchedData);

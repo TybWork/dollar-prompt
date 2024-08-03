@@ -23,7 +23,7 @@ const page = async ({ params }) => {
     const { userid } = params;
 
     useEffect(() => {
-        axios.get(`http://localhost:4001/api/prompt/dalle/filter?userId=${userid}&&status=active`)
+        axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/prompt/dalle/filter?userId=${userid}&&status=active`)
             .then((response) => {
                 setprompt(response.data)
             })

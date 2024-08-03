@@ -58,7 +58,7 @@ export const getSingleDallE = async (req, res) => {
 
 // get prompts the basis of userId
 export const getFilteredPrompt = async (req, res) => {
-    // http://localhost:4001/api/endpoint?userId=234&username='john'
+    // `${process.env.NEXT_PUBLIC_SERVER_URL}/api/endpoint?userId=234&username='john'
     try {
         const filter = await DallE.find(req.query);
         return res.status(200).json(filter)

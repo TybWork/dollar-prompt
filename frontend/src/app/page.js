@@ -20,8 +20,8 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:4001/api/prompt/dalle/get');
-        const getTrendingPrompt = await axios.get(`http://localhost:4001/api/prompt/dalle/filter?status=active&&status=paused`)
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/prompt/dalle/get`);
+        const getTrendingPrompt = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/prompt/dalle/filter?status=active&&status=paused`)
         setDallPrompt(response.data);
         settrendingPrompt(getTrendingPrompt.data)
       } catch (error) {

@@ -15,7 +15,9 @@ const MarketPlace = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:4001/api/prompt/dalle/get');
+        // const response = await axios.get('http://localhost:4001/api/prompt/dalle/get');
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/prompt/dalle/get`);
+
         setPromptData(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);

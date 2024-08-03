@@ -26,7 +26,7 @@ const CreateUser = () => {
     // function to handle submit
     const submitForm = async (e) => {
         e.preventDefault();
-        await axios.post("http://localhost:4001/api/user/signup", user)
+        await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/user/signup`, user)
         setuser(users)
         router.push('/login')
     }

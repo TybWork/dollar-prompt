@@ -12,7 +12,7 @@ const page = ({ params }) => {
     const [sellerData, setsellerData] = useState(null)
 
     useEffect(() => {
-        axios.get(`http://localhost:4001/api/seller/getseller?profileHandle=${username}`)
+        axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/seller/getseller?profileHandle=${username}`)
             .then((response) => {
                 setsellerData(response.data[0])
             })

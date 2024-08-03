@@ -28,7 +28,7 @@ const Page = () => {
     // refresh cookie function on becoming seller
     const refreshCookie = async (userId, userRole) => {
         try {
-            const response = await axios.post('http://localhost:4001/api/user/refreshcookie', {
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/user/refreshcookie`, {
                 userId,
                 userRole
             }, {
@@ -67,7 +67,7 @@ const Page = () => {
         }
 
         try {
-            const response = await axios.post("http://localhost:4001/api/seller/postdata", formData, {
+            const response = await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/seller/postdata`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 },

@@ -37,7 +37,7 @@ const page = () => {
         }
 
         const fetchData = async () => {
-            const response = await axios.get(`http://localhost:4001/api/admin/getprompt?status=pending&&promptType=Dall-E`, {
+            const response = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/admin/getprompt?status=pending&&promptType=Dall-E`, {
                 withCredentials: true
             })
             setpromptData(response.data)

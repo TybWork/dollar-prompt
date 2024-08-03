@@ -83,7 +83,7 @@ const page = () => {
         }
 
         try {
-            await axios.post("http://localhost:4001/api/prompt/dalle/create", formData, {
+            await axios.post("`${process.env.NEXT_PUBLIC_SERVER_URL}/api/prompt/dalle/create", formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 },

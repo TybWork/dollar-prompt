@@ -17,7 +17,7 @@ const Page = ({ params }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:4001/api/admin/getprompt?_id=${promptid}`, {
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/admin/getprompt?_id=${promptid}`, {
                     withCredentials: true,
                 });
                 setPromptData(response.data[0]);
@@ -34,7 +34,7 @@ const Page = ({ params }) => {
         const target = e.target.innerText;
         const newStatus = target === 'Approve' ? 'active' : 'paused';
         setstatus(newStatus)
-        await axios.put(`http://localhost:4001/api/admin/dalle/update/${promptid}`, { status: newStatus }, {
+        await axios.put(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/admin/dalle/update/${promptid}`, { status: newStatus }, {
             withCredentials: true
         })
         router.push('/admin')

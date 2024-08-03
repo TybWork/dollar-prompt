@@ -28,7 +28,7 @@ app.use(express.json());
 app.use(cookieParser());
 // app.use(bodyParser.json());
 app.use(cors({
-    origin: ['http://localhost:3000'], // Replace with your client URL
+    origin: [process.env.CLIENT_BASE_URL], // Replace with your client URL
     methods: ['POST', 'PUT', 'GET', 'DELETE'],
     credentials: true, // Allow credentials (cookies) to be included in requests
 }));
@@ -65,8 +65,8 @@ app.post('/create-checkout-session', async (req, res) => {
             payment_method_types: ['card'],
             line_items: lineItems,
             mode: 'payment',
-            success_url: 'http://localhost:3000/success',
-            cancel_url: 'http://localhost:3000/cancel',
+            success_url: `${process.env.CLIENT_BASE_URL}/success`,
+            cancel_url: `${process.env.CLIENT_BASE_URL}/cancel`,
         });
 
         res.json({ id: session.id });

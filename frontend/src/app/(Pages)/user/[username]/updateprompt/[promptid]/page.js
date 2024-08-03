@@ -26,7 +26,7 @@ const Page = ({ params }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:4001/api/prompt/dalle/get/${promptid}`);
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/prompt/dalle/get/${promptid}`);
                 let fetchedData = response.data;
                 setpromptData(fetchedData);
             } catch (error) {
@@ -51,7 +51,7 @@ const Page = ({ params }) => {
     }
 
     const updateDataFunc = async () => {
-        await axios.put(`http://localhost:4001/api/prompt/dalle/update/${promptid}`, { ...promptData, status: 'pending' })
+        await axios.put(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/prompt/dalle/update/${promptid}`, { ...promptData, status: 'pending' })
         router.push(`/`)
         // alert("form updated successfully")
         // const formData = new FormData();
@@ -64,7 +64,7 @@ const Page = ({ params }) => {
         // }
 
         // try {
-        //     await axios.put(`http://localhost:4001/api/prompt/dalle/update/${promptid}`, formData, {
+        //     await axios.put(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/prompt/dalle/update/${promptid}`, formData, {
         //         headers: {
         //             'Content-Type': 'multipart/form-data'
         //         },

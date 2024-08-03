@@ -40,7 +40,8 @@
 </head>
 
 <body>
-    <form action="http://localhost:4001/api/prompt/dalle/create" method="post" enctype="multipart/form-data">
+    <form action=`${process.env.NEXT_PUBLIC_SERVER_URL}/api/prompt/dalle/create` method=" post"
+        enctype="multipart/form-data">
         <input type="file" name="myfiles" accept="image/jpeg,image/png,video/*" multiple required>
         <button type="submit">Upload</button>
     </form>

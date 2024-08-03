@@ -28,14 +28,14 @@ const Tab = ({ sellerId, sellerHandle }) => {
         setpromptState(buttonText)
     }
     useEffect(() => {
-        axios.get(`http://localhost:4001/api/prompt/dalle/filter/?userId=${sellerId}&&status=${promptState.toLocaleLowerCase()}`)
+        axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/prompt/dalle/filter/?userId=${sellerId}&&status=${promptState.toLocaleLowerCase()}`)
             .then((response) => {
                 setprompt(response.data)
             })
     }, [promptState])
 
     async function promptDeleteFunc(id) {
-        await axios.delete(`http://localhost:4001/api/prompt/dalle/delete/${id}`)
+        await axios.delete(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/prompt/dalle/delete/${id}`)
         setprompt((prevPrompts) => prevPrompts.filter((prompt) => prompt._id !== id))
     }
 

@@ -24,7 +24,6 @@ import { userData } from "@/app/utilities/userData";
 
 const Header = () => {
     const router = useRouter();
-    const data = userData()
 
     const [categoryHeading, setcategoryHeading] = useState()
     const [subHeadingTitle, setsubHeadingTitle] = useState()
@@ -66,7 +65,7 @@ const Header = () => {
     // logout Function
     const logoutFunc = async () => {
         try {
-            await axios.get('http://localhost:4001/api/user/logout', {
+            await axios.get('`${process.env.NEXT_PUBLIC_SERVER_URL}/api/user/logout', {
                 withCredentials: true
             })
             setseller({ text: 'Login', link: '/login' })
@@ -78,16 +77,28 @@ const Header = () => {
         }
     }
 
-    function mainCategory(val) {
+    // ...........................functions for hide/show sub categories......................
+
+    const [hideTimeOut, sethideTimeOut] = useState(null)
+
+    // show sub categories container
+    const showSubCategories = (val, index) => {
+        clearTimeout(hideTimeOut)
+        setcheckActiveHeader(true)
         setsubCategory(val.SubCategories);
         setcategoryHeading(val.name);
+    }
 
-        if (setcheckActiveHeader(true)) {
-            setshowHeaderBox(true);
-        }
-        else (
-            setshowHeaderBox(false)
+    const hideSubCategories = () => {
+        sethideTimeOut(setTimeout(() => {
+            setcheckActiveHeader(false)
+        }, 200)
         )
+    }
+
+    const categoryContainer = () => {
+        clearTimeout(hideTimeOut)
+        setcheckActiveHeader(true)
     }
 
     // showing innerLinks function 
@@ -98,13 +109,15 @@ const Header = () => {
 
     const cartProducts = useSelector((state) => state.cart.cartItems)
 
+
+
     return (
         <>
             <header className={styles.headerContainer}>
                 {/* ------------- top header------------- */}
                 <div className={styles.topHeader}>
                     {/* logo  */}
-                    <Link className={styles.desktopLogo} href='/'><img src="/assets/imageAssets/logo.svg" style={{ width: "180px" }} alt="site-logo" /></Link>
+                    <Link className={styles.desktopLogo} href='/'><img src="/assets/imageAssets/dollarprompt-desktop-logo.svg" style={{ width: "150px" }} alt="site-logo" /></Link>
                     <Link className={styles.mobileLogo} href='/'><img style={{ width: '36px' }} src="/assets/imageAssets/dollarprompt-mobile-logo.svg" alt="site-logo" /></Link>
 
                     {/* search component */}
@@ -133,15 +146,15 @@ const Header = () => {
                     <ul>
                         {
                             categoriesArr.map((val, index) =>
-                                <li onMouseEnter={() => mainCategory(val, index)} key={index}><TbBoxModel /> <span>{val.name}</span></li>
+                                <li onMouseLeave={hideSubCategories} onMouseEnter={() => showSubCategories(val, index)} key={index}><TbBoxModel /> <span>{val.name}</span></li>
                             )
                         }
                     </ul>
                 </nav>
             </header>
             {/* subcategories links */}
-            <div className={styles.subCategoriesContainer} style={{ display: `${checkActiveHeader ? 'none' : 'none'}` }}
-                onMouseEnter={() => setcheckActiveHeader(true)} onMouseLeave={() => setcheckActiveHeader(false)}
+            <div className={styles.subCategoriesContainer} style={{ display: `${checkActiveHeader ? 'flex' : 'none'}` }}
+                onMouseOver={categoryContainer} onMouseLeave={hideSubCategories}
             >
 
                 <div className={styles.subCategories}>

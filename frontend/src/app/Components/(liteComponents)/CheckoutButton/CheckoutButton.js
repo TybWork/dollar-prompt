@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import axios from "axios";
 import { useRouter } from 'next/navigation';
 import { jwtDecode } from 'jwt-decode';
-const apiUrl = 'http://localhost:4001'
+const apiUrl = '`${process.env.NEXT_PUBLIC_SERVER_URL}'
 
 
 export default function CheckoutButton() {
@@ -51,7 +51,7 @@ export default function CheckoutButton() {
 
             try {
                 for (let item of destructuredPrompt) {
-                    await axios.post('http://localhost:4001/api/createlog', item)
+                    await axios.post('`${process.env.NEXT_PUBLIC_SERVER_URL}/api/createlog', item)
                 }
             } catch (error) {
                 console.error('Error:', error);

@@ -25,7 +25,7 @@ const page = ({ params }) => {
     const [heart, setheart] = useState(true)
     const dispatch = useDispatch()
     useEffect(() => {
-        axios.get(`http://localhost:4001/api/prompt/dalle/get/${promptid}`)
+        axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/prompt/dalle/get/${promptid}`)
             .then((response) => {
                 setPrompt(response.data)
             })

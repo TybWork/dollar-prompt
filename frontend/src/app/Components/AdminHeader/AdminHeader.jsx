@@ -44,7 +44,7 @@ const AdminHeader = () => {
     // logout Function
     const logoutFunc = async () => {
         try {
-            await axios.get('http://localhost:4001/api/user/logout', {
+            await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/user/logout`, {
                 withCredentials: true
             })
             setseller({ text: 'Login', link: '/login' })
@@ -62,7 +62,7 @@ const AdminHeader = () => {
                 {/* ------------- top header------------- */}
                 <div className={styles.topHeader}>
                     {/* logo  */}
-                    <Link className={styles.desktopLogo} href='/'><img src="/assets/imageAssets/logo.svg" style={{ width: "180px" }} alt="site-logo" /></Link>
+                    <Link className={styles.desktopLogo} href='/'><img src="/assets/imageAssets/dollarprompt-desktop-logo.svg" style={{ width: "150px" }} alt="site-logo" /></Link>
                     <Link className={styles.mobileLogo} href='/'><img style={{ width: '36px' }} src="/assets/imageAssets/dollarprompt-mobile-logo.svg" alt="site-logo" /></Link>
 
                     {/* top nav icons */}
