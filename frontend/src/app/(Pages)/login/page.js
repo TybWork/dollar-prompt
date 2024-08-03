@@ -5,10 +5,7 @@ import Image from "next/image";
 import InputField from "@/app/Components/(liteComponents)/InputField/InputField";
 import Link from "next/link";
 import { post } from "@/app/Services/ApiEndpoint.js";
-import { jwtDecode } from "jwt-decode";
-import { useRouter } from "next/navigation";
 const loginUser = () => {
-    const router = useRouter();
     const users = {
         email: "",
         password: "",
@@ -29,7 +26,6 @@ const loginUser = () => {
             const request = await post("/api/user/login", user)
             const response = request.data
             document.cookie = `token = ${response.token}; path=/`
-            // router.push('/')
             window.location.href = '/'
         } catch (error) {
             alert(error.response.data.msg)

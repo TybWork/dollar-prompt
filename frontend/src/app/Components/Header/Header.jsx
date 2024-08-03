@@ -20,9 +20,12 @@ import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { showCart } from "@/app/Redux/Features/cart/cartSlice";
+import { userData } from "@/app/utilities/userData";
 
 const Header = () => {
     const router = useRouter();
+    const data = userData()
+
     const [categoryHeading, setcategoryHeading] = useState()
     const [subHeadingTitle, setsubHeadingTitle] = useState()
     const [seller, setseller] = useState({ text: "Login", link: "/login" })
@@ -40,8 +43,10 @@ const Header = () => {
             const decodedToken = jwtDecode(token)
             setrole(decodedToken.userRole)
             const userId = decodedToken.userId
+            const profileHandle = decodedToken.profileHandle
             if (role === "seller") {
-                setseller({ text: "Profile", link: `/seller/${userId}` })
+                // setseller({ text: "Profile", link: `/seller/${userId}` })
+                setseller({ text: "Profile", link: `/user/${profileHandle}/seller-dashboard` })
                 setlogout(true)
             } else if (role === "user") {
                 setseller({ text: "becomeSeller", link: '/sellerinfo' })
@@ -49,7 +54,7 @@ const Header = () => {
             } else if (role === 'admin') {
                 setseller({ text: 'Admin', link: '/admin' })
                 setlogout(true)
-                router.push('/admin')
+                // router.push('/admin')
             }
             else {
                 setseller({ text: "Login", link: '/login' })
@@ -109,7 +114,6 @@ const Header = () => {
                     <nav className={styles.mainNav}>
                         <ul>
                             <li><Link className={styles.link} style={{ display: role === 'admin' ? 'none' : 'block' }} href="/Marketplace">Marketplace</Link></li>
-                            {/* <li><Link className={styles.link} href="/create">Create</Link></li> */}
                             <li><Link className={styles.link} href={seller.link}>{seller.text}</Link></li>
                             <li className={styles.link} style={{ display: `${logout == true ? 'block' : 'none'}` }} onClick={logoutFunc}>Logout</li>
                         </ul>

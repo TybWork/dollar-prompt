@@ -11,7 +11,7 @@ import SellerPromptCard from '../SellerPromptCard/SellerPromptCard';
 import axios from 'axios';
 import Link from 'next/link';
 
-const Tab = ({ sellerId }) => {
+const Tab = ({ sellerId, sellerHandle }) => {
     const [activeTab, setactiveTab] = useState('PROMPTS')
     const [promptState, setpromptState] = useState('Active')
     const [prompt, setprompt] = useState([])
@@ -79,7 +79,7 @@ const Tab = ({ sellerId }) => {
                             // <Link href={`/dallprompt/${e._id}`}>
                             <SellerPromptCard
                                 previewPromptLink={`/dallprompt/${e._id}`}
-                                updatePromptLink={`/dallprompt/updateprompt/${e._id}`}
+                                updatePromptLink={`/user/${sellerHandle}/updateprompt/${e._id}`}
                                 deletePromptFunc={() => promptDeleteFunc(e._id)}
                                 key={index}
                                 label={e.promptType}

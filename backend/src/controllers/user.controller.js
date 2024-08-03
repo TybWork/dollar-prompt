@@ -3,6 +3,7 @@ import { User } from "../models/User/user.model.js";
 
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import { SellerProfile } from "../models/SellerProfile/sellerProfile.model.js";
 
 // create user
 export const signUp = async (req, res) => {
@@ -39,6 +40,7 @@ export const loginUser = async (req, res) => {
 
     try {
         const user = await User.findOne({ email })
+        const userName = await SellerProfile.find({ userId: user._id })
         if (!user) {
             return res.status(400).json({ msg: "No such user!!" })
         }
@@ -48,7 +50,7 @@ export const loginUser = async (req, res) => {
             return res.status(400).json({ msg: "Password not matched!!" })
         }
 
-        const token = jwt.sign({ userId: user._id, userRole: user.role }, process.env.JWT_SECRET)
+        const token = jwt.sign({ userId: user._id, userRole: user.role, profileHandle: userName[0].profileHandle }, process.env.JWT_SECRET)
 
         res.cookie('token', token, {
             httpOnly: false,

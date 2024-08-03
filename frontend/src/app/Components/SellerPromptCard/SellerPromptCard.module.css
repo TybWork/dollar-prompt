@@ -80,6 +80,7 @@
     gap: 8px;
     transition: var(--transition);
     transform-origin: top right;
+    z-index: 1;
 }
 
 .dropdown li:nth-child(3) {

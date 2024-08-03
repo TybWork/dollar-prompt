@@ -42,7 +42,12 @@ const userProfileSchema = new Schema({
         type: Number
     },
     prompts: {
-        type: [{}]
+        type: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "User"
+            }
+        ]
     },
     userId: {
         type: Schema.Types.ObjectId,
