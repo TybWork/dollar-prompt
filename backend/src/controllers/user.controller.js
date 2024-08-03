@@ -57,7 +57,7 @@ export const loginUser = async (req, res) => {
             // secure: false,
             // sameSite: 'None',
 
-            httpOnly: true,
+            httpOnly: false,
             secure: true,
             sameSite: 'None',
             domain: 'https://bgzqbnv7-3000.asse.devtunnels.ms/', // Must match domain used when setting cookie
@@ -76,7 +76,7 @@ export const loginUser = async (req, res) => {
 export const clearCookie = async (req, res) => {
     const cookieName = 'token';
     res.clearCookie(cookieName, {
-        httpOnly: true,
+        httpOnly: false,
         secure: true,
         sameSite: 'None',
         domain: 'https://bgzqbnv7-3000.asse.devtunnels.ms/', // Must match domain used when setting cookie
@@ -94,7 +94,7 @@ export const refreshCookie = async (req, res) => {
         const newToken = jwt.sign({ userId, userRole }, process.env.JWT_SECRET)
 
         res.cookie('token', newToken, {
-            httpOnly: true,
+            httpOnly: false,
             secure: true,
             sameSite: 'None',
             domain: 'https://bgzqbnv7-3000.asse.devtunnels.ms/', // Must match domain used when setting cookie
