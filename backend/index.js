@@ -28,7 +28,7 @@ app.use(express.json());
 app.use(cookieParser());
 // app.use(bodyParser.json());
 app.use(cors({
-    origin: [process.env.CLIENT_BASE_URL], // Replace with your client URL
+    origin: ["https://bgzqbnv7-3000.asse.devtunnels.ms"], // Replace with your client URL
     methods: ['POST', 'PUT', 'GET', 'DELETE'],
     credentials: true, // Allow credentials (cookies) to be included in requests
 }));
