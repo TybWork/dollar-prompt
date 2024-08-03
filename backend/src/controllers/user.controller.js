@@ -53,9 +53,15 @@ export const loginUser = async (req, res) => {
         const token = jwt.sign({ userId: user._id, userRole: user.role, profileHandle: userName[0].profileHandle }, process.env.JWT_SECRET)
 
         res.cookie('token', token, {
-            httpOnly: false,
-            secure: false,
+            // httpOnly: false,
+            // secure: false,
+            // sameSite: 'None',
+
+            httpOnly: true,
+            secure: true,
             sameSite: 'None',
+            domain: 'https://bgzqbnv7-3000.asse.devtunnels.ms/', // Must match domain used when setting cookie
+            path: '/'
         });
 
 
@@ -70,9 +76,11 @@ export const loginUser = async (req, res) => {
 export const clearCookie = async (req, res) => {
     const cookieName = 'token';
     res.clearCookie(cookieName, {
-        httpOnly: false,
+        httpOnly: true,
         secure: true,
-        sameSite: 'None'
+        sameSite: 'None',
+        domain: 'https://bgzqbnv7-3000.asse.devtunnels.ms/', // Must match domain used when setting cookie
+        path: '/'
     });
     return res.status(200).json({ msg: `cookie ${cookieName} deleted successfully!` })
 
@@ -86,9 +94,11 @@ export const refreshCookie = async (req, res) => {
         const newToken = jwt.sign({ userId, userRole }, process.env.JWT_SECRET)
 
         res.cookie('token', newToken, {
-            httpOnly: false,
-            secure: false,
-            sameSite: "None"
+            httpOnly: true,
+            secure: true,
+            sameSite: 'None',
+            domain: 'https://bgzqbnv7-3000.asse.devtunnels.ms/', // Must match domain used when setting cookie
+            path: '/'
         })
 
         return res.status(200).json({ msg: 'Cookie refreshed successfully!!', newToken })
