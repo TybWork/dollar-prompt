@@ -71,7 +71,7 @@ export const clearCookie = async (req, res) => {
     const cookieName = 'token';
     res.clearCookie(cookieName, {
         httpOnly: false,
-        secure: false,
+        secure: true,
         sameSite: 'None'
     });
     return res.status(200).json({ msg: `cookie ${cookieName} deleted successfully!` })
