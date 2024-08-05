@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { jwtDecode } from 'jwt-decode'
 import axios from 'axios'
-import ReviewCard from '@/app/Components/reviewCard/reviewCard'
+import ReviewCard from '@/app/Components/reviewCard/ReviewCard'
 import Loading from '@/app/Components/(liteComponents)/Loading/Loading'
 const page = () => {
     const router = useRouter();

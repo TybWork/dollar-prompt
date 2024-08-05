@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react';
 import styles from '@/app/Components/Tab/Tab.module.css'
-import CategoriesBtn from '@/app/Components/(liteComponents)/categoriesBtn/categoriesBtn';
+import CategoriesBtn from '@/app/Components/(liteComponents)/categoriesBtn/CategoriesBtn';
 import Search from '../(liteComponents)/Search/Search';
 import { IoMdEye } from "react-icons/io";
 import { BsFillGearFill } from "react-icons/bs";
