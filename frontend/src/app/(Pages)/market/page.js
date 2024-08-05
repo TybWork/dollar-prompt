@@ -1,6 +1,6 @@
 'use client'
 import Filter from '@/app/Components/Filter/Filter';
-import styles from '@/app/(Pages)/marketplace/Marketplace.module.css';
+import styles from '@/app/(Pages)/market/market.module.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import SinglePromptCard from '@/app/Components/SinglePromptCard/SinglePromptCard';
