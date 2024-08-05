@@ -29,7 +29,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser());
 // app.use(bodyParser.json());
 app.use(cors({
-    origin: ["https://bgzqbnv7-3000.asse.devtunnels.ms"], // Replace with your client URL
+    origin: ["http://localhost:3000"], // Replace with your client URL
     methods: ['POST', 'PUT', 'GET', 'DELETE'],
     credentials: true, // Allow credentials (cookies) to be included in requests
 }));
