@@ -46,7 +46,7 @@ const Page = ({ params }) => {
     }
 
     const updateDataFunc = async () => {
-        await axios.put(`http://localhost:4001/api/prompt/dalle/update/${promptid}`, { ...user, status: 'pending' })
+        await axios.put(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/prompt/dalle/update/${promptid}`, { ...user, status: 'pending' })
         router.push(`/`)
         // alert("form updated successfully")
         // const formData = new FormData();

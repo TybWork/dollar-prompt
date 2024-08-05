@@ -17,7 +17,14 @@ const SellerHeader = () => {
 
     useEffect(() => {
         if (document.cookie.includes('token=')) {
-            const token = document.cookie;
+
+            const getCookieValue = (name) => {
+                const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+                return match ? decodeURIComponent(match[2]) : null;
+            };
+
+            const token = getCookieValue('token');
+
             const decodedToken = jwtDecode(token)
             setrole(decodedToken.userRole)
             const userId = decodedToken.userId
@@ -46,7 +53,7 @@ const SellerHeader = () => {
     // logout Function
     const logoutFunc = async () => {
         try {
-            await axios.get('`${process.env.NEXT_PUBLIC_SERVER_URL}/api/user/logout', {
+            await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/user/logout`, {
                 withCredentials: true
             })
             setseller({ text: 'Login', link: '/login' })

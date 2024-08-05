@@ -28,7 +28,7 @@ const page = async ({ params }) => {
                 setprompt(response.data)
             })
 
-        axios.get(`http://localhost:4001/api/seller/getseller?userId=${userid}`)
+        axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/seller/getseller?userId=${userid}`)
             .then((response) => {
                 setsellerDetail(response.data[0])
             })

@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import axios from "axios";
 import { useRouter } from 'next/navigation';
 import { jwtDecode } from 'jwt-decode';
-const apiUrl = '`${process.env.NEXT_PUBLIC_SERVER_URL}'
+const apiUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}`
 
 
 export default function CheckoutButton() {
@@ -14,7 +14,15 @@ export default function CheckoutButton() {
     let buyerId = null
     let userRole = null
     if (cookie.includes('token=')) {
-        const decodeToken = jwtDecode(cookie)
+
+        const getCookieValue = (name) => {
+            const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            return match ? decodeURIComponent(match[2]) : null;
+        };
+
+        const token = getCookieValue('token');
+
+        const decodeToken = jwtDecode(token)
         if (decodeToken.userRole == 'user') {
             buyerId = decodeToken.userId
         }
@@ -51,7 +59,7 @@ export default function CheckoutButton() {
 
             try {
                 for (let item of destructuredPrompt) {
-                    await axios.post('`${process.env.NEXT_PUBLIC_SERVER_URL}/api/createlog', item)
+                    await axios.post(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/createlog`, item)
                 }
             } catch (error) {
                 console.error('Error:', error);
