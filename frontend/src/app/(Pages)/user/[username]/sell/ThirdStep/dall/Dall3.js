@@ -1,4 +1,4 @@
-import styles from '@/app/(Pages)/sell/ThirdStep/dall/Dall3.module.css'
+import styles from '@/app/(Pages)/user/[username]/sell/ThirdStep/dall/Dall3.module.css'
 import FieldInfo from '@/app/Components/(liteComponents)/FieldInfo/FieldInfo'
 import GradientButton from '@/app/Components/GradientButton/GradientButton'
 import TextArea from '@/app/Components/(liteComponents)/TextAreaComponent/TextArea'

@@ -1,5 +1,5 @@
 import FieldInfo from "@/app/Components/(liteComponents)/FieldInfo/FieldInfo"
-import styles from '@/app/(Pages)/sell/ThirdStep/Llama/Llama.module.css'
+import styles from '@/app/(Pages)/user/[username]/sell/ThirdStep/Llama/Llama.module.css'
 import TextArea from "@/app/Components/(liteComponents)/TextAreaComponent/TextArea"
 import RangeSlider from "@/app/Components/(liteComponents)/RangeSlider/RangeSlider"
 import MultiFuntionBtn from "@/app/Components/(liteComponents)/MultiFunctionBtn/MultiFuntionBtn"

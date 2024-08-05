@@ -14,20 +14,24 @@ import SellerHeader from "./Components/SellerHeader/SellerHeader";
 const finlandica = Finlandica({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
-  const data = userData()
-  const pathname = usePathname()
   const renderHeader = () => {
-    if (pathname.includes('/admin')) {
-      return <AdminHeader />
-    } else if (data.userRole == 'seller' || pathname.includes('/sell') || pathname.includes('/seller') || pathname.includes('/updateprompt')) {
-      return <SellerHeader />
-    } else {
-      if (data.userRole == 'admin') {
+    const data = userData()
+    const pathname = usePathname()
+    if (typeof window !== 'undefined') {
+      if (pathname.includes('/admin')) {
         return <AdminHeader />
+      } else if (data.userRole == 'seller' || pathname.includes('/sell') || pathname.includes('/seller') || pathname.includes('/updateprompt')) {
+        return <SellerHeader />
       } else {
-        return <Header />
+        if (data.userRole == 'admin') {
+          return <AdminHeader />
+        } else {
+          return <Header />
+        }
       }
     }
+
+    return <Header />
 
   }
   return (

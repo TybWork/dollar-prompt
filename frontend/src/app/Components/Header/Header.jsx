@@ -37,27 +37,29 @@ const Header = () => {
     const [role, setrole] = useState('user')
 
     useEffect(() => {
-        if (document.cookie.includes('token=')) {
-            const token = document.cookie;
-            const decodedToken = jwtDecode(token)
-            setrole(decodedToken.userRole)
-            const userId = decodedToken.userId
-            const profileHandle = decodedToken.profileHandle
-            if (role === "seller") {
-                // setseller({ text: "Profile", link: `/seller/${userId}` })
-                setseller({ text: "Profile", link: `/user/${profileHandle}/seller-dashboard` })
-                setlogout(true)
-            } else if (role === "user") {
-                setseller({ text: "becomeSeller", link: '/sellerinfo' })
-                setlogout(true)
-            } else if (role === 'admin') {
-                setseller({ text: 'Admin', link: '/admin' })
-                setlogout(true)
-                // router.push('/admin')
-            }
-            else {
-                setseller({ text: "Login", link: '/login' })
-                setlogout(false)
+        if (typeof window !== 'undefined') {
+            if (document.cookie.includes('token=')) {
+                const token = document.cookie;
+                const decodedToken = jwtDecode(token)
+                setrole(decodedToken.userRole)
+                const userId = decodedToken.userId
+                const profileHandle = decodedToken.profileHandle
+                if (role === "seller") {
+                    // setseller({ text: "Profile", link: `/seller/${userId}` })
+                    setseller({ text: "Profile", link: `/user/${profileHandle}/seller-dashboard` })
+                    setlogout(true)
+                } else if (role === "user") {
+                    setseller({ text: "becomeSeller", link: '/sellerinfo' })
+                    setlogout(true)
+                } else if (role === 'admin') {
+                    setseller({ text: 'Admin', link: '/admin' })
+                    setlogout(true)
+                    // router.push('/admin')
+                }
+                else {
+                    setseller({ text: "Login", link: '/login' })
+                    setlogout(false)
+                }
             }
         }
     }, [role])
@@ -65,7 +67,7 @@ const Header = () => {
     // logout Function
     const logoutFunc = async () => {
         try {
-            await axios.get('`${process.env.NEXT_PUBLIC_SERVER_URL}/api/user/logout', {
+            await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/user/logout`, {
                 withCredentials: true
             })
             setseller({ text: 'Login', link: '/login' })

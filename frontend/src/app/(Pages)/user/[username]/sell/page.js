@@ -5,7 +5,7 @@ import Second from "./secondstep/Second"
 import Dall3 from "./ThirdStep/dall/Dall3"
 import Gpt3 from "./ThirdStep/gpt/Gpt3"
 import StepsCounter from "@/app/Components/(liteComponents)/StepsCounter/StepsCounter"
-import styles from '@/app/(Pages)/sell/sell.module.css'
+import styles from '@/app/(Pages)/user/[username]/sell/sell.module.css'
 import SelectCountry from "./fourthstep/SelectCountry"
 import axios from "axios"
 import Leonardo from "./ThirdStep/leonardo/Leonardo"

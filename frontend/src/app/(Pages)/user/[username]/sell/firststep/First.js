@@ -1,6 +1,6 @@
 import GradientButton from '@/app/Components/GradientButton/GradientButton'
 // import styles from '@/app/Components//SellingProduct/SellingProduct.module.css'
-import styles from '@/app/(Pages)/sell/firststep/First.module.css'
+import styles from '@/app/(Pages)/user/[username]/sell/firststep/First.module.css'
 const SellingProduct = ({ onNext }) => {
     return (
         <div className={styles.mainContainer}>

@@ -1,4 +1,4 @@
-import styles from '@/app/(Pages)/sell/ThirdStep/Midjourney/Midjourney.module.css'
+import styles from '@/app/(Pages)/user/[username]/sell/ThirdStep/Midjourney/Midjourney.module.css'
 import FieldInfo from '@/app/Components/(liteComponents)/FieldInfo/FieldInfo'
 import InputImage from '@/app/Components/(liteComponents)/InputImage/InputImage'
 import TextArea from '@/app/Components/(liteComponents)/TextAreaComponent/TextArea'

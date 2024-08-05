@@ -1,4 +1,4 @@
-import styles from '@/app/(Pages)/sell/ThirdStep/gpt/Gpt3.module.css'
+import styles from '@/app/(Pages)/user/[username]/sell/ThirdStep/gpt/Gpt3.module.css'
 import FieldInfo from '@/app/Components/(liteComponents)/FieldInfo/FieldInfo';
 import TextArea from '@/app/Components/(liteComponents)/TextAreaComponent/TextArea';
 import GradientButton from '@/app/Components/GradientButton/GradientButton';

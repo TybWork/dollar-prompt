@@ -1,4 +1,4 @@
-import styles from '@/app/(Pages)/sell/secondstep/Second.module.css'
+import styles from '@/app/(Pages)/user/[username]/sell/secondstep/Second.module.css'
 import GradientButton from '@/app/Components/GradientButton/GradientButton';
 import FieldInfo from '@/app/Components/(liteComponents)/FieldInfo/FieldInfo';
 import TextArea from '@/app/Components/(liteComponents)/TextAreaComponent/TextArea';

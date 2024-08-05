@@ -16,35 +16,37 @@ const SellerHeader = () => {
     const [role, setrole] = useState('admin')
 
     useEffect(() => {
-        if (document.cookie.includes('token=')) {
+        if (typeof window !== 'undefined') {
+            if (document.cookie.includes('token=')) {
 
-            const getCookieValue = (name) => {
-                const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-                return match ? decodeURIComponent(match[2]) : null;
-            };
+                const getCookieValue = (name) => {
+                    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+                    return match ? decodeURIComponent(match[2]) : null;
+                };
 
-            const token = getCookieValue('token');
+                const token = getCookieValue('token');
 
-            const decodedToken = jwtDecode(token)
-            setrole(decodedToken.userRole)
-            const userId = decodedToken.userId
-            const profileHandle = decodedToken.profileHandle
-            // if (role === "seller") {
-            //     setseller({ text: "Profile", link: `/user/${profileHandle}/seller-dashboard` })
-            //     setlogout(true)
-            // } else if (role === "user") {
-            //     setseller({ text: "becomeSeller", link: '/sellerinfo' })
-            //     setlogout(true)
-            // }
-            if (role === 'seller') {
-                setseller({ text: 'Profile', link: `/user/${profileHandle}/seller-dashboard` })
-                setlogout(true)
-                // router.push('/')
-            }
-            else {
-                setseller({ text: "Login", link: '/login' })
-                setlogout(false)
-                router.push('/')
+                const decodedToken = jwtDecode(token)
+                setrole(decodedToken.userRole)
+                const userId = decodedToken.userId
+                const profileHandle = decodedToken.profileHandle
+                // if (role === "seller") {
+                //     setseller({ text: "Profile", link: `/user/${profileHandle}/seller-dashboard` })
+                //     setlogout(true)
+                // } else if (role === "user") {
+                //     setseller({ text: "becomeSeller", link: '/sellerinfo' })
+                //     setlogout(true)
+                // }
+                if (role === 'seller') {
+                    setseller({ text: 'Profile', link: `/user/${profileHandle}/seller-dashboard` })
+                    setlogout(true)
+                    // router.push('/')
+                }
+                else {
+                    setseller({ text: "Login", link: '/login' })
+                    setlogout(false)
+                    router.push('/')
+                }
             }
         }
         // console.log(userData)

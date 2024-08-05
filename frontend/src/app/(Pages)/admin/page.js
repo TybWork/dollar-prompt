@@ -20,25 +20,27 @@ const page = () => {
     }
 
     useEffect(() => {
-        if (document.cookie) {
-            const getCookieValue = (name) => {
-                const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-                return match ? decodeURIComponent(match[2]) : null;
-            };
+        if (typeof window !== 'undefined') {
+            if (document.cookie) {
+                const getCookieValue = (name) => {
+                    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+                    return match ? decodeURIComponent(match[2]) : null;
+                };
 
-            const token = getCookieValue('token');
-            const decodeCookie = jwtDecode(token);
-            const userRole = decodeCookie.userRole;
+                const token = getCookieValue('token');
+                const decodeCookie = jwtDecode(token);
+                const userRole = decodeCookie.userRole;
 
-            if (userRole == 'admin') {
-                setisAdmin(true);
+                if (userRole == 'admin') {
+                    setisAdmin(true);
+                } else {
+                    setisAdmin(false);
+                    router.push('/');
+                }
             } else {
                 setisAdmin(false);
-                router.push('/');
+                router.push('/login');
             }
-        } else {
-            setisAdmin(false);
-            router.push('/login');
         }
 
         const fetchData = async () => {

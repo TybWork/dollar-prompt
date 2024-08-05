@@ -1,5 +1,5 @@
 'use client'
-import styles from '@/app/(Pages)/dallprompt/updateprompt/[promptid]/updateprompt.module.css'
+import styles from '@/app/(Pages)/user/[username]/updateprompt/[promptid]/updateprompt.module.css'
 import FieldInfo from '@/app/Components/(liteComponents)/FieldInfo/FieldInfo';
 import TextArea from '@/app/Components/(liteComponents)/TextAreaComponent/TextArea';
 import GradientButton from '@/app/Components/GradientButton/GradientButton';

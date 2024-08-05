@@ -1,4 +1,4 @@
-import styles from '@/app/(Pages)/sell/ThirdStep/leonardo/Leonardo.module.css'
+import styles from '@/app/(Pages)/user/[username]/sell/ThirdStep/leonardo/Leonardo.module.css'
 import FieldInfo from '@/app/Components/(liteComponents)/FieldInfo/FieldInfo'
 import InputField from '@/app/Components/(liteComponents)/InputField/InputField'
 import InputImage from '@/app/Components/(liteComponents)/InputImage/InputImage'

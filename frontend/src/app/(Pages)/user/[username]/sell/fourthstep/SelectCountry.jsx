@@ -1,4 +1,4 @@
-import styles from '@/app/(Pages)/sell/fourthstep/SelectCounry.module.css'
+import styles from '@/app/(Pages)/user/[username]/sell/fourthstep/SelectCounry.module.css'
 import GradientButton from '@/app/Components/GradientButton/GradientButton';
 import countriesArr from '@/app/jsonFiles/countries';
 import Link from 'next/link';
