@@ -10,6 +10,7 @@
 // export default nextConfig;
 
 /** @type {import('next').NextConfig} */
+import path from 'path'
 const nextConfig = {
   images: {
     domains: ['res.cloudinary.com'],
