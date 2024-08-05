@@ -8,7 +8,7 @@ import Loading from '@/app/Components/(liteComponents)/Loading/Loading';
 import { useRouter } from 'next/navigation';
 import PromptFilterMobile from '@/app/Components/PromptFilterMobile/PromptFilterMobile';
 
-const Marketplace = () => {
+const page = () => {
   const router = useRouter();
   const [promptData, setPromptData] = useState(null);
 
@@ -45,4 +45,4 @@ const Marketplace = () => {
   );
 };
 
-export default Marketplace;
+export default page;
