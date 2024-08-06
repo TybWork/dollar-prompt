@@ -49,7 +49,7 @@ const AdminHeader = () => {
     // logout Function
     const logoutFunc = async () => {
         try {
-            await axios.get(`http://localhost:4001/api/user/logout`, {
+            await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/user/logout`, {
                 withCredentials: true
             })
             setseller({ text: 'Login', link: '/login' })
